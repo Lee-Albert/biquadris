@@ -6,7 +6,7 @@ class Tile;
 
 class Observer {
   public:
-	virtual void notify(Suject &whoFrom) = 0;
+	virtual void notify(Subject &whoFrom) = 0;
 	virtual ~Observer() = default;
 };
 

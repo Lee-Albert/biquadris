@@ -7,10 +7,11 @@ class Observer;
 
 class Subject {
 	std::vector<Observer*> observers;
+	~Subject();
   public:
 	void attach(Observer *o);
 	void detach(Observer *o);
-	void notify(Observer *o);
+	void notify();
 };
 
 #endif
