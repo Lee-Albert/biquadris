@@ -2,8 +2,8 @@
 
 class Block {
     int orientation;
-    Grid grid;
-    Cell cells[4];
+    Grid *grid;
+    Cell *xcells[4];
     int xPos;
     int yPos;
     public:
@@ -13,4 +13,6 @@ class Block {
     void right();
     void down();
     void drop();
+    Block(int orientation, Grid grid, Cell cells, int xPos, int yPos);
+    virtual ~Block();
 }
