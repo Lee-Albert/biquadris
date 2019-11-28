@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include "tile.h"
+#include "observer.h"
 // other #includes
 #include "textdisplay.h"
 #include "graphicdisplay.h"
@@ -23,7 +24,7 @@ class Grid {
   public:
 	~Grid();
 
-	void init;
+	void init();
 	void setObserver(Observer *ob);
 	bool isFull();
 	bool heightReached();
