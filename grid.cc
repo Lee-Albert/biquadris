@@ -16,8 +16,9 @@ bool Grid::isFull() {
 }
 */
 
-void Grid::setLevel() {
-	
+void Grid::setLevel(int nLevel, Level *levelset); {
+	curLevel = nLevel;
+	level = levelset;
 }
 
 

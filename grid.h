@@ -19,6 +19,7 @@ class Grid {
 	int width;
 	Level *level;
 	int score;
+	int curLevel;
 	bool isBlind = false;
 	bool isHeavy = false;
 	bool isForce = false;
