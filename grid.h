@@ -33,7 +33,7 @@ class Grid {
 	void addRow();
 	int getScore();
 	void setLevel(int nLevel, Level *levelset);
-	Level *getLevel();
+	int getLevel();
 	Grid(int player, TextDisplay *td, int height = 18, int width = 11, int score = 0, bool isBlind = false, bool isHevay = false, bool isForce = false);
 	friend std::ostream &operator<<(std::ostream &out, const Grid &g);
 };
