@@ -9,7 +9,8 @@
 
 class Tile;
 class TextDisplay: public Observer {
-	std::vector<std::vector<string>> theDisplay;
+	std::vector<std::vector<std::string>> player1;
+	std::vector<std::vector<std::string>> player2;
 	const int height = 18;
 	const int width = 11;
   public:
