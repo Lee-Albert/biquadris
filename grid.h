@@ -14,11 +14,11 @@ class Grid {
 	int player;
 	std::vector<std::vector<Tile>> theGrid;
 	TextDisplay *td;
-	Observer *ob;
-	int height = 18;
-	int width = 11;
+	//Observer *ob;
+	int height;
+	int width;
 	Level *level;
-	int score = 0;
+	int score;
 	bool isBlind = false;
 	bool isHeavy = false;
 	bool isForce = false;
@@ -34,7 +34,7 @@ class Grid {
 	int getScore();
 	void setLevel();
 	Level *getLevel();
-	Grid(int player_, std::vector<std::vector<Tile>> theGrid_, TextDisplay *td_, Observer *ob_, int height_ = 18, int width_ = 11, Level *level_, int score = 0, bool isBlind = false, bool isHevay = false, bool isForce = false);
+	Grid(int player, TextDisplay *td, int height = 18, int width = 11, int score = 0, bool isBlind = false, bool isHevay = false, bool isForce = false);
 	friend std::ostream &operator<<(std::ostream &out, const Grid &g);
 };
 
