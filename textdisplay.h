@@ -8,9 +8,12 @@
 // other #includes
 
 class Tile;
+class Grid;
 class TextDisplay: public Observer {
-	std::vector<std::vector<std::string>> player1;
-	std::vector<std::vector<std::string>> player2;
+	std::vector<std::vector<std::string>> player1; // grid of chars
+	std::vector<std::vector<std::string>> player2; // grid of chars
+	Grid *grid1;
+	Grid *grid2;
 	const int height = 18;
 	const int width = 11;
   public:
