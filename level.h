@@ -2,14 +2,16 @@
 #define LEVEL_H
 #include "block.h"
 #include <string>
+#include <fstream>
+using namespace std;
 
 class Level {
     int points;
-    string playerOne;
-    string playerTwo;
+    string filename;
+    ifstream filestream;
     bool random;
     public:
-    virtual Block generateBlock() = 0;
+    virtual Block *generateBlock() = 0;
 }
 
 #endif

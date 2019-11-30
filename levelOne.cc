@@ -5,6 +5,4 @@
 
 LevelOne::LevelOne(string playerOne, string PlayerTwo):playerOne{playerOne}, playerTwo{playerTwo}{}
 
-Block LevelOne::generateBlock(){
-
-}
+Block LevelOne::generateBlock(){}
