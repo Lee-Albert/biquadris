@@ -9,7 +9,7 @@ void Block::left() {
 void Block::right() {
     if (this->xPos < 10) {
         this->xPos++;
-    }
+    }// Fix this shit
 }
 
 void Block::down() {
@@ -21,9 +21,7 @@ void Block::drop() {
 }
 
 
-Block::Block(int orientation, Grid grid, Cell cells, int xPos, int yPos): this->orientation{orientation}, this->gird{grid}, this->xPos{xPos}, this->yPos{yPos}{};
+Block::Block(int orientation, Grid *grid, Cell *cells, int xPos, int yPos): this->orientation{orientation}, this->gird{grid}, this->xPos{xPos}, this->yPos{yPos}{};
 
 Block::~Block() {
-    delete grid;
-    delete cells;
 }
