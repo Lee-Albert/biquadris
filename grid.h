@@ -11,6 +11,7 @@
 
 
 class Grid {
+	int player;
 	std::vector<std::vector<Tile>> theGrid;
 	TextDisplay *td = nullptr;
 	Observer *ob = nullptr;
