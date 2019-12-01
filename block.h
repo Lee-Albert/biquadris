@@ -1,9 +1,13 @@
+#ifndef BLOCK_H
+#define BLOCK_H
+
 #include <string>
+#include "tile.h"
 
 class Block {
     int orientation;
     Grid *grid;
-    Cell *cells[4];
+    Tile *tiles[4];
     int xPos;
     int yPos;
     public:
@@ -13,6 +17,8 @@ class Block {
     void right();
     void down();
     void drop();
-    Block(int orientation, Grid grid, Cell cells, int xPos, int yPos);
+    Block(int orientation, Grid grid, Tile tiles, int xPos, int yPos);
     ~Block();
 }
+
+#endif
