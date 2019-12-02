@@ -8,6 +8,7 @@
 class Grid;
 
 class Block {
+    string name;
     int orientation;
     Grid &grid;
     Tile *tiles[4];
@@ -24,6 +25,9 @@ class Block {
     void drop();
     Block(int orientation, Grid *grid, int xPos, int yPos);
     ~Block();
+    string getName() {
+        return name;
+    }
 };
 
 #endif

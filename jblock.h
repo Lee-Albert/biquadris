@@ -6,7 +6,6 @@
 using namespace std;
 
 class JBlock : public Block {
-    string name;
     public:
     void clockWise() override;
     void counterClockWise() override;
