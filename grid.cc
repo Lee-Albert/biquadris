@@ -87,7 +87,7 @@ int Grid::getScore() {
 	return score;
 }
 
-vector<vector<Tile>> Grid::getGrid(){
+vector<vector<Tile>> &Grid::getGrid(){
     return theGrid;
 };
 
