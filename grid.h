@@ -16,11 +16,13 @@
 class Block;
 class Observer;
 class TextDisplay;
+//class Level;
 // class GraphicDisplay;
+using namespace std;
 
 class Grid {
 	int player;
-	std::vector<std::vector<Tile>> theGrid;
+	vector<vector<Tile>> theGrid;
 	TextDisplay *td;
 	//Observer *ob;
 	int height;
@@ -46,6 +48,7 @@ class Grid {
 	void setLevel(int nLevel, Level *levelset);
 	int getLevel();
 	int getPlayer();
+	vector<vector<Tile>> &getGrid();
 	Grid(int player, TextDisplay *td);
 	friend std::ostream &operator<<(std::ostream &out, const Grid &g);
 };

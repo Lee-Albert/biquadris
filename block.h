@@ -3,12 +3,14 @@
 
 #include <string>
 #include <vector>
-// #include "grid.h"
+#include "tile.h"
+//#include "grid.h"
 
-class Tile;
+//class Tile;
 class Grid;
 
 class Block {
+    protected:
     std::string name;
     int orientation;
     Grid &grid;
@@ -27,7 +29,7 @@ class Block {
     void right();
     void down();
     void drop();
-    Block(int orientation, Grid *grid, int xPos, int yPos);
+    Block(int orientation, Grid &grid, int xPos, int yPos);
     ~Block();
 };
 

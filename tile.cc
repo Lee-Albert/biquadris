@@ -38,3 +38,10 @@ void Tile::swapTile(Tile &other) {
     other.notifyObservers();
 }
 
+int Tile::getX() {
+    return x;
+}
+
+int Tile::getY() {
+    return y;
+}
