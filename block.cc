@@ -42,11 +42,56 @@ void Block::right() {
 }
 
 void Block::down() {
-    //use observer pattern to check if theres a block underneath
+    // create map of tiles to check
+    map<int, int> checkPos;
+    for (auto it = tiles.begin(); it != tiles.end(); it++) {
+        if (!checkPos.count(it.x)) {
+            checkPos.insert({ it.x, it.y });
+        } else if ((checkPos.find(it.x)->second) > it.y ) {
+            checkPos.at(it.x) = it.y;
+        }
+    }
+    // Check if position is available for moving
+    for (auto it = checkPos.begin(); it != checkPos.end(); it++) {
+        if (it.second == 17) {
+            return;
+        } else if (grid.theGrid[it.second + 1][it.first].isOccupied()) {
+            return;
+        }
+    }
 }
 
 void Block::drop() {
-    //use observer pattern to check if theres a block underneath
+    int downNum = 0; // Number of tiles to move down by
+    bool doneCount = false;
+
+    // create map of tiles to check
+    map<int, int> checkPos;
+    for (auto it = tiles.begin(); it != tiles.end(); it++) {
+        if (!checkPos.count(it.x)) {
+            checkPos.insert({ it.x, it.y });
+        } else if ((checkPos.find(it.x)->second) > it.y ) {
+            checkPos.at(it.x) = it.y;
+        }
+    }
+    while (!doneCount) {
+        // Check if position is available for moving
+        for (auto it = checkPos.begin(); it != checkPos.end(); it++) {
+            if (it.second == 17) {
+                doneCount = true;
+                break;
+            } else if (grid.theGrid[it.second + 1][it.first].isOccupied()) {
+                doneCount = true;
+                break;
+            }
+        }
+        if (doneCount) {
+            break;
+        } else {
+            downNum++;
+        }
+
+    }
 }
 
 
