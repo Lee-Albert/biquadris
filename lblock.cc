@@ -1,4 +1,5 @@
 #include "lblock.h"
+#include "grid.h"
 using namespace std;
 
 void LBlock::clockWise(){
