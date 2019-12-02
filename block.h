@@ -17,6 +17,7 @@ class Block {
 
     public:
     Tile **getTiles();
+    string getName();
     virtual void clockWise() = 0;
     virtual void counterClockWise() = 0;
     void left();
@@ -25,9 +26,6 @@ class Block {
     void drop();
     Block(int orientation, Grid *grid, int xPos, int yPos);
     ~Block();
-    string getName() {
-        return name;
-    }
 };
 
 #endif

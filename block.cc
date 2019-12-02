@@ -1,9 +1,14 @@
 #include "block.h"
 #include "tile.h"
 #include <map>
+#include <string>
 
 Tile **Block::getTiles(){
     return tiles;
+}
+
+string Block::getName(){
+    return name;
 }
 
 void Block::left() {
