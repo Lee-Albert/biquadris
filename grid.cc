@@ -1,6 +1,5 @@
 #include <iostream>
 #include "grid.h"
-#include "tile.h"
 
 Grid::~Grid() {
 	delete td;

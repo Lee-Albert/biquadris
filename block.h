@@ -2,7 +2,6 @@
 #define BLOCK_H
 
 #include <string>
-#include "tile.h"
 #include "grid.h"
 
 class Grid;

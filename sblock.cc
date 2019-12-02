@@ -1,7 +1,4 @@
 #include "sblock.h"
-#include "block.h"
-#include "grid.h"
-#include "tile.h"
 
 void SBlock::clockWise(){
 

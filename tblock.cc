@@ -1,7 +1,4 @@
 #include "tblock.h"
-#include "block.h"
-#include "grid.h"
-#include "tile.h"
 using namespace std;
 
 void TBlock::clockWise(){
