@@ -4,7 +4,7 @@
 
 Grid::~Grid() {
 	delete td;
-	delete ob;
+	// delete ob;
 }
 
 // not finished
@@ -52,7 +52,7 @@ void Grid::init() {
 }
 
 void Grid::setObserver(Observer *ob) {
-	this->ob = ob;
+	//this->ob = ob;
 }
 
 /*
@@ -61,7 +61,7 @@ bool Grid::isFull() {
 }
 */
 
-void Grid::setLevel(int nLevel, Level *levelset); {
+void Grid::setLevel(int nLevel, Level *levelset) {
 	curLevel = nLevel;
 	level = levelset;
 }
@@ -70,6 +70,13 @@ int Grid::getLevel() {
 	return curLevel;
 }
 
+void Grid::nextBlock() {
+    // TODO:
+    // place block onto grid
+    // set cells to be filled
+    //
+    Block *curBlock= level->generateBlock();
+    Tile **tiles = curBlock->get
+}
 
-Grid(int player, TextDisplay *td, int height = 18, int width = 11, int score = 0, bool isBlind = false, bool isHevay = false, bool isForce = false):
-	player{player}, td{td}, height{height}, width{width}, score{score}, isBlind{isBlind}, isHeavy{isHeavy}, isForce{isForce}{}
+Grid::Grid(int player, TextDisplay *td): player{player}, td{td}, height{18}, width{11}, score{0}, isBlind{false}, isHeavy{false}, isForce{false}{}

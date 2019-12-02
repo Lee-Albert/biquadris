@@ -3,8 +3,9 @@
 #include <string>
 #include "subject.h"
 #include "observer.h"
-#include "block.h"
 using namespace std;
+
+class Block;
 
 class Tile : public Subject {
     bool filled;
@@ -14,7 +15,7 @@ class Tile : public Subject {
     public:
     Tile(int xPos, int yPos);
     bool isOccupied();
-}
+};
 
 
 #endif

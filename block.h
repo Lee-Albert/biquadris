@@ -13,14 +13,16 @@ class Block {
     Tile *tiles[4];
     int xPos;
     int yPos;
+
     public:
+    Tile **getTiles();
     virtual void clockWise() = 0;
     virtual void counterClockWise() = 0;
     void left();
     void right();
     void down();
     void drop();
-    Block(int orientation, Grid *grid, Tile tiles, int xPos, int yPos);
+    Block(int orientation, Grid *grid, int xPos, int yPos);
     ~Block();
 };
 

@@ -1,13 +1,18 @@
-#include "LevelZero.h"
+#include "level.h"
+#include "levelZero.h"
 #include <string>
 #include <fstream>
 using namespace std;
 
 //ctor
-LevelZero::LevelZero(string filename): filename{filename}{
+string filename, Grid *grid
+LevelZero::LevelZero(string filename, Grid *grid): Level(filename, grid) {
     filestream{filename};
+    random = false;
+    points = 0;
 }
 
+// (int orientation, Grid *grid, Tile tiles, int xPos, int yPos)
 Block *LevelZero::generateBlock(){
     string blockname;
     Block *addBlock;
@@ -17,7 +22,7 @@ Block *LevelZero::generateBlock(){
         filestream >> blockname;
     }
     if (blockname == "I"){
-        addBlock = new IBlock();
+        addBlock = new IBlock(1, );
     } else if (blockname == "L"){
         addBlock = new LBlock();
     } else if (blockname == "J"){

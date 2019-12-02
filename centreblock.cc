@@ -4,4 +4,4 @@ void CentreBlock::clockWise(){}
 
 void CentreBlock::counterClockWise(){}
 
-CentreBlock::CentreBlock(): name{"*"}{};
+CentreBlock::CentreBlock(): name{"*"} {};
