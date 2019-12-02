@@ -3,6 +3,7 @@
 
 #include <algorithm>
 #include <vector>
+#include "observer.h"
 
 class Observer;
 
@@ -14,20 +15,4 @@ class Subject {
 	void detach(Observer *o);
 	void notifyObservers();
 };
-
-Subject::~Subject() {}
-
-void Subject::attach(Observer *o) {
-	observers.emplace_back(o);
-}
-
-void Subject::detach(Observer *o) {
-	observers.erase(std::remove(observers.begin(), observers.end(), o), observers.end());
-}
-
-void Subject::notifyObservers() {
-	for (auto &ob : observers) {
-		ob->notify(*this);
-	}
-}
 #endif

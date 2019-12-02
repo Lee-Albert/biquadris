@@ -5,6 +5,7 @@
 #include <vector>
 #include <string>
 #include "observer.h"
+#include "subject.h"
 // other #includes
 
 class Tile;

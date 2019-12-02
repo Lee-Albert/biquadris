@@ -7,7 +7,7 @@ Tile::Tile(int xPos, int yPos): x{xPos}, y{yPos}{
     curBlock = nullptr;
 };
 
-void Tile::isOccupied() {
+bool Tile::isOccupied() {
     return filled;
 }
 

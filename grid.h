@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include "tile.h"
+#include "subject.h"
 #include "observer.h"
 #include "block.h"
 // other #includes
