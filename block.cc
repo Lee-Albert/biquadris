@@ -11,6 +11,20 @@ std::string Block::getName(){
     return name;
 }
 
+bool Block::validTile(Tile curTile, int y, int x) {
+    // check if space is in bounds
+    if (y < 0 || x < 0) {
+        return false;
+    } else if (!grid.theGrid[y][x].isOccupied()) {
+        return true;
+    } else if (grid.theGrid[y][x].curBlock == curTile.curBlock) {
+        return true;
+    } else {
+        return false;
+    }
+
+}
+
 void Block::left() {
     // create map of tiles to check
     std::map<int, int> checkPos;
