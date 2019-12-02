@@ -6,4 +6,4 @@ class CentreBlock : public Block {
     void clockWise() override;
     void counterClockWise() override;
     CentreBlock();
-}
+};

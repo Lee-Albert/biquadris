@@ -1,4 +1,7 @@
+#ifndef IBLOCK_H
+#define IBLOCK_H
 #include "block.h"
+
 
 class IBlock : public Block {
     string name;
@@ -6,4 +9,6 @@ class IBlock : public Block {
     void clockWise() override;
     void counterClockWise() override;
     IBlock();
-}
+};
+
+#endif

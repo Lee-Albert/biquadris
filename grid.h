@@ -35,7 +35,9 @@ class Grid {
 	int getScore();
 	void setLevel(int nLevel, Level *levelset);
 	int getLevel();
-	Grid(int player, TextDisplay *td, int height = 18, int width = 11, int score = 0, bool isBlind = false, bool isHevay = false, bool isForce = false);
+	// Grid(int player, TextDisplay *td, int height = 18, int width = 11, int score = 0, bool isBlind = false, bool isHeavy = false, bool isForce = false);
+	// Grid(int player, TextDisplay *td, int height, int width, int score, bool isBlind, bool isHeavy, bool isForce);
+	Grid(int player, TextDisplay *td);
 	friend std::ostream &operator<<(std::ostream &out, const Grid &g);
 };
 

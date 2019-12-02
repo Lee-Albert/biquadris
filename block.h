@@ -19,7 +19,7 @@ class Block {
     void right();
     void down();
     void drop();
-    Block(int orientation, Grid *grid, Tile tiles, int xPos, int yPos);
+    Block(int orientation, Grid *grid, Tile *tiles, int xPos, int yPos);
     ~Block();
 };
 
