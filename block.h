@@ -2,7 +2,7 @@
 #define BLOCK_H
 
 #include <string>
-#include "grid.h"
+// #include "grid.h"
 
 class Tile;
 class Grid;
