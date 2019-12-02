@@ -21,8 +21,6 @@ class Tile : public Subject {
     bool isOccupied();
     void setFilled(bool newFilled);
     void setCurblock(Block *newCurblock);
-    int getXPos();
-    int getYPos();
   	Info getInfo() override;
     void swapTile(Tile &other);
     int getX();

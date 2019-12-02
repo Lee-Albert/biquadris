@@ -1,5 +1,6 @@
 #include <iostream>
 #include "grid.h"
+using namespace std;
 
 Grid::~Grid() {
 	delete td;
@@ -78,13 +79,18 @@ int Grid::getPlayer() {
 
 void Grid::generateNextBlock() {
     Block *newBlock= level->generateBlock();
-    Tile **tiles = newBlock->getTiles();
-    for (int i=0; i < 4; i++){
-        tiles[i]->setFilled(true);
-        tiles[i]->setCurblock(newBlock);
-    }
     curBlock = nextBlock;
     nextBlock = newBlock;
+    if (curBlock){
+        Tile **tiles = curBlock->getTiles();
+        // TODO:
+        // check if this is possible
+        // if not then game over
+        for (int i=0; i < 4; i++){
+            tiles[i]->setFilled(true);
+            tiles[i]->setCurblock(newBlock);
+        }
+    }
 }
 
 int Grid::getScore() {
