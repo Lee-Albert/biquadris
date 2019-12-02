@@ -3,13 +3,15 @@
 #include "block.h"
 #include "grid.h"
 #include "tile.h"
+#include <string>
+using namespace std;
 
 class TBlock : public Block {
     string name;
     public:
     void clockWise() override;
     void counterClockWise() override;
-    TBlock(int orientation, Grid *grid, Tile tiles, int xPos, int yPos);
+    TBlock(int orientation, Grid *grid, int xPos, int yPos);
 }
 
 #endif
