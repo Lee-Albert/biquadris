@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <vector>
 #include "observer.h"
+#include "info.h"
 
 class Observer;
 
@@ -14,5 +15,6 @@ class Subject {
 	void attach(Observer *o);
 	void detach(Observer *o);
 	void notifyObservers();
+	virtual Info getInfo() const = 0;
 };
 #endif

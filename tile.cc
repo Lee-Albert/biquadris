@@ -24,4 +24,6 @@ void Tile::setCurblock(Block *newCurblock){
 void Tile::swapTile(Tile &other) {
     std::swap(filled, other.filled);
     std::swap(curBlock, other.curBlock);
+    this->notifyObservers();
+    other.notifyObservers();
 }
