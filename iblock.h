@@ -9,7 +9,7 @@ class IBlock : public Block {
     public:
     void clockWise() override;
     void counterClockWise() override;
-    IBlock(int orientation, Grid *grid, int xPos, int yPos);
+    IBlock(int orientation, Grid *grid, int xPos, int yPos, string name);
 };
 
 #endif
