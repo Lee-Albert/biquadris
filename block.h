@@ -2,6 +2,7 @@
 #define BLOCK_H
 
 #include <string>
+#include <vector>
 // #include "grid.h"
 
 class Tile;
@@ -11,6 +12,7 @@ class Block {
     std::string name;
     int orientation;
     Grid &grid;
+    //vector <Tile *> tiles(4, nullptr);
     Tile *tiles[4];
     int xPos;
     int yPos;

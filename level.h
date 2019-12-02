@@ -13,11 +13,12 @@
 using namespace std;
 
 class Level {
-    int points;
+    protected:
     string filename;
-    ifstream filestream;
     Grid *grid;
+    ifstream filestream;
     bool random;
+    int points;
     public:
     virtual Block *generateBlock() = 0;
     Level(string filename, Grid *grid);
