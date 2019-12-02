@@ -5,11 +5,11 @@
 #include <vector>
 #include "tile.h"
 #include "observer.h"
+#include "block.h"
 // other #includes
 #include "textdisplay.h"
 #include "graphicdisplay.h"
-#include "tile.h"
-
+#include "level.h"
 
 class Grid {
 	int player;

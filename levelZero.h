@@ -4,13 +4,13 @@
 #include <fstream>
 #include <string>
 
-class levelZero : public Level {
+class LevelZero : public Level {
     int points = 0;
     string filename;
     ifstream filestream;
     public:
     Block *generateBlock() override;
-    levelZero(string filename);
-}
+    LevelZero(string filename);
+};
 
 #endif
