@@ -8,6 +8,7 @@
 // other #includes
 #include "textdisplay.h"
 #include "graphicdisplay.h"
+#include "tile.h"
 
 
 class Grid {

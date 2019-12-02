@@ -12,8 +12,10 @@ void Subject::detach(Observer *o) {
 	observers.erase(std::remove(observers.begin(), observers.end(), o), observers.end());	
 }
 
-void Subject::notify(){
+void Subject::notifyObservers(){
 	for (auto &ob : observers) {
 		ob->notify(*this);
 	}
 }
+
+
