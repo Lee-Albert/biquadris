@@ -3,12 +3,13 @@
 
 #include <string>
 #include "tile.h"
+#include "grid.h"
 
 class Grid;
 
 class Block {
     int orientation;
-    Grid *grid;
+    Grid &grid;
     Tile *tiles[4];
     int xPos;
     int yPos;

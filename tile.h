@@ -14,6 +14,7 @@ class Tile : public Subject {
     int y;
     public:
     Tile(int xPos, int yPos);
+    bool isOccupied();
 };
 
 
