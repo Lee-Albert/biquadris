@@ -1,5 +1,6 @@
 #include "jblock.h"
 #include <string>
+#include "grid.h"
 using namespace std;
 
 void JBlock::clockWise(){
