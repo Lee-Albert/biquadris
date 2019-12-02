@@ -7,7 +7,6 @@
 using namespace std;
 
 class TBlock : public Block {
-    string name;
     public:
     void clockWise() override;
     void counterClockWise() override;

@@ -8,7 +8,7 @@ Tile **Block::getTiles(){
 
 void Block::left() {
     // create map of tiles to check
-    map<int, int> checkPos;
+    std::map<int, int> checkPos;
     for (auto it = tiles.begin(); it != tiles.end(); it++) {
         if (!checkPos.count(it.y)) {
             checkPos.insert({ it.y, it.x });
@@ -28,7 +28,7 @@ void Block::left() {
 
 void Block::right() {
     // create map of tiles to check
-    map<int, int> checkPos;
+    std::map<int, int> checkPos;
     for (auto it = tiles.begin(); it != tiles.end(); it++) {
         if (!checkPos.count(it.y)) {
             checkPos.insert({ it.y, it.x });
@@ -48,7 +48,7 @@ void Block::right() {
 
 void Block::down() {
     // create map of tiles to check
-    map<int, int> checkPos;
+    std::map<int, int> checkPos;
     for (auto it = tiles.begin(); it != tiles.end(); it++) {
         if (!checkPos.count(it.x)) {
             checkPos.insert({ it.x, it.y });
@@ -71,7 +71,7 @@ void Block::drop() {
     bool doneCount = false;
 
     // create map of tiles to check
-    map<int, int> checkPos;
+    std::map<int, int> checkPos;
     for (auto it = tiles.begin(); it != tiles.end(); it++) {
         if (!checkPos.count(it.x)) {
             checkPos.insert({ it.x, it.y });
@@ -95,7 +95,6 @@ void Block::drop() {
         } else {
             downNum++;
         }
-
     }
 }
 
