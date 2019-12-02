@@ -1,5 +1,6 @@
 #include <iostream>
 #include "grid.h"
+#include "tile.h"
 
 Grid::~Grid() {
 	delete td;
@@ -8,11 +9,11 @@ Grid::~Grid() {
 
 // not finished
 void Grid::init() {
-    std::vector<std::vector<Cell>> grid; // Intialize grid
+    std::vector<std::vector<Tile>> grid; // Intialize grid
     for (int i=0; i < height; i++){ // populates grid with cells
         std::vector<Tile> row;
         for (int j=0; j < width; j++){
-            row.emplace_back(Tile); // replace with tile constructor 
+            row.emplace_back(Tile(j, i)); 
         }
         grid.emplace_back(row);
     }
@@ -21,6 +22,7 @@ void Grid::init() {
         for (int col=0; col < width; col++){
             Tile &t = theGrid.at(row).at(col);
             t.attach(td); // Attach textDisplay to each cell
+            /*
             if (row > 0){
                 t.attach(&theGrid.at(row-1).at(col));
             }
@@ -44,7 +46,7 @@ void Grid::init() {
             }
             if (row > 0 && col > 0){
                 t.attach(&theGrid.at(row-1).at(col-1));
-            }
+            }*/
         }
     }
 }
