@@ -15,6 +15,6 @@ class Subject {
 	void attach(Observer *o);
 	void detach(Observer *o);
 	void notifyObservers();
-	virtual Info getInfo() const = 0;
+	virtual Info getInfo() = 0;
 };
 #endif

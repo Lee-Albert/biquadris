@@ -5,6 +5,7 @@
 #include "tile.h"
 #include "grid.h"
 
+class Tile;
 class Grid;
 
 class Block {

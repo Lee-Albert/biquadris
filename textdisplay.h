@@ -7,9 +7,10 @@
 #include "observer.h"
 #include "subject.h"
 #include "grid.h"
+#include "tile.h"
 // other #includes
 
-class Tile;
+// class Tile;
 // class Grid;
 class TextDisplay: public Observer {
 	std::vector<std::vector<std::string>> player1; // grid of chars

@@ -1,10 +1,10 @@
 #ifndef TILE_H
 #define TILE_H
 #include <string>
-#include "subject.h"
-#include "observer.h"
-#include "grid.h"
+// #include "observer.h"
+// #include "grid.h"
 #include "info.h"
+#include "subject.h"
 using namespace std;
 
 class Block;
@@ -23,7 +23,7 @@ class Tile : public Subject {
     void setCurblock(Block *newCurblock);
     int getXPos();
     int getYPos();
-	Info getInfo() const override;
+	Info getInfo() override;
 };
 
 

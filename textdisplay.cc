@@ -17,13 +17,15 @@ void TextDisplay::notify(Subject &whoNotified) {
 	int player = (whoNotified.getInfo().grid)->getPlayer();
 	if (player == 1) {
 		if (whoNotified.getInfo().isOccupied) {
-			player1[row][col] = (whoNotified.getInfo().curBlock)->getName();
+			// uncomment when block is fixed
+			// player1[row][col] = (whoNotified.getInfo().curBlock)->getName();
 		} else { // unoccupied tile
 			player1[row][col] = " ";
 		}
 	} else { // player2
 		if (whoNotified.getInfo().isOccupied) {
-			player2[row][col] = (whoNotified.getInfo().curBlock)->getName();
+			// uncomment when block is fixed
+			// player2[row][col] = (whoNotified.getInfo().curBlock)->getName();
 		} else { // unoccupied tile
 			player2[row][col] = " ";
 		}
@@ -32,6 +34,7 @@ void TextDisplay::notify(Subject &whoNotified) {
 
 std::ostream &operator<<(std::ostream &out, const TextDisplay &td) {
 	std::string spacing = "      "; // 6 spaces
+	// uncomment when getscore is fixed
 	out << "Level:" << std::setw(5) << (td.grid1)->getLevel() << spacing << "Level:" << std::setw(5) << (td.grid2)->getLevel() << std::endl;
 	out << "Score:" << std::setw(5) << (td.grid1)->getScore() << spacing << "Score:" << std::setw(5) << (td.grid2)->getScore() << std::endl;
 	out << "-----------" << spacing << "-----------" << std::endl;

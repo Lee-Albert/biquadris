@@ -1,6 +1,10 @@
 #include "grid.h"
+#include "tile.h"
 #include "level.h"
 #include "block.h"
+#include "info.h"
+#include "textdisplay.h"
+#include "graphicdisplay.h"
 // include all the blocks
 // include all the levels
 // #include "levelZero.h"

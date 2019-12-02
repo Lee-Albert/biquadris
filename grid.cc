@@ -1,6 +1,5 @@
 #include <iostream>
 #include "grid.h"
-#include "tile.h"
 
 Grid::~Grid() {
 	delete td;
@@ -75,12 +74,18 @@ int Grid::getPlayer() {
 }
 
 void Grid::nextBlock() {
+	/*
     Block *curBlock= level->generateBlock();
     Tile **tiles = curBlock->getTiles();
     for (int i=0; i < 4; i++){
         tiles[i]->setFilled(true);
         tiles[i]->setCurblock(curBlock);
     }
+	*/
+}
+
+int Grid::getScore() {
+	return score;
 }
 
 Grid::Grid(int player, TextDisplay *td): player{player}, td{td}, height{18}, width{11}, score{0}, isBlind{false}, isHeavy{false}, isForce{false}{}

@@ -1,5 +1,4 @@
 #include "tile.h"
-#include "grid.h"
 #include <string>
 using namespace std;
     
@@ -22,12 +21,12 @@ void Tile::setCurblock(Block *newCurblock){
     this->notifyObservers();
 }
 
-Info Tile::getInfo() const {
+Info Tile::getInfo() {
 	Info tileInfo;
 	tileInfo.x = x;
 	tileInfo.y = y;
 	tileInfo.grid = grid;
-	tileinfo.isOccupied = isOccupied();
+	tileInfo.isOccupied = this->isOccupied();
 	tileInfo.curBlock = curBlock;
 	return tileInfo;
 }

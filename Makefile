@@ -3,7 +3,8 @@ CXXFLAGS = -std=c++14 -Wall -MMD -Werror=vla
 EXEC = biquadris 
 # all blocks are missing from compiling at the moment
 # levelzero and levelone isnt being compiled as well cuz its broken
-OBJECTS = main.o graphicdisplay.o grid.o level.o textdisplay.o tile.o window.o subject.o
+# OBJECTS = main.o subject.o tile.o graphicdisplay.o grid.o level.o textdisplay.o window.o block.o
+OBJECTS = main.o subject.o tile.o graphicdisplay.o grid.o level.o textdisplay.o window.o
 DEPENDS = ${OBJECTS:.o=.d}
 
 ${EXEC}: ${OBJECTS}

@@ -1,8 +1,8 @@
 #ifndef INFO_H
 #define INFO_H
 
-#include "grid.h"
-#include "block.h"
+class Grid;
+class Block;
 
 struct Info {
 	int x;

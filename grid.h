@@ -4,15 +4,19 @@
 #include <iostream>
 #include <vector>
 #include "tile.h"
-#include "subject.h"
-#include "observer.h"
-#include "block.h"
+// #include "subject.h"
+// #include "observer.h"
+// #include "block.h"
 // other #includes
 #include "textdisplay.h"
-#include "graphicdisplay.h"
+// #include "graphicdisplay.h"
 #include "level.h"
 
+// class Level;
+class Block;
+class Observer;
 class TextDisplay;
+// class GraphicDisplay;
 
 class Grid {
 	int player;
