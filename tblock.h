@@ -10,7 +10,7 @@ class TBlock : public Block {
     public:
     void clockWise() override;
     void counterClockWise() override;
-    TBlock(int orientation, Grid *grid, int xPos, int yPos);
+    TBlock(int orientation, Grid &grid, int xPos, int yPos);
 };
 
 #endif
