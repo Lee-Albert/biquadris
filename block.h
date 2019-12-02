@@ -3,15 +3,16 @@
 
 #include <string>
 #include <vector>
-// #include "grid.h"
+#include "tile.h"
+#include "grid.h"
 
-class Tile;
-class Grid;
+//class Tile;
+//class Grid;
 
 class Block {
     std::string name;
     int orientation;
-    Grid &grid;
+    Grid *grid;
     //vector <Tile *> tiles(4, nullptr);
     Tile *tiles[4];
     int xPos;
