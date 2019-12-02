@@ -13,7 +13,7 @@ void Grid::init() {
     for (int i=0; i < height; i++){ // populates grid with cells
         std::vector<Tile> row;
         for (int j=0; j < width; j++){
-            row.emplace_back(Tile(j, i)); 
+            row.emplace_back(Tile(j, i, this)); 
         }
         grid.emplace_back(row);
     }

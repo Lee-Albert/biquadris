@@ -12,17 +12,18 @@ TextDisplay::TextDisplay(): grid1{nullptr}, grid2{nullptr} {
 };
 
 void TextDisplay::notify(Subject &whoNotified) {
-	int row = whoNotified.getYPos();
-	int col = whoNotified.getXPos();
-	int player = (whoNotified.grid)->getPlayer();
+	int row = whoNotified.getInfo().y;
+	int col = whoNotified.getInfo().x;
+	int player = (whoNotified.getInfo().grid)->getPlayer();
 	if (player == 1) {
-		if (whoNotified.isOccupied()) {
-			player1[row][col] = (whoNotified.curBlock)->getName();
+		if (whoNotified.getInfo().isOccupied) {
+			player1[row][col] = (whoNotified.getInfo().curBlock)->getName();
 		} else { // unoccupied tile
 			player1[row][col] = " ";
+		}
 	} else { // player2
-		if (whoNotified.isOccupied()) {
-			player2[row][col] = (whoNotified.curBlock)->getName();
+		if (whoNotified.getInfo().isOccupied) {
+			player2[row][col] = (whoNotified.getInfo().curBlock)->getName();
 		} else { // unoccupied tile
 			player2[row][col] = " ";
 		}
@@ -32,7 +33,7 @@ void TextDisplay::notify(Subject &whoNotified) {
 std::ostream &operator<<(std::ostream &out, const TextDisplay &td) {
 	std::string spacing = "      "; // 6 spaces
 	out << "Level:" << std::setw(5) << (td.grid1)->getLevel() << spacing << "Level:" << std::setw(5) << (td.grid2)->getLevel() << std::endl;
-	out << "Score:" << setw(5) << (td.grid1)->getScore() << spacing << "Score:" << setw(5) << (td.grid2)->getScore() << std::endl;
+	out << "Score:" << std::setw(5) << (td.grid1)->getScore() << spacing << "Score:" << std::setw(5) << (td.grid2)->getScore() << std::endl;
 	out << "-----------" << spacing << "-----------" << std::endl;
 	for (int i = 0; i < td.height; ++i) {
 		for (int j = 0; i < td.width; ++j) {

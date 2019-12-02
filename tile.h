@@ -4,9 +4,11 @@
 #include "subject.h"
 #include "observer.h"
 #include "grid.h"
+#include "info.h"
 using namespace std;
 
 class Block;
+class Grid;
 
 class Tile : public Subject {
     bool filled;
@@ -21,6 +23,7 @@ class Tile : public Subject {
     void setCurblock(Block *newCurblock);
     int getXPos();
     int getYPos();
+	Info getInfo() const override;
 };
 
 

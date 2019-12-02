@@ -21,3 +21,13 @@ void Tile::setCurblock(Block *newCurblock){
     curBlock = newCurblock;
     this->notifyObservers();
 }
+
+Info Tile::getInfo() const {
+	Info tileInfo;
+	tileInfo.x = x;
+	tileInfo.y = y;
+	tileInfo.grid = grid;
+	tileinfo.isOccupied = isOccupied();
+	tileInfo.curBlock = curBlock;
+	return tileInfo;
+}

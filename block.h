@@ -8,7 +8,7 @@
 class Grid;
 
 class Block {
-    string name;
+    std::string name;
     int orientation;
     Grid &grid;
     Tile *tiles[4];
@@ -17,7 +17,7 @@ class Block {
 
     public:
     Tile **getTiles();
-    string getName();
+    std::string getName();
     virtual void clockWise() = 0;
     virtual void counterClockWise() = 0;
     void left();
