@@ -1,7 +1,7 @@
 #include "iblock.h"
 
 void IBlock::clockWise(){
-
+    
 }
 
 void IBlock::counterClockWise(){

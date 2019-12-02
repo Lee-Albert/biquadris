@@ -1,6 +1,7 @@
 #include "block.h"
 #include <map>
 #include <string>
+#include "block.h"
 
 Tile **Block::getTiles(){
     return tiles;
@@ -13,13 +14,14 @@ std::string Block::getName(){
 void Block::left() {
     // create map of tiles to check
     std::map<int, int> checkPos;
-    for (auto it = tiles.begin(); it != tiles.end(); it++) {
-        if (!checkPos.count(it.y)) {
-            checkPos.insert({ it.y, it.x });
-        } else if ((checkPos.find(it.y)->second) > it.x) {
-            checkPos.at(it.y) = it.x;
+    for (int i = 0; i < 4; i++) {
+        if (!checkPos.count(tiles[i].y)) {
+            checkPos.insert{ tiles[i].y, tiles[i].x };
+        } else if ((checkPos.find(tiles[i].y)->second) > tiles[i].x) {
+            checkPos.at(tiles[i].y) = tiles[i].x;
         }
     }
+
     // Check if position is available for moving
     for (auto it = checkPos.begin(); it != checkPos.end(); it++) {
         if (it.second == 0) {
@@ -28,9 +30,9 @@ void Block::left() {
             return;
         }
     }
-    for (auto it = tiles.begin(); it != tiles.end(); it++) {
-        if (checkPos.count(it.y) && checkPos.find(it.y)->second != it.x) {
-            checkPos.insert({ it.y, it.x });
+    for (int i = 0; i < 4; i++) {
+        if (checkPos.count(tiles[i].y) && checkPos.find(tiles[i].y)->second != tiles[i].x) {
+            checkPos.insert({ tiles[i].y, tiles[i].x });
         }
     }
     for (auto it = checkPos.begin(); it != checkPos.end(); it++) {
@@ -47,11 +49,11 @@ void Block::left() {
 void Block::right() {
     // create map of tiles to check
     std::map<int, int> checkPos;
-    for (auto it = tiles.begin(); it != tiles.end(); it++) {
-        if (!checkPos.count(it.y)) {
-            checkPos.insert({ it.y, it.x });
-        } else if (it.x > (checkPos.find(it.y)->second)) {
-            checkPos.at(it.y) = it.x;
+    for (int i = 0; i < 4; i++) {
+        if (!checkPos.count(tiles[i].y)) {
+            checkPos.insert({ tiles[i].y, tiles[i].x });
+        } else if (tiles[i].x > (checkPos.find(tiles[i].y)->second)) {
+            checkPos.at(tiles[i].y) = tiles[i].x;
         }
     }
     // Check if position is available for moving
@@ -62,9 +64,9 @@ void Block::right() {
             return;
         }
     }
-    for (auto it = tiles.begin(); it != tiles.end(); it++) {
-        if (checkPos.count(it.y) && checkPos.find(it.y)->second != it.x) {
-            checkPos.insert({ it.y, it.x });
+    for (int i = 0; i < 4; i++) {
+        if (checkPos.count(tiles[i].y) && checkPos.find(tiles[i].y)->second != tiles[i].x) {
+            checkPos.insert({ tiles[i].y, tiles[i].x });
         }
     }
     for (auto it = checkPos.begin(); it != checkPos.end(); it++) {
@@ -81,11 +83,11 @@ void Block::right() {
 void Block::down() {
     // create map of tiles to check
     std::map<int, int> checkPos;
-    for (auto it = tiles.begin(); it != tiles.end(); it++) {
-        if (!checkPos.count(it.x)) {
-            checkPos.insert({ it.x, it.y });
-        } else if ((checkPos.find(it.x)->second) > it.y ) {
-            checkPos.at(it.x) = it.y;
+    for (int i = 0; i < 4; i++) {
+        if (!checkPos.count(tiles[i].x)) {
+            checkPos.insert({ tiles[i].x, tiles[i].y });
+        } else if ((checkPos.find(tiles[i].x)->second) > tiles[i].y ) {
+            checkPos.at(tiles[i].x) = tiles[i].y;
         }
     }
     // Check if position is available for moving
@@ -96,9 +98,9 @@ void Block::down() {
             return;
         }
     }
-    for (auto it = tiles.begin(); it != tiles.end(); it++) {
-        if (checkPos.count(it.x) && checkPos.find(it.x)->second != it.y) {
-            checkPos.insert({ it.x, it.y });
+    for (int i = 0; i < 4; i++) {
+        if (checkPos.count(tiles[i].x) && checkPos.find(tiles[i].x)->second != tiles[i].y) {
+            checkPos.insert({ tiles[i].x, tiles[i].y });
         }
     }
     for (auto it = checkPos.begin(); it != checkPos.end(); it++) {
@@ -118,11 +120,11 @@ void Block::drop() {
 
     // create map of tiles to check
     std::map<int, int> checkPos;
-    for (auto it = tiles.begin(); it != tiles.end(); it++) {
-        if (!checkPos.count(it.x)) {
-            checkPos.insert({ it.x, it.y });
-        } else if ((checkPos.find(it.x)->second) > it.y ) {
-            checkPos.at(it.x) = it.y;
+    for (int i = 0; i < 4; i++) {
+        if (!checkPos.count(tiles[i].x)) {
+            checkPos.insert({ tiles[i].x, tiles[i].y });
+        } else if ((checkPos.find(tiles[i].x)->second) > tiles[i].y ) {
+            checkPos.at(tiles[i].x) = tiles[i].y;
         }
     }
     while (!doneCount) {
@@ -142,9 +144,9 @@ void Block::drop() {
             downNum++;
         }
     }
-    for (auto it = tiles.begin(); it != tiles.end(); it++) {
-        if (checkPos.count(it.x) && checkPos.find(it.x)->second != it.y) {
-            checkPos.insert({ it.x, it.y });
+    for (int i = 0; i < 4; i++) {
+        if (checkPos.count(tiles[i].x) && checkPos.find(tiles[i].x)->second != tiles[i].y) {
+            checkPos.insert({ tiles[i].x, tiles[i].y });
         }
     }
     for (auto it = checkPos.begin(); it != checkPos.end(); it++) {
