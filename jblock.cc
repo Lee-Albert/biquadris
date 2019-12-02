@@ -1,4 +1,5 @@
 #include "jblock.h"
+#include "grid.h"
 #include <string>
 #include "grid.h"
 using namespace std;

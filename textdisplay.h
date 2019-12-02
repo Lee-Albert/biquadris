@@ -17,13 +17,16 @@ class TextDisplay: public Observer {
 	std::vector<std::vector<std::string>> player2; // grid of chars
 	Grid *grid1;
 	Grid *grid2;
+	string nextBlock1;
+	string nextBlock2;
 	const int height = 18;
 	const int width = 11;
   public:
 	TextDisplay();
-	void setGrids(Grid *grid1, Grid *grid2);
+	void setGrids(Grid *newGrid1, Grid *newGrid2);
+	void getNextBlocks(Grid *grid1, Grid *grid2);
 	void notify(Subject &whoNotified) override;
-	friend std::ostream &operator<<(std::ostream &out, const TextDisplay &td);
+	friend std::ostream &operator<<(std::ostream &out, TextDisplay &td);
 };
 
 #endif
