@@ -15,10 +15,10 @@ void Block::left() {
     // create map of tiles to check
     std::map<int, int> checkPos;
     for (int i = 0; i < 4; i++) {
-        if (!checkPos.count(tiles[i].y)) {
-            checkPos.insert{ tiles[i].y, tiles[i].x };
-        } else if ((checkPos.find(tiles[i].y)->second) > tiles[i].x) {
-            checkPos.at(tiles[i].y) = tiles[i].x;
+        if (!checkPos.count(tiles[i]->getY())) {
+            checkPos.insert{ tiles[i]->getY(), tiles[i]->getX() };
+        } else if ((checkPos.find(tiles[i]->getY())->second) > tiles[i]->getX()) {
+            checkPos.at(tiles[i]->getY()) = tiles[i]->getX();
         }
     }
 
@@ -31,14 +31,14 @@ void Block::left() {
         }
     }
     for (int i = 0; i < 4; i++) {
-        if (checkPos.count(tiles[i].y) && checkPos.find(tiles[i].y)->second != tiles[i].x) {
-            checkPos.insert({ tiles[i].y, tiles[i].x });
+        if (checkPos.count(tiles[i]->getY()) && checkPos.find(tiles[i]->getY())->second != tiles[i]->getX()) {
+            checkPos.insert({ tiles[i]->getY(), tiles[i]->getX() });
         }
     }
     for (auto it = checkPos.begin(); it != checkPos.end(); it++) {
         grid.theGrid[it.first][it.second].swapTile(grid.theGrid[it.first][it.second - 1]);
         for (int i = 0; i < 4; i++) {
-            if (tiles[i]->y == it.first && tiles[i]->x == it.second) {
+            if (tiles[i]->getY() == it.first && tiles[i]->getX() == it.second) {
                 tiles[i] = &theGrid[it.first][it.second - 1];
             } 
         }
@@ -50,10 +50,10 @@ void Block::right() {
     // create map of tiles to check
     std::map<int, int> checkPos;
     for (int i = 0; i < 4; i++) {
-        if (!checkPos.count(tiles[i].y)) {
-            checkPos.insert({ tiles[i].y, tiles[i].x });
-        } else if (tiles[i].x > (checkPos.find(tiles[i].y)->second)) {
-            checkPos.at(tiles[i].y) = tiles[i].x;
+        if (!checkPos.count(tiles[i]->getY())) {
+            checkPos.insert({ tiles[i]->getY(), tiles[i]->getX() });
+        } else if (tiles[i]->getX() > (checkPos.find(tiles[i]->getY())->second)) {
+            checkPos.at(tiles[i]->getY()) = tiles[i]->getX();
         }
     }
     // Check if position is available for moving
@@ -65,14 +65,14 @@ void Block::right() {
         }
     }
     for (int i = 0; i < 4; i++) {
-        if (checkPos.count(tiles[i].y) && checkPos.find(tiles[i].y)->second != tiles[i].x) {
-            checkPos.insert({ tiles[i].y, tiles[i].x });
+        if (checkPos.count(tiles[i]->getY()) && checkPos.find(tiles[i]->getY())->second != tiles[i]->getX()) {
+            checkPos.insert({ tiles[i]->getY(), tiles[i]->getX() });
         }
     }
     for (auto it = checkPos.begin(); it != checkPos.end(); it++) {
         grid.theGrid[it.first][it.second].swapTile(grid.theGrid[it.first][it.second + 1]);
         for (int i = 0; i < 4; i++) {
-            if (tiles[i]->y == it.first && tiles[i]->x == it.second) {
+            if (tiles[i]->getY() == it.first && tiles[i]->getX() == it.second) {
                 tiles[i] = &theGrid[it.first][it.second + 1];
             } 
         }
@@ -84,10 +84,10 @@ void Block::down() {
     // create map of tiles to check
     std::map<int, int> checkPos;
     for (int i = 0; i < 4; i++) {
-        if (!checkPos.count(tiles[i].x)) {
-            checkPos.insert({ tiles[i].x, tiles[i].y });
-        } else if ((checkPos.find(tiles[i].x)->second) > tiles[i].y ) {
-            checkPos.at(tiles[i].x) = tiles[i].y;
+        if (!checkPos.count(tiles[i]->getX())) {
+            checkPos.insert({ tiles[i]->getX(), tiles[i]->getY() });
+        } else if ((checkPos.find(tiles[i]->getX())->second) > tiles[i]->getY() ) {
+            checkPos.at(tiles[i]->getX()) = tiles[i]->getY();
         }
     }
     // Check if position is available for moving
@@ -99,14 +99,14 @@ void Block::down() {
         }
     }
     for (int i = 0; i < 4; i++) {
-        if (checkPos.count(tiles[i].x) && checkPos.find(tiles[i].x)->second != tiles[i].y) {
-            checkPos.insert({ tiles[i].x, tiles[i].y });
+        if (checkPos.count(tiles[i]->getX()) && checkPos.find(tiles[i]->getX())->second != tiles[i]->getY()) {
+            checkPos.insert({ tiles[i]->getX(), tiles[i]->getY() });
         }
     }
     for (auto it = checkPos.begin(); it != checkPos.end(); it++) {
         grid.theGrid[it.second][it.first].swapTile(grid.theGrid[it.second + 1][it.first]);
         for (int i = 0; i < 4; i++) {
-            if (tiles[i]->x == it.first && tiles[i]->y == it.second) {
+            if (tiles[i]->getX() == it.first && tiles[i]->getY() == it.second) {
                 tiles[i] = &theGrid[it.second + 1][it.first];
             } 
         }
@@ -121,10 +121,10 @@ void Block::drop() {
     // create map of tiles to check
     std::map<int, int> checkPos;
     for (int i = 0; i < 4; i++) {
-        if (!checkPos.count(tiles[i].x)) {
-            checkPos.insert({ tiles[i].x, tiles[i].y });
-        } else if ((checkPos.find(tiles[i].x)->second) > tiles[i].y ) {
-            checkPos.at(tiles[i].x) = tiles[i].y;
+        if (!checkPos.count(tiles[i]->getX())) {
+            checkPos.insert({ tiles[i]->getX(), tiles[i]->getY() });
+        } else if ((checkPos.find(tiles[i]->getX())->second) > tiles[i]->getY() ) {
+            checkPos.at(tiles[i]->getX()) = tiles[i]->getY();
         }
     }
     while (!doneCount) {
@@ -145,14 +145,14 @@ void Block::drop() {
         }
     }
     for (int i = 0; i < 4; i++) {
-        if (checkPos.count(tiles[i].x) && checkPos.find(tiles[i].x)->second != tiles[i].y) {
-            checkPos.insert({ tiles[i].x, tiles[i].y });
+        if (checkPos.count(tiles[i]->getX()) && checkPos.find(tiles[i]->getX())->second != tiles[i]->getY()) {
+            checkPos.insert({ tiles[i]->getX(), tiles[i]->getY() });
         }
     }
     for (auto it = checkPos.begin(); it != checkPos.end(); it++) {
         grid.theGrid[it.second][it.first].swapTile(grid.theGrid[it.second + downNum][it.first]);
         for (int i = 0; i < 4; i++) {
-            if (tiles[i]->x == it.first && tiles[i]->y == it.second) {
+            if (tiles[i]->getX() == it.first && tiles[i]->getY() == it.second) {
                 tiles[i] = &theGrid[it.second + downNum][it.first];
             } 
         }
