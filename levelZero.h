@@ -5,12 +5,9 @@
 #include <string>
 
 class LevelZero : public Level {
-    int points = 0;
-    string filename;
-    ifstream filestream;
     public:
     Block *generateBlock() override;
-    LevelZero(string filename);
+    LevelZero(string filename, Grid *grid);
 };
 
 #endif

@@ -1,5 +1,10 @@
 #include "block.h"
+#include "tile.h"
 #include <map>
+
+Tile **Block::getTiles(){
+    return tiles;
+}
 
 void Block::left() {
     // create map of tiles to check
@@ -50,7 +55,7 @@ void Block::drop() {
 }
 
 
-Block::Block(int orientation, Grid &grid, Tile &tiles, int xPos, int yPos): orientation{orientation}, gird{grid}, xPos{xPos}, yPos{yPos}{};
+Block::Block(int orientation, Grid &grid, int xPos, int yPos): orientation{orientation}, grid{grid}, xPos{xPos}, yPos{yPos}{};
 
 Block::~Block() {
 }

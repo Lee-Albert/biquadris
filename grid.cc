@@ -75,8 +75,8 @@ void Grid::nextBlock() {
     // place block onto grid
     // set cells to be filled
     //
-    curBlock = level->generateBlock();
-    
+    Block *curBlock= level->generateBlock();
+    Tile **tiles = curBlock->get
 }
 
 Grid::Grid(int player, TextDisplay *td): player{player}, td{td}, height{18}, width{11}, score{0}, isBlind{false}, isHeavy{false}, isForce{false}{}
