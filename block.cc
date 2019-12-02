@@ -1,4 +1,3 @@
-#include "block.h"
 #include <map>
 #include <string>
 #include "block.h"
@@ -16,7 +15,7 @@ void Block::left() {
     std::map<int, int> checkPos;
     for (int i = 0; i < 4; i++) {
         if (!checkPos.count(tiles[i]->getY())) {
-            checkPos.insert{ tiles[i]->getY(), tiles[i]->getX() };
+            checkPos.insert( {tiles[i]->getY(), tiles[i]->getX()} );
         } else if ((checkPos.find(tiles[i]->getY())->second) > tiles[i]->getX()) {
             checkPos.at(tiles[i]->getY()) = tiles[i]->getX();
         }
@@ -24,9 +23,9 @@ void Block::left() {
 
     // Check if position is available for moving
     for (auto it = checkPos.begin(); it != checkPos.end(); it++) {
-        if (it.second == 0) {
+        if (it->second == 0) {
             return;
-        } else if (grid.theGrid[it.first][it.second - 1].isOccupied()) {
+        } else if (grid->theGrid[it->first][it.second - 1].isOccupied()) {
             return;
         }
     }

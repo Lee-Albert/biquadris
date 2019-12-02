@@ -6,7 +6,6 @@ Grid::~Grid() {
 	// delete ob;
 }
 
-// not finished
 void Grid::init() {
     std::vector<std::vector<Tile>> grid; // Intialize grid
     for (int i=0; i < height; i++){ // populates grid with cells
@@ -88,9 +87,14 @@ int Grid::getScore() {
 	return score;
 }
 
+vector<vector<Tile>> Grid::getGrid(){
+    return theGrid;
+};
+
 Grid::Grid(int player, TextDisplay *td): player{player}, td{td}, height{18}, width{11}, score{0}, isBlind{false}, isHeavy{false}, isForce{false}{}
 
 std::ostream &operator<<(std::ostream &out, const Grid &g) {
 	out << *(g.td);
 	return out;
 }
+
