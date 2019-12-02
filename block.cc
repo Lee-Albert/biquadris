@@ -6,7 +6,7 @@ Tile **Block::getTiles(){
     return tiles;
 }
 
-string Block::getName(){
+std::string Block::getName(){
     return name;
 }
 
@@ -41,6 +41,7 @@ void Block::left() {
             } 
         }
     }
+    xPos--;
 }
 
 void Block::right() {
@@ -74,6 +75,7 @@ void Block::right() {
             } 
         }
     }
+    xPos++;
 }
 
 void Block::down() {
@@ -107,6 +109,7 @@ void Block::down() {
             } 
         }
     }
+    yPos--;
 }
 
 void Block::drop() {
@@ -152,6 +155,7 @@ void Block::drop() {
             } 
         }
     }
+    yPos -= downNum;
 }
 
 
