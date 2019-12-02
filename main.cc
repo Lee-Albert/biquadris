@@ -52,11 +52,14 @@ int main(int argc, char* argv[]) {
             if (!cin >> cmd){
                 return;
             }
-            if (...) {
+            if (cmd == "...") {
 
-            } else if (...){
+            } else if (cmd == "..."){
 
-            } else if (cm)
+            } else if (cmd == "drop"){
+                ....
+                break
+            }
         }
         playerOneTurn = playerOneTurn ? false : true;
         turnOver = false;
