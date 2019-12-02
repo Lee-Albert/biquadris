@@ -1,7 +1,4 @@
 #include "zblock.h"
-#include "block.h"
-#include "grid.h"
-#include "tile.h"
 using namespace std;
 
 void ZBlock::clockWise(){
