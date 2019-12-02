@@ -21,9 +21,20 @@ void Tile::setCurblock(Block *newCurblock){
     this->notifyObservers();
 }
 
+Info Tile::getInfo() {
+	Info tileInfo;
+	tileInfo.x = x;
+	tileInfo.y = y;
+	tileInfo.grid = grid;
+	tileInfo.isOccupied = this->isOccupied();
+	tileInfo.curBlock = curBlock;
+	return tileInfo;
+}
+
 void Tile::swapTile(Tile &other) {
     std::swap(filled, other.filled);
     std::swap(curBlock, other.curBlock);
     this->notifyObservers();
     other.notifyObservers();
 }
+

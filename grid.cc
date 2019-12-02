@@ -12,7 +12,7 @@ void Grid::init() {
     for (int i=0; i < height; i++){ // populates grid with cells
         std::vector<Tile> row;
         for (int j=0; j < width; j++){
-            row.emplace_back(Tile(j, i)); 
+            row.emplace_back(Tile(j, i, this)); 
         }
         grid.emplace_back(row);
     }
@@ -74,6 +74,7 @@ int Grid::getPlayer() {
 }
 
 void Grid::nextBlock() {
+    /*
     Block *newBlock= level->generateBlock();
     Tile **tiles = newBlock->getTiles();
     for (int i=0; i < 4; i++){
@@ -82,6 +83,11 @@ void Grid::nextBlock() {
     }
     curBlock = nextBlock;
     nextBlock = newBlock;
+    */
+}
+
+int Grid::getScore() {
+	return score;
 }
 
 Grid::Grid(int player, TextDisplay *td): player{player}, td{td}, height{18}, width{11}, score{0}, isBlind{false}, isHeavy{false}, isForce{false}{}
