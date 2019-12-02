@@ -1,14 +1,14 @@
-#include "levelZero.h"
+#include "LevelZero.h"
 #include <string>
 #include <fstream>
 using namespace std;
 
 //ctor
-levelZero::levelZero(string filename): filename{filename}{
+LevelZero::LevelZero(string filename): filename{filename}{
     filestream{filename};
 }
 
-Block *levelZero::generateBlock(){
+Block *LevelZero::generateBlock(){
     string blockname;
     Block *addBlock;
     if (!(filestream >> blockname)){
