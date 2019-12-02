@@ -12,6 +12,6 @@ class Level {
     bool random;
     public:
     virtual Block *generateBlock() = 0;
-}
+};
 
 #endif

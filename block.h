@@ -5,6 +5,8 @@
 #include "tile.h"
 #include "grid.h"
 
+class Grid;
+
 class Block {
     int orientation;
     Grid &grid;
@@ -18,8 +20,8 @@ class Block {
     void right();
     void down();
     void drop();
-    Block(int orientation, Grid &grid, Tile *tiles, int xPos, int yPos);
+    Block(int orientation, Grid *grid, Tile tiles, int xPos, int yPos);
     ~Block();
-}
+};
 
 #endif
