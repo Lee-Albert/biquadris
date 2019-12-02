@@ -50,7 +50,7 @@ void Block::drop() {
 }
 
 
-Block::Block(int orientation, Grid &grid, Cell &cells, int xPos, int yPos): this->orientation{orientation}, this->gird{grid}, this->xPos{xPos}, this->yPos{yPos}{};
+Block::Block(int orientation, Grid &grid, Cell &cells, int xPos, int yPos): orientation{orientation}, gird{grid}, xPos{xPos}, yPos{yPos}{};
 
 Block::~Block() {
 }

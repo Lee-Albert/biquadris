@@ -70,6 +70,14 @@ int Grid::getLevel() {
 	return curLevel;
 }
 
+void Grid::nextBlock() {
+    // TODO:
+    // place block onto grid
+    // set cells to be filled
+    //
+    curBlock = level->generateBlock();
+    
+}
 
 Grid(int player, TextDisplay *td, int height = 18, int width = 11, int score = 0, bool isBlind = false, bool isHevay = false, bool isForce = false):
 	player{player}, td{td}, height{height}, width{width}, score{score}, isBlind{isBlind}, isHeavy{isHeavy}, isForce{isForce}{}

@@ -19,6 +19,7 @@ class Grid {
 	int height;
 	int width;
 	Level *level;
+	Block *curBlock;
 	int score;
 	int curLevel;
 	bool isBlind;
@@ -28,6 +29,7 @@ class Grid {
 	~Grid();
 	void init();
 	void setObserver(Observer *ob);
+	void nextBlock();
 	bool isFull();
 	bool heightReached();
 	int rowsFull();
