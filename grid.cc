@@ -80,3 +80,8 @@ void Grid::nextBlock() {
 }
 
 Grid::Grid(int player, TextDisplay *td): player{player}, td{td}, height{18}, width{11}, score{0}, isBlind{false}, isHeavy{false}, isForce{false}{}
+
+std::ostream &operator<<(std::ostream &out, const Grid &g) {
+	out << *(g.td);
+	return out;
+}
