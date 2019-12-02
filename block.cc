@@ -24,9 +24,9 @@ void Block::left() {
 
     // Check if position is available for moving
     for (auto it = checkPos.begin(); it != checkPos.end(); it++) {
-        if (it.second == 0) {
+        if (it->second == 0) {
             return;
-        } else if (grid.theGrid[it.first][it.second - 1].isOccupied()) {
+        } else if (grid.theGrid[it->first][it->second - 1].isOccupied()) {
             return;
         }
     }
@@ -36,10 +36,10 @@ void Block::left() {
         }
     }
     for (auto it = checkPos.begin(); it != checkPos.end(); it++) {
-        grid.theGrid[it.first][it.second].swapTile(grid.theGrid[it.first][it.second - 1]);
+        grid.theGrid[it->first][it->second].swapTile(grid.theGrid[it->first][it->second - 1]);
         for (int i = 0; i < 4; i++) {
-            if (tiles[i]->getY() == it.first && tiles[i]->getX() == it.second) {
-                tiles[i] = &theGrid[it.first][it.second - 1];
+            if (tiles[i]->getY() == it->first && tiles[i]->getX() == it->second) {
+                tiles[i] = &theGrid[it->first][it->second - 1];
             } 
         }
     }
@@ -58,9 +58,9 @@ void Block::right() {
     }
     // Check if position is available for moving
     for (auto it = checkPos.begin(); it != checkPos.end(); it++) {
-        if (it.second == 10) {
+        if (it->second == 10) {
             return;
-        } else if (grid.theGrid[it.first][it.second + 1].isOccupied()) {
+        } else if (grid.theGrid[it->first][it->second + 1].isOccupied()) {
             return;
         }
     }
@@ -70,10 +70,10 @@ void Block::right() {
         }
     }
     for (auto it = checkPos.begin(); it != checkPos.end(); it++) {
-        grid.theGrid[it.first][it.second].swapTile(grid.theGrid[it.first][it.second + 1]);
+        grid.theGrid[it->first][it->second].swapTile(grid.theGrid[it->first][it->second + 1]);
         for (int i = 0; i < 4; i++) {
-            if (tiles[i]->getY() == it.first && tiles[i]->getX() == it.second) {
-                tiles[i] = &theGrid[it.first][it.second + 1];
+            if (tiles[i]->getY() == it->first && tiles[i]->getX() == it->second) {
+                tiles[i] = &theGrid[it->first][it->second + 1];
             } 
         }
     }
@@ -92,9 +92,9 @@ void Block::down() {
     }
     // Check if position is available for moving
     for (auto it = checkPos.begin(); it != checkPos.end(); it++) {
-        if (it.second == 17) {
+        if (it->second == 17) {
             return;
-        } else if (grid.theGrid[it.second + 1][it.first].isOccupied()) {
+        } else if (grid.theGrid[it->second + 1][it->first].isOccupied()) {
             return;
         }
     }
@@ -104,10 +104,10 @@ void Block::down() {
         }
     }
     for (auto it = checkPos.begin(); it != checkPos.end(); it++) {
-        grid.theGrid[it.second][it.first].swapTile(grid.theGrid[it.second + 1][it.first]);
+        grid.theGrid[it->second][it->first].swapTile(grid.theGrid[it->second + 1][it->first]);
         for (int i = 0; i < 4; i++) {
-            if (tiles[i]->getX() == it.first && tiles[i]->getY() == it.second) {
-                tiles[i] = &theGrid[it.second + 1][it.first];
+            if (tiles[i]->getX() == it->first && tiles[i]->getY() == it->second) {
+                tiles[i] = &theGrid[it->second + 1][it->first];
             } 
         }
     }
@@ -130,10 +130,10 @@ void Block::drop() {
     while (!doneCount) {
         // Check if position is available for moving
         for (auto it = checkPos.begin(); it != checkPos.end(); it++) {
-            if (it.second == 17) {
+            if (it->second == 17) {
                 doneCount = true;
                 break;
-            } else if (grid.theGrid[it.second + 1][it.first].isOccupied()) {
+            } else if (grid.theGrid[it->second + 1][it->first].isOccupied()) {
                 doneCount = true;
                 break;
             }
@@ -150,10 +150,10 @@ void Block::drop() {
         }
     }
     for (auto it = checkPos.begin(); it != checkPos.end(); it++) {
-        grid.theGrid[it.second][it.first].swapTile(grid.theGrid[it.second + downNum][it.first]);
+        grid.theGrid[it->second][it->first].swapTile(grid.theGrid[it->second + downNum][it->first]);
         for (int i = 0; i < 4; i++) {
-            if (tiles[i]->getX() == it.first && tiles[i]->getY() == it.second) {
-                tiles[i] = &theGrid[it.second + downNum][it.first];
+            if (tiles[i]->getX() == it->first && tiles[i]->getY() == it->second) {
+                tiles[i] = &theGrid[it->second + downNum][it->first];
             } 
         }
     }
