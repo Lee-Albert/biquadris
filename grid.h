@@ -37,7 +37,7 @@ class Grid {
 	~Grid();
 	void init();
 	void setObserver(Observer *ob);
-	void nextBlock();
+	void getNextBlock();
 	bool isFull();
 	bool heightReached();
 	int rowsFull();

@@ -33,11 +33,11 @@ int main(int argc, char* argv[]) {
     cout << "Player 1, choose your difficulty between 0 and 4: ";
     cin >> difficulty;
     if (difficulty == 0){
-        Level *level = new LevelZero(playerOneFile);
-        playerOne->setLevel(0, level);
+        // Level *level = new LevelZero(playerOneFile, playerOne);
+        // playerOne->setLevel(0, level);
     } else if (difficulty == 1){
-        Level *level = new LevelOne(playerOneFile);
-        playerOne->setLevel(0, level);
+        // Level *level = new LevelOne(playerOneFile);
+        // playerOne->setLevel(0, level);
     }
     // add more levels
     cout << endl;
@@ -45,23 +45,24 @@ int main(int argc, char* argv[]) {
     cout << "Player 2, choose your difficulty between 0 and 4: ";
     cin >> difficulty;
     if (difficulty == 0){
-        Level *level = new LevelZero(playerTwoFile);
-        playerTwo->setLevel(0, level);
+        // Level *level = new LevelZero(playerTwoFile, playerTwo);
+        // playerTwo->setLevel(0, level);
     } else if (difficulty == 1){
-        Level *level = new LevelOne(playerTwoFile);
-        playerTwo->setLevel(0, level);
+        // Level *level = new LevelOne(playerTwoFile);
+        // playerTwo->setLevel(0, level);
     }
     // add more levels
     cout << endl;
     
-    playerOne->nextBlock();
-    playerOne->nextBlock();
-    playerTwo->nextBlock();
-    playerTwo->nextBlock();
+    playerOne->getNextBlock();
+    playerOne->getNextBlock();
+    playerTwo->getNextBlock();
+    playerTwo->getNextBlock();
 
     while (true){
         while (!turnOver){
-            if (!cin >> cmd){
+			/*
+            if (!(cin >> cmd)){
                 return;
             }
             if (cmd == "...") {
@@ -72,13 +73,14 @@ int main(int argc, char* argv[]) {
                 ....
                 turnOver = true;
             }
+			*/
         }
         if (playerOneTurn){
-            playerOne->nextBlock();
+            playerOne->getNextBlock();
             playerOneTurn = false;
         } else {
-            playerTwo->nextBlock();
-            playerTwoTurn = false;
+            playerTwo->getNextBlock();
+            playerOneTurn = true;
         }
         turnOver = false;
     }

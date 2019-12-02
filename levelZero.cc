@@ -1,11 +1,11 @@
-#include "level.h"
 #include "levelZero.h"
 #include <string>
 #include <fstream>
 using namespace std;
 
 //ctor
-string filename, Grid *grid
+string filename;
+Grid *grid;
 LevelZero::LevelZero(string filename, Grid *grid): Level(filename, grid) {
     filestream{filename};
     random = false;

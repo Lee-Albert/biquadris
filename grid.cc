@@ -73,7 +73,7 @@ int Grid::getPlayer() {
     return player;
 }
 
-void Grid::nextBlock() {
+void Grid::getNextBlock() {
     /*
     Block *newBlock= level->generateBlock();
     Tile **tiles = newBlock->getTiles();

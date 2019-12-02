@@ -10,6 +10,6 @@ class JBlock : public Block {
     void clockWise() override;
     void counterClockWise() override;
     JBlock(int orientation, Grid *grid, int xPos, int yPos);
-}
+};
 
 #endif

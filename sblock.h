@@ -11,6 +11,6 @@ class SBlock : public Block {
     void clockWise() override;
     void counterClockWise() override;
     SBlock(int orientation, Grid *grid, int xPos, int yPos);
-}
+};
 
 #endif

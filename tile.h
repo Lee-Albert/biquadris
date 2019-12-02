@@ -24,7 +24,7 @@ class Tile : public Subject {
     int getXPos();
     int getYPos();
   	Info getInfo() override;
-    void swapTile();
+    void swapTile(Tile &other);
 };
 
 

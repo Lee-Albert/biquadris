@@ -11,6 +11,6 @@ class LBlock : public Block {
     void clockWise() override;
     void counterClockWise() override;
     LBlock(int orientation, Grid *grid, int xPos, int yPos);
-}
+};
 
 #endif

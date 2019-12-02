@@ -11,6 +11,6 @@ class ZBlock : public Block {
     void clockWise() override;
     void counterClockWise() override;
     ZBlock(int orientation, Grid *grid, int xPos, int yPos);
-}
+};
 
 #endif
