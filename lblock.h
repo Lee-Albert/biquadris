@@ -1,8 +1,8 @@
 #ifndef LBLOCK_H
 #define LBLOCK_H
 #include "block.h"
-#include "grid.h"
-#include "tile.h"
+// #include "grid.h"
+// #include "tile.h"
 #include <string>
 using namespace std;
 

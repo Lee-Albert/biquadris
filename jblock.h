@@ -1,8 +1,8 @@
 #ifndef JBLOCK_H
 #define JBLOCK_H
 #include "block.h"
-#include "grid.h"
-#include "tile.h"
+// #include "grid.h"
+// #include "tile.h"
 using namespace std;
 
 class JBlock : public Block {

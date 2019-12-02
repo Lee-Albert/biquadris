@@ -1,8 +1,8 @@
 #ifndef SBLOCK_H
 #define SBLOCK_H
 #include "block.h"
-#include "grid.h"
-#include "tile.h"
+// #include "grid.h"
+// #include "tile.h"
 #include <string>
 using namespace std;
 
