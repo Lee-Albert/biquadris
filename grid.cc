@@ -64,6 +64,10 @@ void Grid::setLevel(int nLevel, Level *levelset) {
 	level = levelset;
 }
 
+Block *Grid::getNextBlock(){
+    return nextBlock;
+}
+
 int Grid::getLevel() {
 	return curLevel;
 }
@@ -72,7 +76,7 @@ int Grid::getPlayer() {
     return player;
 }
 
-void Grid::getNextBlock() {
+void Grid::generateNextBlock() {
     Block *newBlock= level->generateBlock();
     Tile **tiles = newBlock->getTiles();
     for (int i=0; i < 4; i++){

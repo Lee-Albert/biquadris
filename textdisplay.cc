@@ -2,6 +2,7 @@
 #include <iomanip>
 #include "textdisplay.h"
 #include <vector>
+using namespace std;
 
 TextDisplay::TextDisplay(): grid1{nullptr}, grid2{nullptr} {
 	std::vector<std::string> row(width, " ");
@@ -32,15 +33,16 @@ void TextDisplay::notify(Subject &whoNotified) {
 	}
 }
 
-std::ostream &operator<<(std::ostream &out, const TextDisplay &td) {
+std::ostream &operator<<(std::ostream &out, TextDisplay &td) {
+	td.getNextBlocks(td.grid1, td.grid2);
 	std::string spacing = "      "; // 6 spaces
 	// uncomment when getscore is fixed
 	out << "Level:" << std::setw(5) << (td.grid1)->getLevel() << spacing << "Level:" << std::setw(5) << (td.grid2)->getLevel() << std::endl;
 	out << "Score:" << std::setw(5) << (td.grid1)->getScore() << spacing << "Score:" << std::setw(5) << (td.grid2)->getScore() << std::endl;
 	out << "-----------" << spacing << "-----------" << std::endl;
 	for (int i = 0; i < td.height; ++i) {
-		for (int j = 0; i < td.width; ++j) {
-			out << td.player1[i][j];
+		for (int j = 0; j < td.width; ++j) {
+			out << td.player1.at(i).at(j);
 		}
 		out << spacing;
 		for (int j = 0; j < td.width; ++j) {
@@ -50,12 +52,16 @@ std::ostream &operator<<(std::ostream &out, const TextDisplay &td) {
 	}
 	out << "-----------" << spacing << "-----------" << std::endl;
 	out << "Next:      " << spacing << "Next:      " << std::endl;
-	// how to output the next block?
+	out << td.nextBlock1 << "          " << spacing << td.nextBlock2 << std::endl;
 	return out;
 }
 
-void TextDisplay::setGrids(Grid *grid1, Grid *grid2){
-	grid1 = grid1;
-	grid2 = grid2;
+void TextDisplay::setGrids(Grid *newGrid1, Grid *newGrid2){
+	grid1 = newGrid1;
+	grid2 = newGrid2;
 }
 	
+void TextDisplay::getNextBlocks(Grid *grid1, Grid *grid2){
+	nextBlock1 = grid1->getNextBlock()->getName();
+	nextBlock2 = grid2->getNextBlock()->getName();
+}

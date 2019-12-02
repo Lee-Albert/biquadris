@@ -2,12 +2,13 @@
 #include <string>
 #include "block.h"
 #include "grid.h"
+using namespace std;
 
 Tile **Block::getTiles(){
     return tiles;
 }
 
-std::string Block::getName(){
+string Block::getName(){
     return name;
 }
 
