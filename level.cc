@@ -1,0 +1,1 @@
+:Level::Level(string filename, Grid *grid): filename{filename}, grid{grid}{}
