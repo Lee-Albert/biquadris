@@ -12,7 +12,7 @@ LevelZero::LevelZero(string filename, Grid *grid): Level(filename, grid) {
     points = 0;
 }
 
-// (int orientation, Grid *grid, Tile tiles, int xPos, int yPos)
+// (int orientation, Grid *grid, int xPos, int yPos)
 Block *LevelZero::generateBlock(){
     string blockname;
     Block *addBlock;
@@ -22,19 +22,19 @@ Block *LevelZero::generateBlock(){
         filestream >> blockname;
     }
     if (blockname == "I"){
-        addBlock = new IBlock(1, );
+        addBlock = new IBlock(1, grid, 0, 3);
     } else if (blockname == "L"){
-        addBlock = new LBlock();
+        addBlock = new LBlock(1, grid, 0, 3);
     } else if (blockname == "J"){
-        addBlock = new JBlock();
+        addBlock = new JBlock(1, grid, 0, 3);
     } else if (blockname == "T"){
-        addBlock = new TBlock();
+        addBlock = new TBlock(1, grid, 0, 3);
     } else if (blockname == "O"){
-        addBlock = new OBlock();
+        addBlock = new OBlock(1, grid, 0, 3);
     } else if (blockname == "S"){
-        addBlock = new SBlock();
+        addBlock = new SBlock(1, grid, 0, 3);
     } else {
-        addBlock = new ZBlock();
+        addBlock = new ZBlock(1, grid, 0, 3);
     }
     return addBlock;
 }
