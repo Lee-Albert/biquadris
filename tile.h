@@ -21,6 +21,7 @@ class Tile : public Subject {
     void setCurblock(Block *newCurblock);
     int getXPos();
     int getYPos();
+    void swapTile();
 };
 
 
