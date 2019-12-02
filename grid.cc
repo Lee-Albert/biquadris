@@ -70,13 +70,17 @@ int Grid::getLevel() {
 	return curLevel;
 }
 
+int Grid::getPlayer() {
+    return player;
+}
+
 void Grid::nextBlock() {
-    // TODO:
-    // place block onto grid
-    // set cells to be filled
-    //
     Block *curBlock= level->generateBlock();
-    Tile **tiles = curBlock->get
+    Tile **tiles = curBlock->getTiles();
+    for (int i=0; i < 4; i++){
+        tiles[i]->setFilled(true);
+        tiles[i]->setCurblock(curBlock);
+    }
 }
 
 Grid::Grid(int player, TextDisplay *td): player{player}, td{td}, height{18}, width{11}, score{0}, isBlind{false}, isHeavy{false}, isForce{false}{}
