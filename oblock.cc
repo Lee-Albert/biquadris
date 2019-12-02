@@ -1,4 +1,5 @@
 #include "oblock.h"
+#include "grid.h"
 using namespace std;
 
 void OBlock::clockWise(){

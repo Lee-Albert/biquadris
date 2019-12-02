@@ -1,4 +1,5 @@
 #include "zblock.h"
+#include "grid.h"
 using namespace std;
 
 void ZBlock::clockWise(){
