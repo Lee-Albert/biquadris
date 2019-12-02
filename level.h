@@ -15,6 +15,7 @@ using namespace std;
 class Grid;
 
 class Level {
+    protected:
     string filename;
     Grid *grid;
     ifstream filestream;

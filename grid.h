@@ -48,7 +48,7 @@ class Grid {
 	void setLevel(int nLevel, Level *levelset);
 	int getLevel();
 	int getPlayer();
-	vector<vector<Tile>> getGrid();
+	vector<vector<Tile>> &getGrid();
 	Grid(int player, TextDisplay *td);
 	friend std::ostream &operator<<(std::ostream &out, const Grid &g);
 };

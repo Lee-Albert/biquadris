@@ -1,6 +1,7 @@
 #include <map>
 #include <string>
 #include "block.h"
+#include "grid.h"
 
 Tile **Block::getTiles(){
     return tiles;
@@ -25,7 +26,7 @@ void Block::left() {
     for (auto it = checkPos.begin(); it != checkPos.end(); it++) {
         if (it->second == 0) {
             return;
-        } else if (grid->theGrid[it->first][it.second - 1].isOccupied()) {
+        } else if (grid.getGrid()[it->first][it.second - 1].isOccupied()) {
             return;
         }
     }
@@ -35,10 +36,10 @@ void Block::left() {
         }
     }
     for (auto it = checkPos.begin(); it != checkPos.end(); it++) {
-        grid.theGrid[it.first][it.second].swapTile(grid.theGrid[it.first][it.second - 1]);
+        grid.getGrid()[it.first][it.second].swapTile(grid.getGrid()[it.first][it.second - 1]);
         for (int i = 0; i < 4; i++) {
             if (tiles[i]->getY() == it.first && tiles[i]->getX() == it.second) {
-                tiles[i] = &theGrid[it.first][it.second - 1];
+                tiles[i] = &(grid.getGrid()[it.first][it.second - 1]);
             } 
         }
     }
@@ -59,7 +60,7 @@ void Block::right() {
     for (auto it = checkPos.begin(); it != checkPos.end(); it++) {
         if (it.second == 10) {
             return;
-        } else if (grid.theGrid[it.first][it.second + 1].isOccupied()) {
+        } else if (grid.getGrid()[it.first][it.second + 1].isOccupied()) {
             return;
         }
     }
@@ -69,10 +70,10 @@ void Block::right() {
         }
     }
     for (auto it = checkPos.begin(); it != checkPos.end(); it++) {
-        grid.theGrid[it.first][it.second].swapTile(grid.theGrid[it.first][it.second + 1]);
+        grid.getGrid()[it.first][it.second].swapTile(grid.getGrid()[it.first][it.second + 1]);
         for (int i = 0; i < 4; i++) {
             if (tiles[i]->getY() == it.first && tiles[i]->getX() == it.second) {
-                tiles[i] = &theGrid[it.first][it.second + 1];
+                tiles[i] = &(grid.getGrid()[it.first][it.second + 1]);
             } 
         }
     }
@@ -93,7 +94,7 @@ void Block::down() {
     for (auto it = checkPos.begin(); it != checkPos.end(); it++) {
         if (it.second == 17) {
             return;
-        } else if (grid.theGrid[it.second + 1][it.first].isOccupied()) {
+        } else if (grid.getGrid()[it.second + 1][it.first].isOccupied()) {
             return;
         }
     }
