@@ -12,6 +12,7 @@ using namespace std;
 int main(int argc, char* argv[]) {
 
     string cmd;
+    bool turnOver = false;
     int difficulty;
     TextDisplay *display = new TextDisplay();
     Grid *playerOne = new Grid(1, display);
@@ -46,7 +47,18 @@ int main(int argc, char* argv[]) {
     // add more levels
     cout << endl;
 
-    while (cin >> cmd){
-        
+    while (true){
+        while (!turnOver){
+            if (!cin >> cmd){
+                return;
+            }
+            if (...) {
+
+            } else if (...){
+
+            } else if (cm)
+        }
+        playerOneTurn = playerOneTurn ? false : true;
+        turnOver = false;
     }
 }
