@@ -23,7 +23,8 @@ class Tile : public Subject {
     void setCurblock(Block *newCurblock);
     int getXPos();
     int getYPos();
-	Info getInfo() override;
+  	Info getInfo() override;
+    void swapTile();
 };
 
 

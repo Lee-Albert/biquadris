@@ -1,6 +1,4 @@
-#include "block.h"
-#include "grid.h"
-#include "tile.h"
+#include "jblock.h"
 #include <string>
 using namespace std;
 

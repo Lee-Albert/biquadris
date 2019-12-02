@@ -27,6 +27,19 @@ void Block::left() {
             return;
         }
     }
+    for (auto it = tiles.begin(); it != tiles.end(); it++) {
+        if (checkPos.count(it.y) && checkPos.find(it.y)->second != it.x) {
+            checkPos.insert({ it.y, it.x });
+        }
+    }
+    for (auto it = checkPos.begin(); it != checkPos.end(); it++) {
+        grid.theGrid[it.first][it.second].swapTile(grid.theGrid[it.first][it.second - 1]);
+        for (int i = 0; i < 4; i++) {
+            if (tiles[i]->y == it.first && tiles[i]->x == it.second) {
+                tiles[i] = &theGrid[it.first][it.second - 1];
+            } 
+        }
+    }
 }
 
 void Block::right() {
@@ -47,6 +60,19 @@ void Block::right() {
             return;
         }
     }
+    for (auto it = tiles.begin(); it != tiles.end(); it++) {
+        if (checkPos.count(it.y) && checkPos.find(it.y)->second != it.x) {
+            checkPos.insert({ it.y, it.x });
+        }
+    }
+    for (auto it = checkPos.begin(); it != checkPos.end(); it++) {
+        grid.theGrid[it.first][it.second].swapTile(grid.theGrid[it.first][it.second + 1]);
+        for (int i = 0; i < 4; i++) {
+            if (tiles[i]->y == it.first && tiles[i]->x == it.second) {
+                tiles[i] = &theGrid[it.first][it.second + 1];
+            } 
+        }
+    }
 }
 
 void Block::down() {
@@ -65,6 +91,19 @@ void Block::down() {
             return;
         } else if (grid.theGrid[it.second + 1][it.first].isOccupied()) {
             return;
+        }
+    }
+    for (auto it = tiles.begin(); it != tiles.end(); it++) {
+        if (checkPos.count(it.x) && checkPos.find(it.x)->second != it.y) {
+            checkPos.insert({ it.x, it.y });
+        }
+    }
+    for (auto it = checkPos.begin(); it != checkPos.end(); it++) {
+        grid.theGrid[it.second][it.first].swapTile(grid.theGrid[it.second + 1][it.first]);
+        for (int i = 0; i < 4; i++) {
+            if (tiles[i]->x == it.first && tiles[i]->y == it.second) {
+                tiles[i] = &theGrid[it.second + 1][it.first];
+            } 
         }
     }
 }
@@ -97,6 +136,19 @@ void Block::drop() {
             break;
         } else {
             downNum++;
+        }
+    }
+    for (auto it = tiles.begin(); it != tiles.end(); it++) {
+        if (checkPos.count(it.x) && checkPos.find(it.x)->second != it.y) {
+            checkPos.insert({ it.x, it.y });
+        }
+    }
+    for (auto it = checkPos.begin(); it != checkPos.end(); it++) {
+        grid.theGrid[it.second][it.first].swapTile(grid.theGrid[it.second + downNum][it.first]);
+        for (int i = 0; i < 4; i++) {
+            if (tiles[i]->x == it.first && tiles[i]->y == it.second) {
+                tiles[i] = &theGrid[it.second + downNum][it.first];
+            } 
         }
     }
 }

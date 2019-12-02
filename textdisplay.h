@@ -21,9 +21,8 @@ class TextDisplay: public Observer {
 	const int width = 11;
   public:
 	TextDisplay();
-	
+	void setGrids(Grid *grid1, Grid *grid2);
 	void notify(Subject &whoNotified) override;
-	
 	friend std::ostream &operator<<(std::ostream &out, const TextDisplay &td);
 };
 

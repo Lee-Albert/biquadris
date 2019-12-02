@@ -27,6 +27,7 @@ class Grid {
 	int width;
 	Level *level;
 	Block *curBlock;
+	Block *nextBlock;
 	int score;
 	int curLevel;
 	bool isBlind;

@@ -53,4 +53,9 @@ std::ostream &operator<<(std::ostream &out, const TextDisplay &td) {
 	// how to output the next block?
 	return out;
 }
+
+void TextDisplay::setGrids(Grid *grid1, Grid *grid2){
+	grid1 = grid1;
+	grid2 = grid2;
+}
 	

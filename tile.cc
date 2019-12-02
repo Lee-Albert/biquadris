@@ -30,3 +30,11 @@ Info Tile::getInfo() {
 	tileInfo.curBlock = curBlock;
 	return tileInfo;
 }
+
+void Tile::swapTile(Tile &other) {
+    std::swap(filled, other.filled);
+    std::swap(curBlock, other.curBlock);
+    this->notifyObservers();
+    other.notifyObservers();
+}
+
