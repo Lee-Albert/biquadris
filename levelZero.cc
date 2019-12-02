@@ -4,10 +4,8 @@
 using namespace std;
 
 //ctor
-string filename;
-Grid *grid;
 LevelZero::LevelZero(string filename, Grid *grid): Level(filename, grid) {
-    filestream{filename};
+    filestream.open(filename);
     random = false;
     points = 0;
 }
@@ -17,8 +15,8 @@ Block *LevelZero::generateBlock(){
     string blockname;
     Block *addBlock;
     if (!(filestream >> blockname)){
-        filestream.clear()
-        filestream{filename};
+        filestream.clear();
+        filestream.open(filename);
         filestream >> blockname;
     }
     if (blockname == "I"){

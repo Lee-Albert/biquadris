@@ -74,7 +74,6 @@ int Grid::getPlayer() {
 }
 
 void Grid::getNextBlock() {
-    /*
     Block *newBlock= level->generateBlock();
     Tile **tiles = newBlock->getTiles();
     for (int i=0; i < 4; i++){
@@ -83,7 +82,6 @@ void Grid::getNextBlock() {
     }
     curBlock = nextBlock;
     nextBlock = newBlock;
-    */
 }
 
 int Grid::getScore() {
