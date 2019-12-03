@@ -39,9 +39,11 @@ class Grid {
   public:
 	~Grid();
 	void init();
+	void reset();
 	void setObserver(Observer *ob);
-	void generateNextBlock();
-	void generateCentreBlock();
+	bool generateNextBlock();
+	bool generateCentreBlock();
+	bool replaceCurBlock(string blockname);
 	Block *getNextBlock();
 	Block *getCurBlock();
 	bool isFull();
@@ -53,7 +55,6 @@ class Grid {
 	int getLevel();
 	int getPlayer();
 	vector<vector<Tile>> &getGrid();
-	void replaceCurBlock(string blockname);
 	Grid(int player, TextDisplay *td, GraphicsDisplay *gd);
 	void setBlind(bool toSet);
 	bool getBlind();
