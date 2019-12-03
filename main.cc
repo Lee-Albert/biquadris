@@ -20,7 +20,7 @@ using namespace std;
 int main(int argc, char* argv[]) {
 
     string cmd;
-    int difficulty;
+    int difficulty = 0;
     bool playerOneTurn = true;
     bool turnOver = false;
 
@@ -31,7 +31,7 @@ int main(int argc, char* argv[]) {
 
     // NOT IMPLEMENTED
     int seed;
-    int startLevel;
+    // int startLevel;
 
     string cmdLineArg;
     for (int i = 1; i < argc; ++i) {
@@ -49,7 +49,7 @@ int main(int argc, char* argv[]) {
         } else if (cmdLineArg == "-startlevel") {
             // IMPLEMENT
             stringstream ss(argv[i+1]);
-            ss >> startLevel;
+            ss >> difficulty;
         }
     }
 
@@ -70,8 +70,8 @@ int main(int argc, char* argv[]) {
     playerOne->init();
     playerTwo->init();
 
-    cout << "Player 1, choose your difficulty between 0 and 4: ";
-    cin >> difficulty;
+    // cout << "Player 1, choose your difficulty between 0 and 4: ";
+    // cin >> difficulty;
     if (difficulty == 0){
         Level *level = new LevelZero(playerOneFile, playerOne);
         playerOne->setLevel(0, level);
@@ -90,8 +90,8 @@ int main(int argc, char* argv[]) {
     }
     int pOneDropCount = 0;
 
-    cout << "Player 2, choose your difficulty between 0 and 4: ";
-    cin >> difficulty;
+    // cout << "Player 2, choose your difficulty between 0 and 4: ";
+    // cin >> difficulty;
     if (difficulty == 0){
         Level *level = new LevelZero(playerTwoFile, playerTwo);
         playerTwo->setLevel(0, level);
