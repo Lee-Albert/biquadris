@@ -15,6 +15,8 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <queue>
+#include <fstream>
 using namespace std;
 
 int main(int argc, char* argv[]) {
@@ -26,6 +28,9 @@ int main(int argc, char* argv[]) {
 
     string playerOneFile = "sequence1.txt";
     string playerTwoFile = "sequence2.txt";
+	
+	queue<string> playerOneSequence;
+	queue<string> playerTwoSequence;
 
     bool textOnly = false;
 
@@ -123,13 +128,11 @@ int main(int argc, char* argv[]) {
         while (!turnOver){
             if (playerOneTurn){
 				if(window) {
-					// window->printSpecial();
 					window->printPlayer(1);
 				}
                 cout << "Player One's Turn" << endl;
             } else {
 				if(window) {
-					// window->printSpecial();
 					window->printPlayer(2);
 				}
                 cout << "Player Two's Turn" << endl;
@@ -137,9 +140,25 @@ int main(int argc, char* argv[]) {
 
             cout << *display;
             
-			if (!(cin >> cmd)){
-                return 0;
-            }
+			if (playerOneTurn) {
+				if (playerOneSequence.empty()) {
+					if (!(cin >> cmd)){
+                		return 0;
+            		}
+				} else {
+					cmd = playerOneSequence.front();
+					playerOneSequence.pop();	
+				}
+			} else {
+				if (playerTwoSequence.empty()) {
+					if (!(cin >> cmd)){
+                		return 0;
+            		}
+				} else {
+					cmd = playerTwoSequence.front();
+					playerTwoSequence.pop();
+				}
+			}
             if (cmd == "left") {
                 if (playerOneTurn){
                     playerOne->getCurBlock()->left();
@@ -256,14 +275,26 @@ int main(int argc, char* argv[]) {
                         playerTwo->levelDown(playerTwoFile);
                     }
                 }
-                continue;
-            }
+                continue;	
+			} else if (cmd == "sequence") {
+					string file;
+					cin >> file;
+					ifstream seq(file);
+					string queuecmd;
+					if (playerOneTurn) {
+						while (seq >> queuecmd) {	
+							playerOneSequence.push(queuecmd);	
+						}			
+					} else {
+						while (seq >>queuecmd) {
+							playerTwoSequence.push(queuecmd);
+						}
+					}
+			}
         }
         int rowsCleared;
         if (playerOneTurn){
             rowsCleared = playerOne->checkFullRows();
-			// testing
-			// rowsCleared = 4;
             if (playerOne->getLevel() == 4){
                 if (rowsCleared > 0) {
                     pOneDropCount = 0;
