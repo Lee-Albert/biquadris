@@ -98,7 +98,19 @@ int main(int argc, char* argv[]) {
                     playerTwo->getCurBlock()->drop();
                 }
                 turnOver = true;
-            } 
+            } else if (cmd == "clockwise") {
+				if (playerOneTurn) {
+					playerOne->getCurBlock()->clockWise();
+				} else {
+					playerTwo->getCurBlock()->clockWise();
+				}
+			} else if (cmd == "counterclockwise") {
+				if (playerOneTurn) {
+					playerOne->getCurBlock()->counterClockWise();
+				} else {
+					playerTwo->getCurBlock()->counterClockWise();
+				}	
+			} 
         }
         if (playerOneTurn){
             playerOne->checkFullRows();
