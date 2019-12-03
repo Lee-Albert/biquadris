@@ -18,24 +18,6 @@
 using namespace std;
 
 
-void restartGame(int winner){
-    if (winner == 1){
-        cout << "Player 1 wins!" << endl;
-    } else if (winner == 2){
-        cout << "Player 2 wins!" << endl;
-    }
-    playerOne->reset();
-    playerTwo->reset();
-    gameOver = false;
-    playerOneTurn = true;
-    pOneDropCount = 0;
-    pTwoDropCount = 0;
-    playerOne->generateNextBlock();
-    playerOne->generateNextBlock();
-    playerTwo->generateNextBlock();
-    playerTwo->generateNextBlock();
-}
-
 int main(int argc, char* argv[]) {
 
     string cmd;
@@ -136,7 +118,29 @@ int main(int argc, char* argv[]) {
     playerTwo->generateNextBlock();
     playerTwo->generateNextBlock();
 
-    
+    auto restartGame = [&](int winner){
+        if (winner == 1){
+            cout << "Player 1 wins!" << endl;
+        } else if (winner == 2){
+            cout << "Player 2 wins!" << endl;
+        }
+        playerOne->reset();
+        playerTwo->reset();
+        gameOver = false;
+        playerOneTurn = true;
+        pOneDropCount = 0;
+        pTwoDropCount = 0;
+        bool x;
+        x = playerOne->generateNextBlock();
+        cout << x << endl;
+        x = playerOne->generateNextBlock();
+        cout << x << endl;
+        x = playerTwo->generateNextBlock();
+        cout << x << endl;
+        x = playerTwo->generateNextBlock();
+        cout << x << endl;
+    };
+
     while (true){
         while (!turnOver){
             if (playerOneTurn){
@@ -241,7 +245,9 @@ int main(int argc, char* argv[]) {
                         playerTwo->getCurBlock()->down();
                     }
 				}	
-			} 
+			} else if (cmd == "restart"){
+                restartGame(0);
+            } 
         }
         int rowsCleared;
         if (playerOneTurn){

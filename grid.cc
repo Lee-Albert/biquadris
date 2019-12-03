@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 #include "grid.h"
 using namespace std;
 
@@ -29,15 +30,35 @@ void Grid::init() {
     }
 }
 
+void Grid::reset(){
+    if (score > highScore){
+        highScore = score;
+    }
+    score = 0;
+    isBlind = false;
+    isHeavy = false;
+    isForce = false;
+    curBlock = nullptr;
+    nextBlock = nullptr;
+    deleteBlocks();
+    for (int row=0; row < height; row++){
+        for (int col=0; col < width; col++){
+            theGrid.at(row).at(col).updateTile(false, nullptr);
+        }
+    }
+}
+
+void Grid::deleteBlocks(){
+    for (auto block : blocks){
+        delete block;
+    }
+    blocks.clear();
+}
+
 void Grid::setObserver(Observer *ob) {
 	// this->ob = ob;
 }
 
-/*
-bool Grid::isFull() {
-
-}
-*/
 
 void Grid::setLevel(int nLevel, Level *levelset) {
 	curLevel = nLevel;
@@ -61,18 +82,18 @@ int Grid::getPlayer() {
 }
 
 bool Grid::generateNextBlock() {
-    Block *newBlock= level->generateBlock();
+    Block *newBlock = level->generateBlock();
+    //cout << "hello1" << endl;
+    blocks.emplace_back(newBlock);
+    //cout << "hello2" << endl;
     curBlock = nextBlock;
     nextBlock = newBlock;
+    //cout << "hello3" << endl;
     if (curBlock){
-		
         curBlock->initializeTiles();
         Tile **tiles = curBlock->getTiles();
-        // TODO:
-        // check if this is possible
-        // if not then game over
         for (int i=0; i < 4; i++){
-            if (tiles[i].isOccupied()){
+            if (tiles[i]->isOccupied()){
                 return true;
             }
             tiles[i]->updateTile(true, curBlock);
@@ -86,13 +107,16 @@ bool Grid::replaceCurBlock(string blockname){
     for (int i=0; i < 4; i++){
         oldTiles[i]->updateTile(false, nullptr);
     }
+    blocks.erase(remove(blocks.begin(), blocks.end(), curBlock), blocks.end());
     delete curBlock;
+
     Block *newBlock = level->forceBlock(blockname);
+    blocks.emplace_back(newBlock);
     curBlock = newBlock;
     curBlock->initializeTiles();
     Tile **tiles = curBlock->getTiles();
     for (int i=0; i < 4; i++){
-        if (tiles[i].isOccupied()){
+        if (tiles[i]->isOccupied()){
             return true;
         }
         tiles[i]->updateTile(true, curBlock);
@@ -102,9 +126,10 @@ bool Grid::replaceCurBlock(string blockname){
 
 bool Grid::generateCentreBlock() {
     curBlock = level->makeCentreBlock();
+    blocks.emplace_back(curBlock);
     curBlock->initializeTiles();
     Tile **tiles = curBlock->getTiles();
-    if (tiles[0].isOccupied()){
+    if (tiles[0]->isOccupied()){
         return true;
     }
     tiles[0]->updateTile(true, curBlock);
