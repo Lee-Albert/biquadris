@@ -99,6 +99,10 @@ void Grid::generateNextBlock() {
 }
 
 void Grid::replaceCurBlock(string blockname){
+    Tile **oldTiles = curBlock->getTiles();
+    for (int i=0; i < 4; i++){
+        oldTiles[i]->updateTile(false, nullptr);
+    }
     delete curBlock;
     Block *newBlock = level->forceBlock(blockname);
     curBlock = newBlock;

@@ -190,16 +190,18 @@ int main(int argc, char* argv[]) {
         int rowsCleared;
         if (playerOneTurn){
             rowsCleared = playerOne->checkFullRows();
-            if (rowsCleared > 0) {
-                pOneDropCount = 0;
-            } else {
-                pOneDropCount++;
-            }
-            if (pOneDropCount == 5) {
-                playerOne->generateCentreBlock();
-                playerOne->getCurBlock()->centreDrop();
-                playerOne->checkFullRows();
-                pOneDropCount = 0;
+            if (playerOne->getLevel() == 4){
+                if (rowsCleared > 0) {
+                    pOneDropCount = 0;
+                } else {
+                    pOneDropCount++;
+                }
+                if (pOneDropCount == 5) {
+                    playerOne->generateCentreBlock();
+                    playerOne->getCurBlock()->centreDrop();
+                    playerOne->checkFullRows();
+                    pOneDropCount = 0;
+                }
             }
             playerOne->generateNextBlock();
 			if (rowsCleared >= 2) {
@@ -220,16 +222,18 @@ int main(int argc, char* argv[]) {
             playerOneTurn = false;
         } else {
             rowsCleared = playerTwo->checkFullRows();
-            if (rowsCleared > 0) {
-                pTwoDropCount = 0;
-            } else {
-                pTwoDropCount++;
-            }
-            if (pTwoDropCount == 5) {
-                playerTwo->generateCentreBlock();
-                playerTwo->getCurBlock()->centreDrop();
-                playerTwo->checkFullRows();
-                pTwoDropCount = 0;
+            if (playerTwo->getLevel() == 4){
+                if (rowsCleared > 0) {
+                    pTwoDropCount = 0;
+                } else {
+                    pTwoDropCount++;
+                }
+                if (pTwoDropCount == 5) {
+                    playerTwo->generateCentreBlock();
+                    playerTwo->getCurBlock()->centreDrop();
+                    playerTwo->checkFullRows();
+                    pTwoDropCount = 0;
+                }
             }
             playerTwo->generateNextBlock();
 			if (rowsCleared >= 2) {
