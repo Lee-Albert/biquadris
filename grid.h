@@ -28,6 +28,7 @@ using namespace std;
 class Grid {
 	int player;
 	vector<vector<Tile>> theGrid;
+	vector<Block *> blocks;
 	TextDisplay *td;
 	GraphicsDisplay *gd;
 	// Observer *ob;
@@ -37,20 +38,22 @@ class Grid {
 	Block *curBlock;
 	Block *nextBlock;
 	int score;
+	int highScore;
 	int curLevel;
 	bool isBlind;
 	bool isHeavy;
 	bool isForce;
+	void deleteBlocks();
   public:
 	~Grid();
 	void init();
+	void reset();
 	void setObserver(Observer *ob);
-	void generateNextBlock();
-	void generateCentreBlock();
+	bool generateNextBlock();
+	bool generateCentreBlock();
+	bool replaceCurBlock(string blockname);
 	Block *getNextBlock();
 	Block *getCurBlock();
-	bool isFull();
-	bool heightReached();
 	int checkFullRows();
 	void deleteRows(vector <int> rows);
 	int getScore();
@@ -60,7 +63,6 @@ class Grid {
 	int getLevel();
 	int getPlayer();
 	vector<vector<Tile>> &getGrid();
-	void replaceCurBlock(string blockname);
 	Grid(int player, TextDisplay *td, GraphicsDisplay *gd);
 	void setBlind(bool toSet);
 	bool getBlind();
