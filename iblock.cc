@@ -3,97 +3,179 @@
 
 void IBlock::clockWise(){
     if (orientation == 1) {
-        for (int i = 0; i < 3; i++) {
-            if (!validTile(*tiles[i], tiles[i]->getY() - 3 + i, tiles[i]->getX() - i)) {
-                return;
-            }
-        }
-        for (int i = 0; i < 3; i++) {
-            grid.getGrid()[tiles[i]->getY()][tiles[i]->getX()].swapTile(grid.getGrid()[tiles[i]->getY() - 3 + i][tiles[i]->getX() - i]);
-            tiles[i] = &(grid.getGrid()[tiles[i]->getY() - 3 + i][tiles[i]->getX() - i]);
-        }
-		orientation = 2;
+            if (validTile(*tiles[0], tiles[0]->getY()-3, tiles[0]->getX()) &&
+    	    	validTile(*tiles[1], tiles[1]->getY()-2, tiles[1]->getX()-1) &&
+    	    	validTile(*tiles[2], tiles[2]->getY()-1, tiles[2]->getX()-2) &&
+    	    	validTile(*tiles[3], tiles[3]->getY(), tiles[3]->getX()-3)) {
+
+                    grid.getGrid()[tiles[0]->getY()][tiles[0]->getX()].swapTile(grid.getGrid()[tiles[0]->getY()-3][tiles[0]->getX()]);
+                    tiles[0] = &(grid.getGrid()[tiles[0]->getY()-3][tiles[0]->getX()]);
+
+                    grid.getGrid()[tiles[1]->getY()][tiles[1]->getX()].swapTile(grid.getGrid()[tiles[1]->getY()-2][tiles[1]->getX()-1]);
+                    tiles[1] = &(grid.getGrid()[tiles[1]->getY()-2][tiles[1]->getX()-1]);
+
+                    grid.getGrid()[tiles[2]->getY()][tiles[2]->getX()].swapTile(grid.getGrid()[tiles[2]->getY()-1][tiles[2]->getX()-2]);
+                    tiles[2] = &(grid.getGrid()[tiles[2]->getY()-1][tiles[2]->getX()-2]);
+
+                    grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()].swapTile(grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()-3]);
+                    tiles[3] = &(grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()-3]);
+					
+					orientation = 2;
+                }
     } else if (orientation == 2) {
-        for (int i = 0; i < 3; i++) {
-            if (!validTile(*tiles[i], tiles[i]->getY() + 3 - i, tiles[i]->getX() + 3 - i)) {
-                return;
-            }
-        }
-        for (int i = 0; i < 3; i++) {
-            grid.getGrid()[tiles[i]->getY()][tiles[i]->getX()].swapTile(grid.getGrid()[tiles[i]->getY() + 3 - i][tiles[i]->getX() + 3 - i]);
-            tiles[i] = &(grid.getGrid()[tiles[i]->getY() + 3 - i][tiles[i]->getX() + 3 - i]);
-        }
-		orientation = 3;
+        if (validTile(*tiles[0], tiles[0]->getY()+3, tiles[0]->getX()+3) &&
+    	    	validTile(*tiles[1], tiles[1]->getY()+2, tiles[1]->getX()+2) &&
+    	    	validTile(*tiles[2], tiles[2]->getY()+1, tiles[2]->getX()+1) &&
+    	    	validTile(*tiles[3], tiles[3]->getY(), tiles[3]->getX())) {
+
+                    grid.getGrid()[tiles[0]->getY()][tiles[0]->getX()].swapTile(grid.getGrid()[tiles[0]->getY()+3][tiles[0]->getX()+3]);
+                    tiles[0] = &(grid.getGrid()[tiles[0]->getY()+3][tiles[0]->getX()+3]);
+
+                    grid.getGrid()[tiles[1]->getY()][tiles[1]->getX()].swapTile(grid.getGrid()[tiles[1]->getY()+2][tiles[1]->getX()+2]);
+                    tiles[1] = &(grid.getGrid()[tiles[1]->getY()+2][tiles[1]->getX()+2]);
+
+                    grid.getGrid()[tiles[2]->getY()][tiles[2]->getX()].swapTile(grid.getGrid()[tiles[2]->getY()+1][tiles[2]->getX()+1]);
+                    tiles[2] = &(grid.getGrid()[tiles[2]->getY()+1][tiles[2]->getX()+1]);
+
+                    grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()].swapTile(grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()]);
+                    tiles[3] = &(grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()]);
+					
+					orientation = 3;
+                }
     } else if (orientation == 3) {
-        for (int i = 0; i < 3; i++) {
-            if (!validTile(*tiles[i], tiles[i]->getY() - i, tiles[i]->getX() - 3 + i)) {
-                return;
-            }
-        }
-        for (int i = 0; i < 3; i++) {
-            grid.getGrid()[tiles[i]->getY()][tiles[i]->getX()].swapTile(grid.getGrid()[tiles[i]->getY() - i][tiles[i]->getX() - 3 + i]);
-            tiles[i] = &(grid.getGrid()[tiles[i]->getY() - i][tiles[i]->getX() - 3 + i]);
-        }
-		orientation = 4;
+        if (validTile(*tiles[0], tiles[0]->getY(), tiles[0]->getX()-3) &&
+    	    	validTile(*tiles[1], tiles[1]->getY()-1, tiles[1]->getX()-2) &&
+    	    	validTile(*tiles[2], tiles[2]->getY()-2, tiles[2]->getX()-1) &&
+    	    	validTile(*tiles[3], tiles[3]->getY()-3, tiles[3]->getX())) {
+
+                    grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()].swapTile(grid.getGrid()[tiles[3]->getY()-3][tiles[3]->getX()]);
+                    tiles[3] = &(grid.getGrid()[tiles[3]->getY()-3][tiles[3]->getX()]);
+
+                    grid.getGrid()[tiles[0]->getY()][tiles[0]->getX()].swapTile(grid.getGrid()[tiles[0]->getY()][tiles[0]->getX()-3]);
+                    tiles[0] = &(grid.getGrid()[tiles[0]->getY()][tiles[0]->getX()-3]);
+
+                    grid.getGrid()[tiles[1]->getY()][tiles[1]->getX()].swapTile(grid.getGrid()[tiles[1]->getY()-1][tiles[1]->getX()-2]);
+                    tiles[1] = &(grid.getGrid()[tiles[1]->getY()-1][tiles[1]->getX()-2]);
+
+                    grid.getGrid()[tiles[2]->getY()][tiles[2]->getX()].swapTile(grid.getGrid()[tiles[2]->getY()-2][tiles[2]->getX()-1]);
+                    tiles[2] = &(grid.getGrid()[tiles[2]->getY()-2][tiles[2]->getX()-1]);
+
+					
+					orientation = 4;
+                    }
     } else if (orientation == 4) {
-        for (int i = 0; i < 3; i++) {
-            if (!validTile(*tiles[i], tiles[i]->getY() + i, tiles[i]->getX() + i)) {
-                return;
-            }
-        }
-        for (int i = 0; i < 3; i++) {
-            grid.getGrid()[tiles[i]->getY()][tiles[i]->getX()].swapTile(grid.getGrid()[tiles[i]->getY() + i][tiles[i]->getX() + i]);
-            tiles[i] = &(grid.getGrid()[tiles[i]->getY() + i][tiles[i]->getX() + i]);
-        }
-		orientation = 1;
+        if (validTile(*tiles[0], tiles[0]->getY(), tiles[0]->getX()) &&
+    	    	validTile(*tiles[1], tiles[1]->getY()+1, tiles[1]->getX()+1) &&
+    	    	validTile(*tiles[2], tiles[2]->getY()+2, tiles[2]->getX()+2) &&
+    	    	validTile(*tiles[3], tiles[3]->getY()+3, tiles[3]->getX()+3)) {
+
+                    grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()].swapTile(grid.getGrid()[tiles[3]->getY()+3][tiles[3]->getX()+3]);
+                    tiles[3] = &(grid.getGrid()[tiles[3]->getY()+3][tiles[3]->getX()+3]);
+
+                    grid.getGrid()[tiles[0]->getY()][tiles[0]->getX()].swapTile(grid.getGrid()[tiles[0]->getY()][tiles[0]->getX()]);
+                    tiles[0] = &(grid.getGrid()[tiles[0]->getY()][tiles[0]->getX()]);
+
+                    grid.getGrid()[tiles[1]->getY()][tiles[1]->getX()].swapTile(grid.getGrid()[tiles[1]->getY()+1][tiles[1]->getX()+1]);
+                    tiles[1] = &(grid.getGrid()[tiles[1]->getY()+1][tiles[1]->getX()+1]);
+
+                    grid.getGrid()[tiles[2]->getY()][tiles[2]->getX()].swapTile(grid.getGrid()[tiles[2]->getY()+2][tiles[2]->getX()+2]);
+                    tiles[2] = &(grid.getGrid()[tiles[2]->getY()+2][tiles[2]->getX()+2]);
+					
+					orientation = 1;
+                    }
     }
 }
 
 void IBlock::counterClockWise(){
     if (orientation == 1) {
-        for (int i = 0; i < 3; i++) {
-            if (!validTile(*tiles[i], tiles[i]->getY() - i, tiles[i]->getX() - i)) {
-                return;
-            }
-        }
-        for (int i = 0; i < 3; i++) {
-            grid.getGrid()[tiles[i]->getY()][tiles[i]->getX()].swapTile(grid.getGrid()[tiles[i]->getY() - i][tiles[i]->getX() - i]);
-            tiles[i] = &(grid.getGrid()[tiles[i]->getY() - i][tiles[i]->getX() - i]);
-        }
-		orientation = 4;
+        if (validTile(*tiles[0], tiles[0]->getY(), tiles[0]->getX()) &&
+    	    	validTile(*tiles[1], tiles[1]->getY()-1, tiles[1]->getX()-1) &&
+    	    	validTile(*tiles[2], tiles[2]->getY()-2, tiles[2]->getX()-2) &&
+    	    	validTile(*tiles[3], tiles[3]->getY()-3, tiles[3]->getX()-3)) {
+
+                    cout << "caused by " << orientation << endl;
+
+                    grid.getGrid()[tiles[0]->getY()][tiles[0]->getX()].swapTile(grid.getGrid()[tiles[0]->getY()][tiles[0]->getX()]);
+                    tiles[0] = &(grid.getGrid()[tiles[0]->getY()][tiles[0]->getX()]);
+
+                    grid.getGrid()[tiles[1]->getY()][tiles[1]->getX()].swapTile(grid.getGrid()[tiles[1]->getY()-1][tiles[1]->getX()-1]);
+                    tiles[1] = &(grid.getGrid()[tiles[1]->getY()-1][tiles[1]->getX()-1]);
+
+                    grid.getGrid()[tiles[2]->getY()][tiles[2]->getX()].swapTile(grid.getGrid()[tiles[2]->getY()-2][tiles[2]->getX()-2]);
+                    tiles[2] = &(grid.getGrid()[tiles[2]->getY()-2][tiles[2]->getX()-2]);
+
+                    grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()].swapTile(grid.getGrid()[tiles[3]->getY()-3][tiles[3]->getX()-3]);
+                    tiles[3] = &(grid.getGrid()[tiles[3]->getY()-3][tiles[3]->getX()-3]);
+					
+					orientation = 4;
+                    }
     } else if (orientation == 2) {
-        for (int i = 0; i < 3; i++) {
-            if (!validTile(*tiles[i], tiles[i]->getY() + 3 - i, tiles[i]->getX() + i)) {
-                return;
-            }
-        }
-        for (int i = 0; i < 3; i++) {
-            grid.getGrid()[tiles[i]->getY()][tiles[i]->getX()].swapTile(grid.getGrid()[tiles[i]->getY() + 3 - i][tiles[i]->getX() + i]);
-            tiles[i] = &(grid.getGrid()[tiles[i]->getY() + 3 - i][tiles[i]->getX() + i]);
-        }
-		orientation = 1;
-    } else if (orientation == 3) {
-        for (int i = 0; i < 3; i++) {
-            if (!validTile(*tiles[i], tiles[i]->getY() - 3 + i, tiles[i]->getX() - 3 + i)) {
-                return;
-            }
-        }
-        for (int i = 0; i < 3; i++) {
-            grid.getGrid()[tiles[i]->getY()][tiles[i]->getX()].swapTile(grid.getGrid()[tiles[i]->getY() - 3 + i][tiles[i]->getX() - 3 + i]);
-            tiles[i] = &(grid.getGrid()[tiles[i]->getY() - 3 + i][tiles[i]->getX() - 3 + i]);
-        }
-		orientation = 2;
+        if (validTile(*tiles[0], tiles[0]->getY()+3, tiles[0]->getX()) &&
+    	    	validTile(*tiles[1], tiles[1]->getY()+2, tiles[1]->getX()+1) &&
+    	    	validTile(*tiles[2], tiles[2]->getY()+1, tiles[2]->getX()+2) &&
+    	    	validTile(*tiles[3], tiles[3]->getY(), tiles[3]->getX()+3)) {
+
+                    cout << "caused by " << orientation << endl;
+
+                    grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()].swapTile(grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()+3]);
+                    tiles[3] = &(grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()+3]);
+
+                    grid.getGrid()[tiles[2]->getY()][tiles[2]->getX()].swapTile(grid.getGrid()[tiles[2]->getY()+1][tiles[2]->getX()+2]);
+                    tiles[2] = &(grid.getGrid()[tiles[2]->getY()+1][tiles[2]->getX()+2]);
+
+                    grid.getGrid()[tiles[1]->getY()][tiles[1]->getX()].swapTile(grid.getGrid()[tiles[1]->getY()+2][tiles[1]->getX()+1]);
+                    tiles[1] = &(grid.getGrid()[tiles[1]->getY()+2][tiles[1]->getX()+1]);
+
+                    grid.getGrid()[tiles[0]->getY()][tiles[0]->getX()].swapTile(grid.getGrid()[tiles[0]->getY()+3][tiles[0]->getX()]);
+                    tiles[0] = &(grid.getGrid()[tiles[0]->getY()+3][tiles[0]->getX()]);
+					
+					orientation = 1;
+                    }
+    }
+    else if (orientation == 3) {
+        if (validTile(*tiles[0], tiles[0]->getY()-3, tiles[0]->getX()-3) &&
+    	    	validTile(*tiles[1], tiles[1]->getY()-2, tiles[1]->getX()-2) &&
+    	    	validTile(*tiles[2], tiles[2]->getY()-1, tiles[2]->getX()-1) &&
+    	    	validTile(*tiles[3], tiles[3]->getY(), tiles[3]->getX())) {
+
+                    cout << "caused by " << orientation << endl;
+
+                    grid.getGrid()[tiles[0]->getY()][tiles[0]->getX()].swapTile(grid.getGrid()[tiles[0]->getY()-3][tiles[0]->getX()-3]);
+                    tiles[0] = &(grid.getGrid()[tiles[0]->getY()-3][tiles[0]->getX()-3]);
+
+                    grid.getGrid()[tiles[1]->getY()][tiles[1]->getX()].swapTile(grid.getGrid()[tiles[1]->getY()-2][tiles[1]->getX()-2]);
+                    tiles[1] = &(grid.getGrid()[tiles[1]->getY()-2][tiles[1]->getX()-2]);
+
+                    grid.getGrid()[tiles[2]->getY()][tiles[2]->getX()].swapTile(grid.getGrid()[tiles[2]->getY()-1][tiles[2]->getX()-1]);
+                    tiles[2] = &(grid.getGrid()[tiles[2]->getY()-1][tiles[2]->getX()-1]);
+
+                    grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()].swapTile(grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()]);
+                    tiles[3] = &(grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()]);
+					
+					orientation = 2;
+                    }
     } else if (orientation == 4) {
-        for (int i = 0; i < 3; i++) {
-            if (!validTile(*tiles[i], tiles[i]->getY() + i, tiles[i]->getX() + 3 - i)) {
-                return;
-            }
-        }
-        for (int i = 0; i < 3; i++) {
-            grid.getGrid()[tiles[i]->getY()][tiles[i]->getX()].swapTile(grid.getGrid()[tiles[i]->getY() + i][tiles[i]->getX() + 3 - i]);
-            tiles[i] = &(grid.getGrid()[tiles[i]->getY() + i][tiles[i]->getX() + 3 - i]);
-        }
-		orientation = 3;
+        if (validTile(*tiles[0], tiles[0]->getY(), tiles[0]->getX()+3) &&
+    	    	validTile(*tiles[1], tiles[1]->getY()+1, tiles[1]->getX()+2) &&
+    	    	validTile(*tiles[2], tiles[2]->getY()+2, tiles[2]->getX()+1) &&
+    	    	validTile(*tiles[3], tiles[3]->getY()+3, tiles[3]->getX())) {
+
+                    cout << "caused by " << orientation << endl;
+
+                    grid.getGrid()[tiles[0]->getY()][tiles[0]->getX()].swapTile(grid.getGrid()[tiles[0]->getY()][tiles[0]->getX()+3]);
+                    tiles[0] = &(grid.getGrid()[tiles[0]->getY()][tiles[0]->getX()+3]);
+
+                    grid.getGrid()[tiles[1]->getY()][tiles[1]->getX()].swapTile(grid.getGrid()[tiles[1]->getY()+1][tiles[1]->getX()+2]);
+                    tiles[1] = &(grid.getGrid()[tiles[1]->getY()+1][tiles[1]->getX()+2]);
+
+                    grid.getGrid()[tiles[2]->getY()][tiles[2]->getX()].swapTile(grid.getGrid()[tiles[2]->getY()+2][tiles[2]->getX()+1]);
+                    tiles[2] = &(grid.getGrid()[tiles[2]->getY()+2][tiles[2]->getX()+1]);
+
+                    grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()].swapTile(grid.getGrid()[tiles[3]->getY()+3][tiles[3]->getX()]);
+                    tiles[3] = &(grid.getGrid()[tiles[3]->getY()+3][tiles[3]->getX()]);
+					
+					orientation = 3;
+                    }
     }
 }
 
