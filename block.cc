@@ -157,10 +157,7 @@ void Block::drop() {
             if (it->second == 17){
                 doneCount = true;
                 move = false;
-            } else if (it->second + downNum == 17 && !(grid.getGrid()[it->second + downNum][it->first].isOccupied())) {
-                doneCount = true;
-                break;
-            } else if (grid.getGrid()[it->second + downNum][it->first].isOccupied()) {
+            } else if (it->second + downNum > 17 || grid.getGrid()[it->second + downNum][it->first].isOccupied()) {
                 downNum--;
                 doneCount = true;
                 break;
@@ -189,6 +186,36 @@ void Block::drop() {
             } 
         }
     }
+    yPos -= downNum;
+}
+
+void Block::centreDrop() {
+    int downNum = 1; // Number of tiles to move down by
+    bool doneCount = false;
+    bool move = true;
+
+    while (!doneCount) {
+        // Check if position is available for moving
+        if (tiles[0]->getY() == 17){
+            doneCount = true;
+            move = false;
+        } else if (tiles[0]->getY() + downNum > 17 || grid.getGrid()[tiles[0]->getY() + downNum][tiles[0]->getX()].isOccupied()) {
+            downNum--;
+            doneCount = true;
+            break;
+        }
+        if (doneCount) {
+            break;
+        } else {
+            downNum++;
+        }
+    }
+    if (!move) {
+        return;
+    }
+    grid.getGrid()[tiles[0]->getY()][tiles[0]->getX()].swapTile(grid.getGrid()[tiles[0]->getY() + downNum][tiles[0]->getX()]);
+    tiles[0] = &(grid.getGrid()[tiles[0]->getY() + downNum][tiles[0]->getX()]);
+
     yPos -= downNum;
 }
 

@@ -8,6 +8,7 @@
 #include "oblock.h"
 #include "sblock.h"
 #include "zblock.h"
+#include "centreblock.h"
 #include <string>
 #include <fstream>
 using namespace std;
@@ -25,6 +26,7 @@ class Level {
     int getPoints();
     Block *forceBlock(string blockname);
     virtual Block *generateBlock() = 0;
+    virtual Block *makeCentreBlock() = 0;
     Level(string filename, Grid *grid);
 };
 

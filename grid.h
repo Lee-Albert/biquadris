@@ -9,7 +9,7 @@
 // #include "block.h"
 // other #includes
 #include "textdisplay.h"
-// #include "graphicdisplay.h"
+#include "graphicdisplay.h"
 #include "level.h"
 
 // class Level;
@@ -40,6 +40,7 @@ class Grid {
 	void init();
 	void setObserver(Observer *ob);
 	void generateNextBlock();
+	void generateCentreBlock();
 	Block *getNextBlock();
 	Block *getCurBlock();
 	bool isFull();

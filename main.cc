@@ -4,7 +4,7 @@
 #include "block.h"
 #include "info.h"
 #include "textdisplay.h"
-#include "graphicdisplay.h"
+#include "graphicsdisplay.h"
 // include all the blocks
 // include all the levels
 #include "levelZero.h"
@@ -51,6 +51,7 @@ int main(int argc, char* argv[]) {
         Level *level = new LevelFour(playerOneFile, playerOne);
         playerOne->setLevel(4, level);
     }
+    int pOneDropCount = 0;
 
     cout << "Player 2, choose your difficulty between 0 and 4: ";
     cin >> difficulty;
@@ -71,6 +72,7 @@ int main(int argc, char* argv[]) {
         playerTwo->setLevel(4, level);
     }
     cout << endl;
+    int pTwoDropCount = 0;
     
     playerOne->generateNextBlock();
     playerOne->generateNextBlock();
@@ -187,6 +189,17 @@ int main(int argc, char* argv[]) {
         int rowsCleared;
         if (playerOneTurn){
             rowsCleared = playerOne->checkFullRows();
+            if (rowsCleared > 0) {
+                pOneDropCount = 0;
+            } else {
+                pOneDropCount++;
+            }
+            if (pOneDropCount == 5) {
+                playerOne->generateCentreBlock();
+                playerOne->getCurBlock()->centreDrop();
+                playerOne->checkFullRows();
+                pOneDropCount = 0;
+            }
             playerOne->generateNextBlock();
 			if (rowsCleared >= 2) {
 				string specialcmd;
@@ -206,6 +219,17 @@ int main(int argc, char* argv[]) {
             playerOneTurn = false;
         } else {
             rowsCleared = playerTwo->checkFullRows();
+            if (rowsCleared > 0) {
+                pTwoDropCount = 0;
+            } else {
+                pTwoDropCount++;
+            }
+            if (pTwoDropCount == 5) {
+                playerTwo->generateCentreBlock();
+                playerTwo->getCurBlock()->centreDrop();
+                playerTwo->checkFullRows();
+                pTwoDropCount = 0;
+            }
             playerTwo->generateNextBlock();
 			if (rowsCleared >= 2) {
 				string specialcmd;

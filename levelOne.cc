@@ -31,3 +31,5 @@ Block *LevelOne::generateBlock(){
     
     return addBlock;
 }
+
+Block *LevelOne::makeCentreBlock(){}
