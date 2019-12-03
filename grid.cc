@@ -86,6 +86,7 @@ void Grid::generateNextBlock() {
     curBlock = nextBlock;
     nextBlock = newBlock;
     if (curBlock){
+        curBlock->initializeTiles();
         Tile **tiles = curBlock->getTiles();
         // TODO:
         // check if this is possible

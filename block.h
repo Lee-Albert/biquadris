@@ -25,6 +25,7 @@ class Block {
     std::string getName();
     virtual void clockWise() = 0;
     virtual void counterClockWise() = 0;
+    virtual void initializeTiles() = 0;
     void left();
     void right();
     void down();
