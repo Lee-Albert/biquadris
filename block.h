@@ -23,6 +23,7 @@ class Block {
     Tile **getTiles();
     void removeTile(Tile *tile);
     std::string getName();
+    bool validTile(Tile curTile, int y, int x);
     virtual void clockWise() = 0;
     virtual void counterClockWise() = 0;
     void left();

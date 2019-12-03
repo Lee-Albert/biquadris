@@ -12,9 +12,20 @@ std::string Block::getName(){
     return name;
 }
 
-bool sortbysec(const pair<int,int> &a, 
-              const pair<int,int> &b) 
-{ 
+bool Block::validTile(Tile curTile, int y, int x) {
+    // check if space is in bounds
+    if (y < 0 || x < 0) {
+        return false;
+    } else if (!(grid->getGrid()[y][x].isOccupied())) {
+        return true;
+    } else if (grid->getGrid()[y][x].curBlock == curTile.curBlock) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool sortbysec(const pair<int,int> &a, const pair<int,int> &b) { 
     return (a.second < b.second); 
 }
 
@@ -51,7 +62,8 @@ void Block::left() {
             } 
         }
     }
-    xPos--;
+    
+    --;
 }
 
 void Block::right() {
