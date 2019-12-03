@@ -11,6 +11,15 @@
 #include "block.h"
 #include "blockPrint.h"
 
-class GraphicsDisplay
+class GraphicsDisplay: public Observer {
+	Xwindow window(900,700);
+	int height = 18;
+	int width = 11;
+  public:
+	GraphicsDisplay();
+	~GraphicsDisplay();
+	void notify(Subject &whoFrom) override;
+
+};
 
 #endif
