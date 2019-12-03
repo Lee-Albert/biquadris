@@ -94,6 +94,12 @@ int main(int argc, char* argv[]) {
                 } else {
                     playerTwo->getCurBlock()->right();
                 }
+            } else if (cmd == "down"){
+                if (playerOneTurn){
+                    playerOne->getCurBlock()->down();
+                } else {
+                    playerTwo->getCurBlock()->down();
+                }
             } else if (cmd == "drop"){
                 if (playerOneTurn){
                     playerOne->getCurBlock()->drop();
@@ -104,10 +110,14 @@ int main(int argc, char* argv[]) {
             } 
         }
         if (playerOneTurn){
-            playerOne->getNextBlock();
+            int x = playerOne->rowsFull();
+            playerOne->generateNextBlock();
+            cout << x << endl;
             playerOneTurn = false;
         } else {
-            playerTwo->getNextBlock();
+            int x = playerTwo->rowsFull();
+            cout << x << endl;
+            playerTwo->generateNextBlock();
             playerOneTurn = true;
         }
         turnOver = false;

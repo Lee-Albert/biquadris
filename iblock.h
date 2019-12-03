@@ -10,6 +10,7 @@ class IBlock : public Block {
     public:
     void clockWise() override;
     void counterClockWise() override;
+    void initializeTiles() override;
     IBlock(int orientation, Grid &grid, int xPos, int yPos);
 };
 
