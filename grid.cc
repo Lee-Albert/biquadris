@@ -134,10 +134,17 @@ int Grid::rowsFull(){
 
 void Grid::deleteRows(vector <int> rows){
     for (auto row : rows){
-        cout << row << endl;
+        vector <Tile> rowToDelete = theGrid.at(row);
+        for (auto tile : rowToDelete){
+            tile.getBlock()->removeTile(tile);
+        }
+        theGrid.erase(theGrid.begin() + row);
+        td->deleteRow(row, player);
+        for (int i=0; i < row; i++){
+            for (int j=0; j < width; j++){
+                theGrid.at(i).at(j)
+            }
+        }
     }
-    // for (auto row = rows.begin(); row != rows.end(); row++){
-    //     *row;
-    // }
-    //theGrid.erase(theGrid.begin() + rowNum);
+    
 }

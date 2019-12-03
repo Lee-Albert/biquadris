@@ -24,6 +24,8 @@ class Tile : public Subject {
     void swapTile(Tile &other);
     int getX();
     int getY();
+    void incrementY();
+    Block *getBlock();
 };
 
 

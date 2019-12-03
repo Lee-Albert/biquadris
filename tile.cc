@@ -41,3 +41,11 @@ int Tile::getX() {
 int Tile::getY() {
     return y;
 }
+
+Block* Tile::getBlock(){
+    return curBlock;
+}
+
+void Tile::incrementY(){
+    y++;
+}
