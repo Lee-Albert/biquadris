@@ -36,11 +36,18 @@ int main(int argc, char* argv[]) {
         Level *level = new LevelZero(playerOneFile, playerOne);
         playerOne->setLevel(0, level);
     } else if (difficulty == 1){
-        //Level *level = new LevelOne(playerOneFile);
-        //playerOne->setLevel(0, level);
+        Level *level = new LevelOne(playerOneFile, playerOne);
+        playerOne->setLevel(1, level);
+    } else if (difficulty == 2){
+        Level *level = new LevelTwo(playerOneFile, playerOne);
+        playerOne->setLevel(2, level);
+    } else if (difficulty == 3){
+        Level *level = new LevelThree(playerOneFile, playerOne);
+        playerOne->setLevel(3, level);
+    } else if (difficulty == 4){
+        Level *level = new LevelFour(playerOneFile, playerOne);
+        playerOne->setLevel(4, level);
     }
-    // add more levels
-    cout << endl;
 
     cout << "Player 2, choose your difficulty between 0 and 4: ";
     cin >> difficulty;
