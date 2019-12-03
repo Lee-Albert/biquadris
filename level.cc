@@ -27,3 +27,5 @@ Block *Level::forceBlock(string blockname){
     }
     return addBlock;
 }
+
+Level::~Level(){}

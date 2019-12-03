@@ -41,3 +41,5 @@ Block *LevelZero::generateBlock(){
 Block *LevelZero::makeCentreBlock(){
     return nullptr;
 }
+
+LevelZero::~LevelZero() {}

@@ -35,3 +35,5 @@ Block *LevelOne::generateBlock(){
 Block *LevelOne::makeCentreBlock(){
     return nullptr;
 }
+
+LevelOne::~LevelOne() {}

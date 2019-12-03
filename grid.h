@@ -11,6 +11,11 @@
 #include "textdisplay.h"
 #include "graphicsdisplay.h"
 #include "level.h"
+#include "levelZero.h"
+#include "levelOne.h"
+#include "levelTwo.h"
+#include "levelThree.h"
+#include "levelFour.h"
 
 // class Level;
 class Block;
@@ -50,6 +55,8 @@ class Grid {
 	void deleteRows(vector <int> rows);
 	int getScore();
 	void setLevel(int nLevel, Level *levelset);
+	void levelUp(string filename);
+	void levelDown(string filename);
 	int getLevel();
 	int getPlayer();
 	vector<vector<Tile>> &getGrid();

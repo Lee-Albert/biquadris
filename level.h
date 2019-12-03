@@ -28,6 +28,7 @@ class Level {
     virtual Block *generateBlock() = 0;
     virtual Block *makeCentreBlock() = 0;
     Level(string filename, Grid *grid);
+    virtual ~Level() = 0;
 };
 
 #endif

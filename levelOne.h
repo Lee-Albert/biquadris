@@ -9,6 +9,7 @@ class LevelOne : public Level {
     Block *generateBlock() override;
     Block *makeCentreBlock() override;
     LevelOne(string fileName, Grid *grid);
+    ~LevelOne();
 };
 
 #endif
