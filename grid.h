@@ -52,6 +52,12 @@ class Grid {
 	int getPlayer();
 	vector<vector<Tile>> &getGrid();
 	Grid(int player, TextDisplay *td);
+	void setBlind(bool toSet);
+	bool getBlind();
+	void setHeavy(bool toSet);
+	bool getHeavy();
+	void setForce(bool toSet);
+	bool getForce();
 	friend std::ostream &operator<<(std::ostream &out, const Grid &g);
 };
 

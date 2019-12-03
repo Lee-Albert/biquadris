@@ -159,3 +159,27 @@ void Grid::deleteRows(vector <int> rows){
         theGrid.insert(theGrid.begin(), newRow);
     }
 }
+
+void Grid::setBlind(bool toSet) {
+	isBlind = toSet;	
+}
+
+void Grid::setHeavy(bool toSet) {
+	isHeavy = toSet;
+}
+
+void Grid::setForce(bool toSet) {
+	isForce = toSet;
+}
+
+bool Grid::getBlind() {
+	return isBlind;
+}
+
+bool Grid::getHeavy() {
+	return isHeavy;
+}
+
+bool Grid::getForce() {
+	return isForce;
+}

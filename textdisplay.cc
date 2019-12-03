@@ -44,11 +44,27 @@ std::ostream &operator<<(std::ostream &out, TextDisplay &td) {
 	out << "-----------" << spacing << "-----------" << std::endl;
 	for (int i = 0; i < td.height; ++i) {
 		for (int j = 0; j < td.width; ++j) {
-			out << td.player1.at(i).at(j);
+			if (td.grid1->getBlind()) {
+				if ((j >= 2)&&(j <= 8)&&(i >= 5)&&(i <= 14)) {
+					out << "?";
+				} else {
+					out << td.player1.at(i).at(j);
+				}
+			} else {
+				out << td.player1.at(i).at(j);
+			}
 		}
 		out << spacing;
 		for (int j = 0; j < td.width; ++j) {
-			out << td.player2[i][j];
+			 if (td.grid2->getBlind()) {
+				if ((j >= 2)&&(j <= 8)&&(i >= 5)&&(i <= 14)) {
+					out << "?";
+				} else {
+					out << td.player2.at(i).at(j);
+				}
+			} else {
+				out << td.player2.at(i).at(j);
+			}
 		}
 		out << std::endl;
 	}
