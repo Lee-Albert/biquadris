@@ -27,7 +27,8 @@ class GraphicsDisplay: public Observer {
 	void setGrids(Grid *newGrid1, Grid *newGrid2);
 	void getNextBlocks(Grid *grid1, Grid *grid2);
 	void notify(Subject &whoFrom) override;
-
-};
-
+	void printSpecial();
+	void printSpecialPrompt();
+	void printPlayer(int player);
+}; 
 #endif

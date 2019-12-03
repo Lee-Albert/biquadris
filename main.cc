@@ -54,10 +54,11 @@ int main(int argc, char* argv[]) {
     }
 
     TextDisplay *display = new TextDisplay();
+	GraphicsDisplay *window = nullptr;
     Grid *playerOne;
     Grid *playerTwo;
     if (!textOnly) {
-	    GraphicsDisplay *window = new GraphicsDisplay();
+	    window = new GraphicsDisplay();
         playerOne = new Grid(1, display, window);
         playerTwo = new Grid(2, display, window);
         window->setGrids(playerOne, playerTwo);
@@ -112,9 +113,7 @@ int main(int argc, char* argv[]) {
     }
     cout << endl;
     int pTwoDropCount = 0;
-   	cout<<"hi"<<endl; 
     playerOne->generateNextBlock();
-   	cout<<"hi2"<<endl; 
     playerOne->generateNextBlock();
     playerTwo->generateNextBlock();
     playerTwo->generateNextBlock();
@@ -123,8 +122,16 @@ int main(int argc, char* argv[]) {
     while (true){
         while (!turnOver){
             if (playerOneTurn){
+				if(window) {
+					// window->printSpecial();
+					window->printPlayer(1);
+				}
                 cout << "Player One's Turn" << endl;
             } else {
+				if(window) {
+					// window->printSpecial();
+					window->printPlayer(2);
+				}
                 cout << "Player Two's Turn" << endl;
             }
 
@@ -225,36 +232,40 @@ int main(int argc, char* argv[]) {
                     }
 				}
 			} else if (cmd == "levelup") {
-                if (playerOneTurn) {
-                    if (playerOne->getLevel() < 4) {
-                        delete levelP1;
-                        playerOne->levelUp(playerOneFile);
-                    }
-                } else {
-                    if (playerTwo->getLevel() < 4) {
-                        delete levelP2;
-                        playerTwo->levelUp(playerTwoFile);
-                    }
+              if (playerOneTurn) {
+                if (playerOne->getLevel() < 4) {
+                  delete levelP1;
+                  playerOne->levelUp(playerOneFile);
                 }
-                continue;
-            } else if (cmd == "leveldown") {
-                if (playerOneTurn) {
-                    if (playerOne->getLevel() > 0) {
-                        delete levelP1;
-                        playerOne->levelDown(playerOneFile);
-                    }
-                } else {
-                    if (playerTwo->getLevel() > 0) {
+              } else {
+                if (playerTwo->getLevel() < 4) {
+                  delete levelP2;
+                  playerTwo->levelUp(playerTwoFile);
+                }
+              }
+              continue;
+       } else if (cmd == "leveldown") {
+              if (playerOneTurn) {
+                if (playerOne->getLevel() > 0) {
+                  delete levelP1;
+                  playerOne->levelDown(playerOneFile);
+                }
+              } else {
+                if (playerTwo->getLevel() > 0) {
                         delete levelP2;
                         playerTwo->levelDown(playerTwoFile);
                     }
                 }
                 continue;
             }
+				}	
+			}
         }
         int rowsCleared;
         if (playerOneTurn){
             rowsCleared = playerOne->checkFullRows();
+			// testing
+			// rowsCleared = 4;
             if (playerOne->getLevel() == 4){
                 if (rowsCleared > 0) {
                     pOneDropCount = 0;
@@ -272,15 +283,22 @@ int main(int argc, char* argv[]) {
 			if (rowsCleared >= 2) {
 				string specialcmd;
 				cout << "Choose a special action: blind, heavy, or force" << endl;
+				if (window) {
+					window->printSpecial();
+				}	
 				cin >> cmd;
 				if (cmd == "blind") {
 					playerTwo->setBlind(true);
+					// to update graphics display
 					playerOne->getCurBlock()->getTiles()[0]->notifyObservers();	
 				} else if (cmd == "heavy") {
 					playerTwo->setHeavy(true);
 				} else {
 					playerTwo->setForce(true);
 					cout << "Which block would you like to force. Defaults to Z block for invalid input." << endl;
+					if (window) {
+						window->printSpecialPrompt();
+					}
                     cin >> cmd;
                     playerTwo->replaceCurBlock(cmd);
 				}
@@ -305,6 +323,9 @@ int main(int argc, char* argv[]) {
 			if (rowsCleared >= 2) {
 				string specialcmd;
 				cout << "Choose a special action: blind, heavy, or force" << endl;
+				if (window) {
+					window->printSpecial();
+				}
 				cin >> cmd;
 				if (cmd == "blind") {
 					playerOne->setBlind(true);
@@ -312,7 +333,10 @@ int main(int argc, char* argv[]) {
 					playerOne->setHeavy(true);
 				} else {
 					playerOne->setForce(true);
-					cout << "Which block would you like to force. Defaults to Z block for invalid input." << endl;
+					cout << "Which block would you like to force? Defaults to Z block for invalid input." << endl;
+					if (window) {
+						window->printSpecialPrompt();
+					}
                     cin >> cmd;
                     playerOne->replaceCurBlock(cmd);
 				}
