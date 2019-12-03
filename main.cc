@@ -247,6 +247,7 @@ int main(int argc, char* argv[]) {
 				cin >> cmd;
 				if (cmd == "blind") {
 					playerTwo->setBlind(true);
+					playerOne->getCurBlock()->getTiles()[0]->notifyObservers();	
 				} else if (cmd == "heavy") {
 					playerTwo->setHeavy(true);
 				} else {
