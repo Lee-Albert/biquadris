@@ -8,7 +8,7 @@ Tile **Block::getTiles(){
     return tiles;
 }
 
-string Block::getName(){
+std::string Block::getName(){
     return name;
 }
 

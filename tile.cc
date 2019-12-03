@@ -21,6 +21,12 @@ void Tile::setCurblock(Block *newCurblock){
     this->notifyObservers();
 }
 
+void Tile::updateTile(bool newFilled, Block *newCurblock){
+    filled = newFilled;
+    curBlock = newCurblock;
+    this->notifyObservers();
+}
+
 Info Tile::getInfo() {
 	Info tileInfo;
 	tileInfo.x = x;
