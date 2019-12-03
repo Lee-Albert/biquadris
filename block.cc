@@ -63,7 +63,7 @@ void Block::left() {
         }
     }
     
-    --;
+    xPos--;
 }
 
 void Block::right() {
