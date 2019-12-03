@@ -130,9 +130,10 @@ void Grid::checkFullRows(){
         }
     }
     deleteRows(fullRows);
-    int newPoints = counter + level->getPoints();
-    score += newPoints * newPoints;
-    
+    if (counter > 0){
+        int newPoints = counter + level->getPoints();
+        score += newPoints * newPoints;
+    }
 }
 
 void Grid::deleteRows(vector <int> rows){

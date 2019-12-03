@@ -8,7 +8,10 @@
 // include all the blocks
 // include all the levels
 #include "levelZero.h"
-// #include "levelOne.h"
+#include "levelOne.h"
+#include "levelTwo.h"
+#include "levelThree.h"
+#include "levelFour.h"
 #include <iostream>
 #include <string>
 using namespace std;
@@ -55,10 +58,18 @@ int main(int argc, char* argv[]) {
         Level *level = new LevelZero(playerTwoFile, playerTwo);
         playerTwo->setLevel(0, level);
     } else if (difficulty == 1){
-        //Level *level = new LevelOne(playerTwoFile);
-        //playerTwo->setLevel(0, level);
+        Level *level = new LevelOne(playerTwoFile, playerTwo);
+        playerTwo->setLevel(1, level);
+    } else if (difficulty == 2){
+        Level *level = new LevelTwo(playerTwoFile, playerTwo);
+        playerTwo->setLevel(2, level);
+    } else if (difficulty == 3){
+        Level *level = new LevelThree(playerTwoFile, playerTwo);
+        playerTwo->setLevel(3, level);
+    } else if (difficulty == 4){
+        Level *level = new LevelFour(playerTwoFile, playerTwo);
+        playerTwo->setLevel(4, level);
     }
-    // add more levels
     cout << endl;
     
     playerOne->generateNextBlock();
@@ -83,14 +94,26 @@ int main(int argc, char* argv[]) {
             if (cmd == "left") {
                 if (playerOneTurn){
                     playerOne->getCurBlock()->left();
+                    if (playerOne->getLevel() >= 3){
+                        playerOne->getCurBlock()->down();
+                    }
                 } else {
                     playerTwo->getCurBlock()->left();
+                    if (playerTwo->getLevel() >= 3){
+                        playerTwo->getCurBlock()->down();
+                    }
                 }
             } else if (cmd == "right"){
                 if (playerOneTurn){
                     playerOne->getCurBlock()->right();
+                    if (playerOne->getLevel() >= 3){
+                        playerOne->getCurBlock()->down();
+                    }
                 } else {
                     playerTwo->getCurBlock()->right();
+                    if (playerTwo->getLevel() >= 3){
+                        playerTwo->getCurBlock()->down();
+                    }
                 }
             } else if (cmd == "down"){
                 if (playerOneTurn){
@@ -108,14 +131,26 @@ int main(int argc, char* argv[]) {
             } else if (cmd == "clockwise") {
 				if (playerOneTurn) {
 					playerOne->getCurBlock()->clockWise();
+                    if (playerOne->getLevel() >= 3){
+                        playerOne->getCurBlock()->down();
+                    }
 				} else {
 					playerTwo->getCurBlock()->clockWise();
+                    if (playerTwo->getLevel() >= 3){
+                        playerTwo->getCurBlock()->down();
+                    }
 				}
 			} else if (cmd == "counterclockwise") {
 				if (playerOneTurn) {
 					playerOne->getCurBlock()->counterClockWise();
+                    if (playerOne->getLevel() >= 3){
+                        playerOne->getCurBlock()->down();
+                    }
 				} else {
 					playerTwo->getCurBlock()->counterClockWise();
+                    if (playerTwo->getLevel() >= 3){
+                        playerTwo->getCurBlock()->down();
+                    }
 				}	
 			} 
         }

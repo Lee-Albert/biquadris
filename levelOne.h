@@ -2,6 +2,7 @@
 #define LEVELONE_H
 #include <string>
 #include "block.h"
+#include "level.h"
 
 class LevelOne : public Level {
     public:
