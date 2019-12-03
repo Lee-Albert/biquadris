@@ -185,6 +185,7 @@ int main(int argc, char* argv[]) {
 					playerTwoSequence.pop();
 				}
 			}
+
             if (cmd == "left") {
                 if (playerOneTurn){
                     playerOne->getCurBlock()->left();
@@ -277,60 +278,61 @@ int main(int argc, char* argv[]) {
                     }
 				}	
 			} else if (cmd == "I"){
-          restartGame(0);
-      } else if (cmd == "J"){
-          restartGame(0);
-      } else if (cmd == "L"){
-          restartGame(0);
-      } else if (cmd == "T"){
-          restartGame(0);
-      } else if (cmd == "O"){
-          restartGame(0);
-      } else if (cmd == "S"){
-          restartGame(0);
-      } else if (cmd == "Z"){
-          restartGame(0);
+                restartGame(0);
+            } else if (cmd == "J"){
+                restartGame(0);
+            } else if (cmd == "L"){
+                restartGame(0);
+            } else if (cmd == "T"){
+                restartGame(0);
+            } else if (cmd == "O"){
+                restartGame(0);
+            } else if (cmd == "S"){
+                restartGame(0);
+            } else if (cmd == "Z"){
+                restartGame(0);
 			} else if (cmd == "levelup") {
-          if (playerOneTurn) {
-              if (playerOne->getLevel() < 4) {
-                  delete levelP1;
-                  playerOne->levelUp(playerOneFile, seed);
-              }
-          } else {
-              if (playerTwo->getLevel() < 4) {
-                  delete levelP2;
-                  playerTwo->levelUp(playerTwoFile, seed);
-              }
-          }
-          continue;
-      } else if (cmd == "leveldown") {
-          if (playerOneTurn) {
-              if (playerOne->getLevel() > 0) {
-                  delete levelP1;
-                  playerOne->levelDown(playerOneFile, seed);
-              }
-          } else {
-              if (playerTwo->getLevel() > 0) {
-                  delete levelP2;
-                  playerTwo->levelDown(playerTwoFile, seed);
-              }
-          }
-          continue;	
+                if (playerOneTurn) {
+                    if (playerOne->getLevel() < 4) {
+                        delete levelP1;
+                        playerOne->levelUp(playerOneFile, seed);
+                    }
+                } else {
+                    if (playerTwo->getLevel() < 4) {
+                        delete levelP2;
+                        playerTwo->levelUp(playerTwoFile, seed);
+                    }
+                }
+                continue;
+            } else if (cmd == "leveldown") {
+                if (playerOneTurn) {
+                    if (playerOne->getLevel() > 0) {
+                        delete levelP1;
+                        playerOne->levelDown(playerOneFile, seed);
+                    }
+                } else {
+                    if (playerTwo->getLevel() > 0) {
+                        delete levelP2;
+                        playerTwo->levelDown(playerTwoFile, seed);
+                    }
+                }
+                continue;	
 			} else if (cmd == "sequence") {
-					string file;
-					cin >> file;
-					ifstream seq(file);
-					string queuecmd;
-					if (playerOneTurn) {
-						while (seq >> queuecmd) {	
-							playerOneSequence.push(queuecmd);	
-						}			
-					} else {
-						while (seq >>queuecmd) {
-							playerTwoSequence.push(queuecmd);
-						}
-					}
-			}
+                string file;
+                cin >> file;
+                ifstream seq(file);
+                string queuecmd;
+                if (playerOneTurn) {
+                    while (seq >> queuecmd) {	
+                        playerOneSequence.push(queuecmd);	
+                    }			
+                } else {
+                    while (seq >>queuecmd) {
+                        playerTwoSequence.push(queuecmd);
+                    }
+                }   
+            }
+        }
         int rowsCleared;
         if (playerOneTurn){
             rowsCleared = playerOne->checkFullRows();
@@ -401,8 +403,8 @@ int main(int argc, char* argv[]) {
             }
             gameOver = playerTwo->generateNextBlock();
             if (gameOver){
-                        restartGame(1);
-                    }
+                restartGame(1);
+            }
 			if (rowsCleared >= 2) {
 				string specialcmd;
 				cout << "Choose a special action: blind, heavy, or force" << endl;
