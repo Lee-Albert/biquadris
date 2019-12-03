@@ -40,6 +40,7 @@ class Grid {
 	void init();
 	void setObserver(Observer *ob);
 	void generateNextBlock();
+	void generateCentreBlock();
 	Block *getNextBlock();
 	Block *getCurBlock();
 	bool isFull();

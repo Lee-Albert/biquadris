@@ -30,3 +30,8 @@ Block *LevelFour::generateBlock(){
     }  
     return addBlock;
 }
+
+Block *LevelFour::makeCentreBlock() {
+    Block *centreBlock = new CentreBlock(1, *grid, 5, 3);
+    return centreBlock;
+}
