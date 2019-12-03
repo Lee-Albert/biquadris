@@ -136,15 +136,21 @@ void Grid::deleteRows(vector <int> rows){
     for (auto row : rows){
         vector <Tile> rowToDelete = theGrid.at(row);
         for (auto tile : rowToDelete){
-            tile.getBlock()->removeTile(tile);
+            tile.getBlock()->removeTile(&tile);
         }
         theGrid.erase(theGrid.begin() + row);
         td->deleteRow(row, player);
+        // increase all y position of affected rows by 1
         for (int i=0; i < row; i++){
             for (int j=0; j < width; j++){
-                theGrid.at(i).at(j)
+                theGrid.at(i).at(j).incrementY();
             }
         }
+        // add new row at top
+        vector<Tile> newRow;
+        for (int i=0; i < width; i++){
+            newRow.emplace_back(Tile(i, 0, this)); 
+        }
+        theGrid.insert(theGrid.begin(), newRow);
     }
-    
 }
