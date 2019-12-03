@@ -4,7 +4,7 @@
 #include "block.h"
 #include "info.h"
 #include "textdisplay.h"
-#include "graphicsdisplay.h"
+// #include "graphicsdisplay.h"
 // include all the blocks
 // include all the levels
 #include "levelZero.h"
@@ -24,6 +24,7 @@ int main(int argc, char* argv[]) {
     bool turnOver = false;
     
     TextDisplay *display = new TextDisplay();
+	// GraphicsDisplay *window = new GraphicsDisplay();
     Grid *playerOne = new Grid(1, display);
     Grid *playerTwo = new Grid(2, display);
     display->setGrids(playerOne, playerTwo);
