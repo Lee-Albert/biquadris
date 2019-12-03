@@ -110,9 +110,11 @@ int main(int argc, char* argv[]) {
             } 
         }
         if (playerOneTurn){
+            playerOne->rowsFull();
             playerOne->generateNextBlock();
             playerOneTurn = false;
         } else {
+            playerTwo->rowsFull();
             playerTwo->generateNextBlock();
             playerOneTurn = true;
         }
