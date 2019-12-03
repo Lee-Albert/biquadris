@@ -24,7 +24,7 @@ class Grid {
 	int player;
 	vector<vector<Tile>> theGrid;
 	TextDisplay *td;
-	//Observer *ob;
+	Observer *ob;
 	int height;
 	int width;
 	Level *level;

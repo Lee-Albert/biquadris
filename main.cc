@@ -24,6 +24,7 @@ int main(int argc, char* argv[]) {
     bool turnOver = false;
     
     TextDisplay *display = new TextDisplay();
+	GraphicsDisplay *window = new GraphicsDisplay();
     Grid *playerOne = new Grid(1, display);
     Grid *playerTwo = new Grid(2, display);
     display->setGrids(playerOne, playerTwo);
