@@ -245,7 +245,19 @@ int main(int argc, char* argv[]) {
                         playerTwo->getCurBlock()->down();
                     }
 				}	
-			} else if (cmd == "restart"){
+			} else if (cmd == "I"){
+                restartGame(0);
+            } else if (cmd == "J"){
+                restartGame(0);
+            } else if (cmd == "L"){
+                restartGame(0);
+            } else if (cmd == "T"){
+                restartGame(0);
+            } else if (cmd == "O"){
+                restartGame(0);
+            } else if (cmd == "S"){
+                restartGame(0);
+            } else if (cmd == "Z"){
                 restartGame(0);
             } 
         }
