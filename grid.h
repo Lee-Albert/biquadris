@@ -9,7 +9,7 @@
 // #include "block.h"
 // other #includes
 #include "textdisplay.h"
-// #include "graphicdisplay.h"
+#include "graphicdisplay.h"
 #include "level.h"
 
 // class Level;

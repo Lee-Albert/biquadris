@@ -4,7 +4,7 @@
 #include "block.h"
 #include "info.h"
 #include "textdisplay.h"
-#include "graphicdisplay.h"
+#include "graphicsdisplay.h"
 // include all the blocks
 // include all the levels
 #include "levelZero.h"
