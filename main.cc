@@ -232,34 +232,32 @@ int main(int argc, char* argv[]) {
                     }
 				}
 			} else if (cmd == "levelup") {
-              if (playerOneTurn) {
-                if (playerOne->getLevel() < 4) {
-                  delete levelP1;
-                  playerOne->levelUp(playerOneFile);
+                if (playerOneTurn) {
+                    if (playerOne->getLevel() < 4) {
+                        delete levelP1;
+                        playerOne->levelUp(playerOneFile);
+                    }
+                } else {
+                    if (playerTwo->getLevel() < 4) {
+                        delete levelP2;
+                        playerTwo->levelUp(playerTwoFile);
+                    }
                 }
-              } else {
-                if (playerTwo->getLevel() < 4) {
-                  delete levelP2;
-                  playerTwo->levelUp(playerTwoFile);
-                }
-              }
-              continue;
-       } else if (cmd == "leveldown") {
-              if (playerOneTurn) {
-                if (playerOne->getLevel() > 0) {
-                  delete levelP1;
-                  playerOne->levelDown(playerOneFile);
-                }
-              } else {
-                if (playerTwo->getLevel() > 0) {
+                continue;
+            } else if (cmd == "leveldown") {
+                if (playerOneTurn) {
+                    if (playerOne->getLevel() > 0) {
+                        delete levelP1;
+                        playerOne->levelDown(playerOneFile);
+                    }
+                } else {
+                    if (playerTwo->getLevel() > 0) {
                         delete levelP2;
                         playerTwo->levelDown(playerTwoFile);
                     }
                 }
                 continue;
             }
-				}	
-			}
         }
         int rowsCleared;
         if (playerOneTurn){
