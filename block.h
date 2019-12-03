@@ -13,6 +13,7 @@ class Block {
     protected:
     std::string name;
     int orientation;
+	int colour;
     Grid &grid;
     //vector <Tile *> tiles(4, nullptr);
     Tile *tiles[4];
@@ -23,6 +24,7 @@ class Block {
     Tile **getTiles();
     void removeTile(Tile *tile);
     std::string getName();
+	int getColour();
     bool validTile(Tile curTile, int y, int x);
     virtual void clockWise() = 0;
     virtual void counterClockWise() = 0;

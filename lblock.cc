@@ -167,6 +167,7 @@ void LBlock::counterClockWise(){
 LBlock::LBlock(int orientation, Grid &grid, int xPos, int yPos): 
 Block(orientation, grid, xPos, yPos){
     name = "L";
+	colour = 8;
 }
 
 void LBlock::initializeTiles() {

@@ -175,6 +175,7 @@ void JBlock::counterClockWise(){
 JBlock::JBlock(int orientation, Grid &grid, int xPos, int yPos): 
 Block(orientation, grid, xPos, yPos){
     name = "J";
+	colour = 4;
 }
 
 void JBlock::initializeTiles() {

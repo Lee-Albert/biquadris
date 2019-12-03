@@ -4,6 +4,7 @@ using namespace std;
 
 Grid::~Grid() {
 	delete td;
+    delete gd;
 	// delete ob;
 }
 
@@ -21,7 +22,8 @@ void Grid::init() {
         for (int col=0; col < width; col++){
             Tile &t = theGrid.at(row).at(col);
             t.attach(td); // Attach textDisplay to each cell
-			// t.attach(ob); // attach graphicsdisplay to each cell
+			t.attach(gd);
+            //t.attach(ob); // attach graphicsdisplay to each cell
             /*
             if (row > 0){
                 t.attach(&theGrid.at(row-1).at(col));
@@ -83,10 +85,14 @@ int Grid::getPlayer() {
 }
 
 void Grid::generateNextBlock() {
+	cout << "genblock1"<<endl;
     Block *newBlock= level->generateBlock();
+	cout << "genblock2"<<endl;
     curBlock = nextBlock;
     nextBlock = newBlock;
     if (curBlock){
+		
+	cout << "genblock3"<<endl;
         curBlock->initializeTiles();
         Tile **tiles = curBlock->getTiles();
         // TODO:
@@ -96,6 +102,7 @@ void Grid::generateNextBlock() {
             tiles[i]->updateTile(true, curBlock);
         }
     }
+	cout << "genblock4"<<endl;
 }
 
 void Grid::generateCentreBlock() {
@@ -113,8 +120,8 @@ vector<vector<Tile>> &Grid::getGrid(){
     return theGrid;
 };
 
-// Grid::Grid(int player, TextDisplay *td, GraphicsDisplay *ob): player{player}, td{td}, ob{ob}, height{18}, width{11}, score{0}, isBlind{false}, isHeavy{false}, isForce{false}{}
-Grid::Grid(int player, TextDisplay *td): player{player}, td{td}, height{18}, width{11}, score{0}, isBlind{false}, isHeavy{false}, isForce{false}{}
+Grid::Grid(int player, TextDisplay *td, GraphicsDisplay *gd): player{player}, td{td}, gd{gd}, height{18}, width{11}, score{0}, isBlind{false}, isHeavy{false}, isForce{false}{}
+// Grid::Grid(int player, TextDisplay *td): player{player}, td{td}, height{18}, width{11}, score{0}, isBlind{false}, isHeavy{false}, isForce{false}{}
 
 std::ostream &operator<<(std::ostream &out, const Grid &g) {
 	out << *(g.td);

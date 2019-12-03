@@ -25,8 +25,8 @@ int main(int argc, char* argv[]) {
     
     TextDisplay *display = new TextDisplay();
 	GraphicsDisplay *window = new GraphicsDisplay();
-    Grid *playerOne = new Grid(1, display);
-    Grid *playerTwo = new Grid(2, display);
+    Grid *playerOne = new Grid(1, display, window);
+    Grid *playerTwo = new Grid(2, display, window);
     display->setGrids(playerOne, playerTwo);
 	window->setGrids(playerOne, playerTwo);
     playerOne->init();
@@ -75,8 +75,9 @@ int main(int argc, char* argv[]) {
     }
     cout << endl;
     int pTwoDropCount = 0;
-    
+   	cout<<"hi"<<endl; 
     playerOne->generateNextBlock();
+   	cout<<"hi2"<<endl; 
     playerOne->generateNextBlock();
     playerTwo->generateNextBlock();
     playerTwo->generateNextBlock();

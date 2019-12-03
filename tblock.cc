@@ -173,6 +173,7 @@ void TBlock::counterClockWise(){
 TBlock::TBlock(int orientation, Grid &grid, int xPos, int yPos): 
 Block(orientation, grid, xPos, yPos){
     name = "T";
+	colour = 7;
 }
     
 void TBlock::initializeTiles() {

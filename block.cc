@@ -12,6 +12,10 @@ std::string Block::getName(){
     return name;
 }
 
+int Block::getColour() {
+	return colour;
+}
+
 bool Block::validTile(Tile curTile, int y, int x) {
     // check if space is in bounds
     if (y < 0 || x < 0) {

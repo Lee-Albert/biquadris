@@ -173,6 +173,7 @@ void SBlock::counterClockWise(){
 SBlock::SBlock(int orientation, Grid &grid, int xPos, int yPos): 
 Block(orientation, grid, xPos, yPos){
     name = "S";
+	colour = 3;
 }
 
 void SBlock::initializeTiles() {
