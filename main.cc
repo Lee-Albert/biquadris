@@ -94,6 +94,12 @@ int main(int argc, char* argv[]) {
                 } else {
                     playerTwo->getCurBlock()->right();
                 }
+            } else if (cmd == "down"){
+                if (playerOneTurn){
+                    playerOne->getCurBlock()->down();
+                } else {
+                    playerTwo->getCurBlock()->down();
+                }
             } else if (cmd == "drop"){
                 if (playerOneTurn){
                     playerOne->getCurBlock()->drop();
@@ -104,10 +110,10 @@ int main(int argc, char* argv[]) {
             } 
         }
         if (playerOneTurn){
-            playerOne->getNextBlock();
+            playerOne->generateNextBlock();
             playerOneTurn = false;
         } else {
-            playerTwo->getNextBlock();
+            playerTwo->generateNextBlock();
             playerOneTurn = true;
         }
         turnOver = false;
