@@ -4,7 +4,7 @@
 #include "block.h"
 #include "info.h"
 #include "textdisplay.h"
-#include "graphicdisplay.h"
+#include "graphicsdisplay.h"
 // include all the blocks
 // include all the levels
 #include "levelZero.h"
@@ -126,8 +126,12 @@ int main(int argc, char* argv[]) {
             } else if (cmd == "drop"){
                 if (playerOneTurn){
                     playerOne->getCurBlock()->drop();
+					// make player unblind
+					playerOne->setBlind(false);
                 } else {
                     playerTwo->getCurBlock()->drop();
+					// make player unblind
+					playerTwo->setBlind(false);
                 }
                 turnOver = true;
             } else if (cmd == "clockwise") {
@@ -171,6 +175,19 @@ int main(int argc, char* argv[]) {
                 pOneDropCount = 0;
             }
             playerOne->generateNextBlock();
+			if (rowsCleared >= 2) {
+				string specialcmd;
+				cout << "Choose a special action: blind, heavy, or force" << endl;
+				cin >> cmd;
+				if (cmd == "blind") {
+					playerTwo->setBlind(true);
+				} else if (cmd == "heavy") {
+					playerTwo->setHeavy(true);
+				} else {
+					playerTwo->setForce(true);
+					// ask for block choice
+				}
+			}
             playerOneTurn = false;
         } else {
             rowsCleared = playerTwo->checkFullRows();
@@ -186,6 +203,19 @@ int main(int argc, char* argv[]) {
                 pTwoDropCount = 0;
             }
             playerTwo->generateNextBlock();
+			if (rowsCleared >= 2) {
+				string specialcmd;
+				cout << "Choose a special action: blind, heavy, or force" << endl;
+				cin >> cmd;
+				if (cmd == "blind") {
+					playerOne->setBlind(true);
+				} else if (cmd == "heavy") {
+					playerOne->setHeavy(true);
+				} else {
+					playerOne->setForce(true);
+					// ask for blockchoice
+				}
+			}
             playerOneTurn = true;
         }
         turnOver = false;
