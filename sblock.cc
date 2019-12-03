@@ -181,3 +181,5 @@ void SBlock::initializeTiles() {
     tiles[2] = &(grid.getGrid().at(2).at(1));
     tiles[3] = &(grid.getGrid().at(2).at(2));
 }
+
+SBlock::~SBlock(){}

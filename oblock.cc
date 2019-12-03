@@ -21,3 +21,5 @@ void OBlock::initializeTiles() {
     tiles[2] = &(grid.getGrid().at(3).at(0));
     tiles[3] = &(grid.getGrid().at(3).at(1));
 }
+
+OBlock::~OBlock(){}

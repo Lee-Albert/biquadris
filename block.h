@@ -32,7 +32,7 @@ class Block {
     void down();
     void drop();
     Block(int orientation, Grid &grid, int xPos, int yPos);
-    ~Block();
+    virtual ~Block();
 };
 
 #endif

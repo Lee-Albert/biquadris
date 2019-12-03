@@ -52,6 +52,7 @@ class Grid {
 	int getPlayer();
 	vector<vector<Tile>> &getGrid();
 	Grid(int player, TextDisplay *td);
+	void replaceCurBlock(string blockname);
 	void setBlind(bool toSet);
 	bool getBlind();
 	void setHeavy(bool toSet);

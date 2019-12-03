@@ -23,6 +23,7 @@ class Level {
     int points;
     public:
     int getPoints();
+    Block *forceBlock(string blockname);
     virtual Block *generateBlock() = 0;
     Level(string filename, Grid *grid);
 };

@@ -205,5 +205,4 @@ void Block::removeTile(Tile *tile){
 
 Block::Block(int orientation, Grid &grid, int xPos, int yPos): orientation{orientation}, grid{grid}, xPos{xPos}, yPos{yPos}{};
 
-Block::~Block() {
-}
+Block::~Block() {}

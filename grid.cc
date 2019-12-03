@@ -82,7 +82,7 @@ int Grid::getPlayer() {
 }
 
 void Grid::generateNextBlock() {
-    Block *newBlock= level->generateBlock();
+    Block *newBlock = level->generateBlock();
     curBlock = nextBlock;
     nextBlock = newBlock;
     if (curBlock){
@@ -94,6 +94,20 @@ void Grid::generateNextBlock() {
         for (int i=0; i < 4; i++){
             tiles[i]->updateTile(true, curBlock);
         }
+    }
+}
+
+void Grid::replaceCurBlock(string blockname){
+    delete curBlock;
+    Block *newBlock = level->forceBlock(blockname);
+    curBlock = newBlock;
+    curBlock->initializeTiles();
+    Tile **tiles = curBlock->getTiles();
+    // TODO:
+    // check if this is possible
+    // if not then game over
+    for (int i=0; i < 4; i++){
+        tiles[i]->updateTile(true, curBlock);
     }
 }
 

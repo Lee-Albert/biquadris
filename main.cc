@@ -198,7 +198,9 @@ int main(int argc, char* argv[]) {
 					playerTwo->setHeavy(true);
 				} else {
 					playerTwo->setForce(true);
-					// ask for block choice
+					cout << "Which block would you like to force. Defaults to Z block for invalid input." << endl;
+                    cin >> cmd;
+                    playerTwo->replaceCurBlock(cmd);
 				}
 			}
             playerOneTurn = false;
@@ -215,7 +217,9 @@ int main(int argc, char* argv[]) {
 					playerOne->setHeavy(true);
 				} else {
 					playerOne->setForce(true);
-					// ask for blockchoice
+					cout << "Which block would you like to force. Defaults to Z block for invalid input." << endl;
+                    cin >> cmd;
+                    playerOne->replaceCurBlock(cmd);
 				}
 			}
             playerOneTurn = true;

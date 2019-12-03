@@ -11,6 +11,7 @@ class JBlock : public Block {
     void counterClockWise() override;
     void initializeTiles() override;
     JBlock(int orientation, Grid &grid, int xPos, int yPos);
+    ~JBlock();
 };
 
 #endif

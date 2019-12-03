@@ -12,6 +12,7 @@ class OBlock : public Block {
     void counterClockWise() override;
     void initializeTiles() override;
     OBlock(int orientation, Grid &grid, int xPos, int yPos);
+    ~OBlock();
 };
 
 #endif

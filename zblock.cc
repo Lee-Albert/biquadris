@@ -185,3 +185,5 @@ void ZBlock::initializeTiles() {
     tiles[2] = &(grid.getGrid().at(3).at(1));
     tiles[3] = &(grid.getGrid().at(3).at(2));
 }
+
+ZBlock::~ZBlock(){}

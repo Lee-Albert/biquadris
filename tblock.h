@@ -12,6 +12,7 @@ class TBlock : public Block {
     void counterClockWise() override;
     void initializeTiles() override;
     TBlock(int orientation, Grid &grid, int xPos, int yPos);
+    ~TBlock();
 };
 
 #endif

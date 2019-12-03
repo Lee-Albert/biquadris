@@ -175,3 +175,5 @@ void LBlock::initializeTiles() {
     tiles[2] = &(grid.getGrid().at(3).at(2));
     tiles[3] = &(grid.getGrid().at(2).at(2));
 }
+
+LBlock::~LBlock(){}
