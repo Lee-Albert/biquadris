@@ -18,7 +18,7 @@ bool Block::validTile(Tile curTile, int y, int x) {
         return false;
     } else if (!(grid->getGrid()[y][x].isOccupied())) {
         return true;
-    } else if (grid->getGrid()[y][x].curBlock == curTile.curBlock) {
+    } else if (grid->getGrid()[y][x].getBlock() == curTile.curBlock) {
         return true;
     } else {
         return false;
