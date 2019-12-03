@@ -16,7 +16,7 @@ Block *LevelZero::generateBlock(){
     string blockname;
     Block *addBlock;
     if (!(filestream >> blockname)){
-        filestream.clear();
+        filestream.close();
         filestream.open(filename);
         filestream >> blockname;
     }

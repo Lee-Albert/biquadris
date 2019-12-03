@@ -112,7 +112,7 @@ std::ostream &operator<<(std::ostream &out, const Grid &g) {
 	return out;
 }
 
-void Grid::checkFullRows(){
+int Grid::checkFullRows(){
     int counter = 0;
     bool full;
     vector <int> fullRows;
@@ -134,6 +134,7 @@ void Grid::checkFullRows(){
         int newPoints = counter + level->getPoints();
         score += newPoints * newPoints;
     }
+    return counter;
 }
 
 void Grid::deleteRows(vector <int> rows){

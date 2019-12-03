@@ -154,12 +154,13 @@ int main(int argc, char* argv[]) {
 				}	
 			} 
         }
+        int rowsCleared;
         if (playerOneTurn){
-            playerOne->checkFullRows();
+            rowsCleared = playerOne->checkFullRows();
             playerOne->generateNextBlock();
             playerOneTurn = false;
         } else {
-            playerTwo->checkFullRows();
+            rowsCleared = playerTwo->checkFullRows();
             playerTwo->generateNextBlock();
             playerOneTurn = true;
         }
