@@ -15,14 +15,13 @@ bool Block::validTile(Tile curTile, int y, int x) {
     // check if space is in bounds
     if (y < 0 || x < 0) {
         return false;
-    } else if (!grid.theGrid[y][x].isOccupied()) {
+    } else if (!(grid->getGrid()[y][x].isOccupied())) {
         return true;
-    } else if (grid.theGrid[y][x].curBlock == curTile.curBlock) {
+    } else if (grid->getGrid()[y][x].curBlock == curTile.curBlock) {
         return true;
     } else {
         return false;
     }
-
 }
 
 void Block::left() {
@@ -59,7 +58,8 @@ void Block::left() {
             } 
         }
     }
-    xPos--;
+    
+    --;
 }
 
 void Block::right() {
@@ -90,6 +90,7 @@ void Block::right() {
         for (int i = 0; i < 4; i++) {
             if (tiles[i]->getY() == it->first && tiles[i]->getX() == it->second) {
                 tiles[i] = &(grid.getGrid()[it->first][it->second + 1]);
+                break;
             } 
         }
     }
