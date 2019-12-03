@@ -97,9 +97,15 @@ int main(int argc, char* argv[]) {
                     if (playerOne->getLevel() >= 3){
                         playerOne->getCurBlock()->down();
                     }
+                    if (playerOne->getHeavy()){
+                        playerOne->getCurBlock()->down();
+                    }
                 } else {
                     playerTwo->getCurBlock()->left();
                     if (playerTwo->getLevel() >= 3){
+                        playerTwo->getCurBlock()->down();
+                    }
+                    if (playerTwo->getHeavy()){
                         playerTwo->getCurBlock()->down();
                     }
                 }
@@ -108,10 +114,16 @@ int main(int argc, char* argv[]) {
                     playerOne->getCurBlock()->right();
                     if (playerOne->getLevel() >= 3){
                         playerOne->getCurBlock()->down();
+                    } 
+                    if (playerOne->getHeavy()){
+                        playerOne->getCurBlock()->down();
                     }
                 } else {
                     playerTwo->getCurBlock()->right();
                     if (playerTwo->getLevel() >= 3){
+                        playerTwo->getCurBlock()->down();
+                    }
+                    if (playerTwo->getHeavy()){
                         playerTwo->getCurBlock()->down();
                     }
                 }
@@ -124,12 +136,14 @@ int main(int argc, char* argv[]) {
             } else if (cmd == "drop"){
                 if (playerOneTurn){
                     playerOne->getCurBlock()->drop();
-					// make player unblind
 					playerOne->setBlind(false);
+                    playerOne->setHeavy(false);
+                    playerOne->setForce(false);
                 } else {
                     playerTwo->getCurBlock()->drop();
-					// make player unblind
 					playerTwo->setBlind(false);
+                    playerTwo->setHeavy(false);
+                    playerTwo->setForce(false);
                 }
                 turnOver = true;
             } else if (cmd == "clockwise") {
@@ -138,9 +152,15 @@ int main(int argc, char* argv[]) {
                     if (playerOne->getLevel() >= 3){
                         playerOne->getCurBlock()->down();
                     }
+                    if (playerOne->getHeavy()){
+                        playerOne->getCurBlock()->down();
+                    }
 				} else {
 					playerTwo->getCurBlock()->clockWise();
                     if (playerTwo->getLevel() >= 3){
+                        playerTwo->getCurBlock()->down();
+                    }
+                    if (playerTwo->getHeavy()){
                         playerTwo->getCurBlock()->down();
                     }
 				}
@@ -150,9 +170,15 @@ int main(int argc, char* argv[]) {
                     if (playerOne->getLevel() >= 3){
                         playerOne->getCurBlock()->down();
                     }
+                    if (playerOne->getHeavy()){
+                        playerOne->getCurBlock()->down();
+                    }
 				} else {
 					playerTwo->getCurBlock()->counterClockWise();
                     if (playerTwo->getLevel() >= 3){
+                        playerTwo->getCurBlock()->down();
+                    }
+                    if (playerTwo->getHeavy()){
                         playerTwo->getCurBlock()->down();
                     }
 				}	
