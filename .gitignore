@@ -1,4 +1,4 @@
-#ignore the following folders
+# ignore the following files 
 *.d
 *.o
 .*.sw*
