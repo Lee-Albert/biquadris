@@ -17,13 +17,14 @@ class Block;
 class Observer;
 class TextDisplay;
 //class Level;
-// class GraphicDisplay;
+class GraphicsDisplay;
 using namespace std;
 
 class Grid {
 	int player;
 	vector<vector<Tile>> theGrid;
 	TextDisplay *td;
+	GraphicsDisplay *gd;
 	// Observer *ob;
 	int height;
 	int width;
@@ -52,8 +53,8 @@ class Grid {
 	int getLevel();
 	int getPlayer();
 	vector<vector<Tile>> &getGrid();
-	Grid(int player, TextDisplay *td);
 	void replaceCurBlock(string blockname);
+	Grid(int player, TextDisplay *td, GraphicsDisplay *gd);
 	void setBlind(bool toSet);
 	bool getBlind();
 	void setHeavy(bool toSet);

@@ -177,6 +177,7 @@ void ZBlock::counterClockWise(){
 ZBlock::ZBlock(int orientation, Grid &grid, int xPos, int yPos): 
 Block(orientation, grid, xPos, yPos) {
     name = "Z";
+	colour = 2;
 }
 
 void ZBlock::initializeTiles() {

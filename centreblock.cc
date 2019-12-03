@@ -8,6 +8,7 @@ void CentreBlock::counterClockWise(){}
 CentreBlock::CentreBlock(int orientation, Grid &grid, int xPos, int yPos): 
 Block(orientation, grid, xPos, yPos){
     name = "*";
+	colour = 9;
 }
 
 void CentreBlock::initializeTiles(){

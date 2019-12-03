@@ -182,6 +182,7 @@ void IBlock::counterClockWise(){
 IBlock::IBlock(int orientation, Grid &grid, int xPos, int yPos): 
 Block(orientation, grid, xPos, yPos){
     name = "I";
+	colour = 5;
 }
     
 void IBlock::initializeTiles(){

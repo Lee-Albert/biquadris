@@ -13,6 +13,7 @@ void OBlock::counterClockWise(){
 OBlock::OBlock(int orientation, Grid &grid, int xPos, int yPos): 
 Block(orientation, grid, xPos, yPos){
     name = "O";
+	colour = 6;
 }
 
 void OBlock::initializeTiles() {
