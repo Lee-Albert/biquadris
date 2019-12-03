@@ -11,16 +11,6 @@ bool Tile::isOccupied() {
     return filled;
 }
 
-void Tile::setFilled(bool newFilled){
-    filled = newFilled;
-    this->notifyObservers();
-}
-
-void Tile::setCurblock(Block *newCurblock){
-    curBlock = newCurblock;
-    this->notifyObservers();
-}
-
 void Tile::updateTile(bool newFilled, Block *newCurblock){
     filled = newFilled;
     curBlock = newCurblock;

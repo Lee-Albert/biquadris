@@ -71,7 +71,14 @@ int main(int argc, char* argv[]) {
             // for (int i=0; i < 4; i++){
             //     cout << tiles[i]->getX() << " ," << tiles[i]->getY() << endl;
             // }
-            std::cout << *display;
+            if (playerOneTurn){
+                cout << "Player One's Turn" << endl;
+            } else {
+                cout << "Player Two's Turn" << endl;
+            }
+
+            cout << *display;
+            
 			if (!(cin >> cmd)){
                 return 0;
             }
@@ -94,7 +101,7 @@ int main(int argc, char* argv[]) {
                     playerTwo->getCurBlock()->drop();
                 }
                 turnOver = true;
-            }
+            } 
         }
         if (playerOneTurn){
             playerOne->getNextBlock();

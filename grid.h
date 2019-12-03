@@ -45,7 +45,7 @@ class Grid {
 	bool isFull();
 	bool heightReached();
 	int rowsFull();
-	void addRow();
+	void deleteRows(vector <int> rows);
 	int getScore();
 	void setLevel(int nLevel, Level *levelset);
 	int getLevel();

@@ -111,3 +111,33 @@ std::ostream &operator<<(std::ostream &out, const Grid &g) {
 	return out;
 }
 
+int Grid::rowsFull(){
+    int counter = 0;
+    bool full;
+    vector <int> fullRows;
+    for (int row = 0; row < height; row++){
+        full = true;
+        for (int col = 0; col < width; col++){
+            if (!theGrid[row][col].isOccupied()){
+                full = false;
+                break;
+            }
+        }
+        if (full){
+            counter++;
+            fullRows.emplace_back(row);
+        }
+    }
+    deleteRows(fullRows);
+    return counter;
+}
+
+void Grid::deleteRows(vector <int> rows){
+    for (auto row : rows){
+        cout << row << endl;
+    }
+    // for (auto row = rows.begin(); row != rows.end(); row++){
+    //     *row;
+    // }
+    //theGrid.erase(theGrid.begin() + rowNum);
+}
