@@ -4,7 +4,7 @@ using namespace std;
 
 Grid::~Grid() {
 	delete td;
-	delete ob;
+	// delete ob;
 }
 
 void Grid::init() {
@@ -21,7 +21,7 @@ void Grid::init() {
         for (int col=0; col < width; col++){
             Tile &t = theGrid.at(row).at(col);
             t.attach(td); // Attach textDisplay to each cell
-			t.attach(ob); // attach graphicsdisplay to each cell
+			// t.attach(ob); // attach graphicsdisplay to each cell
             /*
             if (row > 0){
                 t.attach(&theGrid.at(row-1).at(col));
@@ -52,7 +52,7 @@ void Grid::init() {
 }
 
 void Grid::setObserver(Observer *ob) {
-	this->ob = ob;
+	// this->ob = ob;
 }
 
 /*
@@ -113,7 +113,8 @@ vector<vector<Tile>> &Grid::getGrid(){
     return theGrid;
 };
 
-Grid::Grid(int player, TextDisplay *td, GraphicsDisplay *ob): player{player}, td{td}, ob{ob}, height{18}, width{11}, score{0}, isBlind{false}, isHeavy{false}, isForce{false}{}
+// Grid::Grid(int player, TextDisplay *td, GraphicsDisplay *ob): player{player}, td{td}, ob{ob}, height{18}, width{11}, score{0}, isBlind{false}, isHeavy{false}, isForce{false}{}
+Grid::Grid(int player, TextDisplay *td): player{player}, td{td}, height{18}, width{11}, score{0}, isBlind{false}, isHeavy{false}, isForce{false}{}
 
 std::ostream &operator<<(std::ostream &out, const Grid &g) {
 	out << *(g.td);
