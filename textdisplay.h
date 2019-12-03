@@ -8,6 +8,8 @@
 #include "subject.h"
 #include "grid.h"
 #include "tile.h"
+#include "info.h"
+#include "block.h"
 // other #includes
 
 // class Tile;

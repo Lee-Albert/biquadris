@@ -59,22 +59,42 @@ int main(int argc, char* argv[]) {
     playerTwo->generateNextBlock();
     playerTwo->generateNextBlock();
 
-    std::cout << *display;
+    
     while (true){
         while (!turnOver){
-			/*
-            if (!(cin >> cmd)){
-                return;
+            // Tile **tiles;
+            // if (playerOneTurn){
+            //     tiles = playerOne->getCurBlock()->getTiles();
+            // } else {
+            //     tiles = playerTwo->getCurBlock()->getTiles();
+            // }
+            // for (int i=0; i < 4; i++){
+            //     cout << tiles[i]->getX() << " ," << tiles[i]->getY() << endl;
+            // }
+            std::cout << *display;
+			if (!(cin >> cmd)){
+                return 0;
             }
-            if (cmd == "...") {
-
-            } else if (cmd == "..."){
-
+            if (cmd == "left") {
+                if (playerOneTurn){
+                    playerOne->getCurBlock()->left();
+                } else {
+                    playerTwo->getCurBlock()->left();
+                }
+            } else if (cmd == "right"){
+                if (playerOneTurn){
+                    playerOne->getCurBlock()->right();
+                } else {
+                    playerTwo->getCurBlock()->right();
+                }
             } else if (cmd == "drop"){
-                ....
+                if (playerOneTurn){
+                    playerOne->getCurBlock()->drop();
+                } else {
+                    playerTwo->getCurBlock()->drop();
+                }
                 turnOver = true;
             }
-			*/
         }
         if (playerOneTurn){
             playerOne->getNextBlock();

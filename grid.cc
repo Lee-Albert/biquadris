@@ -69,6 +69,10 @@ Block *Grid::getNextBlock(){
     return nextBlock;
 }
 
+Block *Grid::getCurBlock(){
+    return curBlock;
+}
+
 int Grid::getLevel() {
 	return curLevel;
 }
@@ -87,8 +91,7 @@ void Grid::generateNextBlock() {
         // check if this is possible
         // if not then game over
         for (int i=0; i < 4; i++){
-            tiles[i]->setFilled(true);
-            tiles[i]->setCurblock(newBlock);
+            tiles[i]->updateTile(true, curBlock);
         }
     }
 }

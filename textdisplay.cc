@@ -2,6 +2,7 @@
 #include <iomanip>
 #include "textdisplay.h"
 #include <vector>
+#include <string>
 using namespace std;
 
 TextDisplay::TextDisplay(): grid1{nullptr}, grid2{nullptr} {
@@ -13,20 +14,21 @@ TextDisplay::TextDisplay(): grid1{nullptr}, grid2{nullptr} {
 };
 
 void TextDisplay::notify(Subject &whoNotified) {
-	int row = whoNotified.getInfo().y;
-	int col = whoNotified.getInfo().x;
-	int player = (whoNotified.getInfo().grid)->getPlayer();
+	Info info = whoNotified.getInfo();
+	int row = info.y;
+	int col = info.x;
+	//cout << row << endl;
+	int player = (info.grid)->getPlayer();
 	if (player == 1) {
-		if (whoNotified.getInfo().isOccupied) {
-			// uncomment when block is fixed
-			// player1[row][col] = (whoNotified.getInfo().curBlock)->getName();
+		if (info.isOccupied && info.curBlock) {
+			player1[row][col] = (info.curBlock)->getName();
+			
 		} else { // unoccupied tile
 			player1[row][col] = " ";
 		}
 	} else { // player2
-		if (whoNotified.getInfo().isOccupied) {
-			// uncomment when block is fixed
-			// player2[row][col] = (whoNotified.getInfo().curBlock)->getName();
+		if (info.isOccupied && info.curBlock) {
+			player2[row][col] = (info.curBlock)->getName();
 		} else { // unoccupied tile
 			player2[row][col] = " ";
 		}
