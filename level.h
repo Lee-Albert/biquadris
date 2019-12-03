@@ -22,6 +22,7 @@ class Level {
     bool random;
     int points;
     public:
+    int getPoints();
     virtual Block *generateBlock() = 0;
     Level(string filename, Grid *grid);
 };
