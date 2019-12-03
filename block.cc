@@ -157,10 +157,7 @@ void Block::drop() {
             if (it->second == 17){
                 doneCount = true;
                 move = false;
-            } else if (it->second + downNum == 17 && !(grid.getGrid()[it->second + downNum][it->first].isOccupied())) {
-                doneCount = true;
-                break;
-            } else if (grid.getGrid()[it->second + downNum][it->first].isOccupied()) {
+            } else if (it->second + downNum > 17 || grid.getGrid()[it->second + downNum][it->first].isOccupied()) {
                 downNum--;
                 doneCount = true;
                 break;
