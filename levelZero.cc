@@ -37,3 +37,5 @@ Block *LevelZero::generateBlock(){
     }
     return addBlock;
 }
+
+Block *LevelZero::makeCentreBlock(){}

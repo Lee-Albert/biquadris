@@ -7,6 +7,7 @@
 class LevelZero : public Level {
     public:
     Block *generateBlock() override;
+    Block *makeCentreBlock() override;
     LevelZero(string filename, Grid *grid);
 };
 

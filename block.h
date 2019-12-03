@@ -31,6 +31,7 @@ class Block {
     void right();
     void down();
     void drop();
+    void centreDrop();
     Block(int orientation, Grid &grid, int xPos, int yPos);
     ~Block();
 };

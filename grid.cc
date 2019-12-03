@@ -97,6 +97,13 @@ void Grid::generateNextBlock() {
     }
 }
 
+void Grid::generateCentreBlock() {
+    curBlock = level->makeCentreBlock();
+    curBlock->initializeTiles();
+    Tile **tiles = curBlock->getTiles();
+    tiles[0]->updateTile(true, curBlock);
+}
+
 int Grid::getScore() {
 	return score;
 }
