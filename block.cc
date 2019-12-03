@@ -147,7 +147,6 @@ void Block::drop() {
                 move = false;
             } else if (it->second + downNum == 17 && !(grid.getGrid()[it->second + downNum][it->first].isOccupied())) {
                 doneCount = true;
-                cout << "gucci" << endl;
                 break;
             } else if (grid.getGrid()[it->second + downNum][it->first].isOccupied()) {
                 downNum--;
@@ -164,7 +163,6 @@ void Block::drop() {
     if (!move) {
         return;
     }
-    cout << downNum << endl;
     vector<pair<int,int>> vect;
     for (int i = 0; i < 4; i++) {
         vect.push_back( make_pair(tiles[i]->getX(), tiles[i]->getY()));
