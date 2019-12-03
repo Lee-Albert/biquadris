@@ -65,6 +65,40 @@ void Grid::setLevel(int nLevel, Level *levelset) {
 	level = levelset;
 }
 
+void Grid::levelUp(string filename, int seed){
+    if (curLevel == 0){
+        level = new LevelOne(filename, this, seed);
+        this->setLevel(1, level);
+    } else if (curLevel == 1){
+        level = new LevelTwo(filename, this, seed);
+        this->setLevel(2, level);
+    } else if (curLevel == 2){
+        level = new LevelThree(filename, this, seed);
+        this->setLevel(3, level);
+    } else if (curLevel == 3){
+        level = new LevelFour(filename, this, seed);
+        this->setLevel(4, level);
+    }
+}
+
+
+void Grid::levelDown(string filename, int seed){
+    if (curLevel == 1){
+        level = new LevelZero(filename, this, seed);
+        this->setLevel(0, level);
+    } else if (curLevel == 2){
+        level = new LevelOne(filename, this, seed);
+        this->setLevel(1, level);
+    } else if (curLevel == 3){
+        level = new LevelTwo(filename, this, seed);
+        this->setLevel(2, level);
+    } else if (curLevel == 4){
+        level = new LevelThree(filename, this, seed);
+        this->setLevel(3, level);
+    }
+}
+
+
 Block *Grid::getNextBlock(){
     return nextBlock;
 }

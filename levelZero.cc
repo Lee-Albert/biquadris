@@ -5,7 +5,7 @@
 using namespace std;
 
 //ctor
-LevelZero::LevelZero(string filename, Grid *grid): Level(filename, grid) {
+LevelZero::LevelZero(string filename, Grid *grid, int seed): Level(filename, grid, seed) {
     filestream.open(filename);
     random = false;
     points = 0;
@@ -38,4 +38,8 @@ Block *LevelZero::generateBlock(){
     return addBlock;
 }
 
-Block *LevelZero::makeCentreBlock(){}
+Block *LevelZero::makeCentreBlock(){
+    return nullptr;
+}
+
+LevelZero::~LevelZero() {}

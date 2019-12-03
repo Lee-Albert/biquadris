@@ -80,7 +80,6 @@ void Block::right() {
             checkPos.at(tiles[i]->getY()) = tiles[i]->getX();
         }
     }
-    cout << "first step checkpos is " << endl;
     // Check if position is available for moving
     for (auto it = checkPos.begin(); it != checkPos.end(); it++) {
         if (it->second == 10) {

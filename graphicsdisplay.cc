@@ -23,6 +23,8 @@ void GraphicsDisplay::notify(Subject &whoFrom) {
 	// 20x20 squares
 	// 290(145 - 145) - 360 - 50	
 
+	// draw over the special prompt
+	window.fillRectangle(310, 200, 300, 600, 0);
 	// draw borders
 	window.drawLine(64, 150, 64, 510);
 	window.drawLine(285, 150, 285, 510);
@@ -156,5 +158,28 @@ void GraphicsDisplay::notify(Subject &whoFrom) {
 				window.fillRectangle(50+15+550, 580, 40, 40, 6);
 			}
 		}
+	}
+}
+
+void GraphicsDisplay::printSpecial() {
+	window.drawString(310, 300, "Choose a special action: blind, heavy, or force");
+}
+
+void GraphicsDisplay::printSpecialPrompt() {
+	
+	window.drawString(310, 315, "force");
+	window.drawString(310, 345, "Which block would you like to force?");
+	window.drawString(310, 360, "Defaults to Z block for invalid input");
+}
+
+void GraphicsDisplay::printPlayer(int player) {
+	window.fillRectangle(290, 130, 320, 60, 0);
+	if (player == 1) {
+		window.drawBigString(400, 150, "Player One's Turn"); 
+		window.fillCircle(300, 180, 20, 10);
+		
+	} else {
+		window.drawBigString(400, 150, "Player Two's Turn");
+		window.fillCircle(600, 180, 20, 10);
 	}
 }

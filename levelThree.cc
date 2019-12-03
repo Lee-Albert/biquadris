@@ -3,7 +3,7 @@
 #include <cstdlib>
 using namespace std;
 
-LevelThree::LevelThree(string filename, Grid *grid): Level(filename, grid) {
+LevelThree::LevelThree(string filename, Grid *grid, int seed): Level(filename, grid, seed) {
     filestream.open(filename);
     random = true;
     points = 3;
@@ -11,7 +11,7 @@ LevelThree::LevelThree(string filename, Grid *grid): Level(filename, grid) {
 
 Block *LevelThree::generateBlock(){
     Block *addBlock;
-    srand(time(NULL));
+    srand(seed);
     int blockChoice = rand() % 9;
     if (blockChoice == 0 || blockChoice == 1){
         addBlock = new SBlock(1, *grid, 0, 3);
@@ -31,4 +31,8 @@ Block *LevelThree::generateBlock(){
     return addBlock;
 }
 
-Block *LevelThree::makeCentreBlock(){}
+Block *LevelThree::makeCentreBlock(){
+    return nullptr;
+}
+
+LevelThree::~LevelThree() {}

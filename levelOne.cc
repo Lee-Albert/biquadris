@@ -3,7 +3,7 @@
 #include <cstdlib>
 using namespace std;
 
-LevelOne::LevelOne(string filename, Grid *grid): Level(filename, grid) {
+LevelOne::LevelOne(string filename, Grid *grid, int seed): Level(filename, grid, seed) {
     filestream.open(filename);
     random = true;
     points = 1;
@@ -11,7 +11,7 @@ LevelOne::LevelOne(string filename, Grid *grid): Level(filename, grid) {
 
 Block *LevelOne::generateBlock(){
     Block *addBlock;
-    srand(time(NULL));
+    srand(seed);
     int blockChoice = rand() % 12;
     if (blockChoice == 0){
         addBlock = new SBlock(1, *grid, 0, 3);
@@ -32,4 +32,8 @@ Block *LevelOne::generateBlock(){
     return addBlock;
 }
 
-Block *LevelOne::makeCentreBlock(){}
+Block *LevelOne::makeCentreBlock(){
+    return nullptr;
+}
+
+LevelOne::~LevelOne() {}

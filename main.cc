@@ -15,6 +15,8 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <queue>
+#include <fstream>
 using namespace std;
 
 
@@ -28,6 +30,9 @@ int main(int argc, char* argv[]) {
 
     string playerOneFile = "sequence1.txt";
     string playerTwoFile = "sequence2.txt";
+	
+	queue<string> playerOneSequence;
+	queue<string> playerTwoSequence;
 
     bool textOnly = false;
 
@@ -56,10 +61,11 @@ int main(int argc, char* argv[]) {
     }
 
     TextDisplay *display = new TextDisplay();
+	GraphicsDisplay *window = nullptr;
     Grid *playerOne;
     Grid *playerTwo;
     if (!textOnly) {
-	    GraphicsDisplay *window = new GraphicsDisplay();
+	    window = new GraphicsDisplay();
         playerOne = new Grid(1, display, window);
         playerTwo = new Grid(2, display, window);
         window->setGrids(playerOne, playerTwo);
@@ -72,47 +78,50 @@ int main(int argc, char* argv[]) {
     playerOne->init();
     playerTwo->init();
 
+    Level *levelP1;
+    Level *levelP2;
     // cout << "Player 1, choose your difficulty between 0 and 4: ";
     // cin >> difficulty;
     if (difficulty == 0){
-        Level *level = new LevelZero(playerOneFile, playerOne);
-        playerOne->setLevel(0, level);
+        levelP1 = new LevelZero(playerOneFile, playerOne, seed);
+        playerOne->setLevel(0, levelP1);
     } else if (difficulty == 1){
-        Level *level = new LevelOne(playerOneFile, playerOne);
-        playerOne->setLevel(1, level);
+        levelP1 = new LevelOne(playerOneFile, playerOne, seed);
+        playerOne->setLevel(1, levelP1);
     } else if (difficulty == 2){
-        Level *level = new LevelTwo(playerOneFile, playerOne);
-        playerOne->setLevel(2, level);
+        levelP1 = new LevelTwo(playerOneFile, playerOne, seed);
+        playerOne->setLevel(2, levelP1);
     } else if (difficulty == 3){
-        Level *level = new LevelThree(playerOneFile, playerOne);
-        playerOne->setLevel(3, level);
+        levelP1 = new LevelThree(playerOneFile, playerOne, seed);
+        playerOne->setLevel(3, levelP1);
     } else if (difficulty == 4){
-        Level *level = new LevelFour(playerOneFile, playerOne);
-        playerOne->setLevel(4, level);
+        levelP1 = new LevelFour(playerOneFile, playerOne, seed);
+        playerOne->setLevel(4, levelP1);
     }
     int pOneDropCount = 0;
 
     // cout << "Player 2, choose your difficulty between 0 and 4: ";
     // cin >> difficulty;
     if (difficulty == 0){
-        Level *level = new LevelZero(playerTwoFile, playerTwo);
-        playerTwo->setLevel(0, level);
+        levelP2 = new LevelZero(playerTwoFile, playerTwo, seed);
+        playerTwo->setLevel(0, levelP2);
     } else if (difficulty == 1){
-        Level *level = new LevelOne(playerTwoFile, playerTwo);
-        playerTwo->setLevel(1, level);
+        levelP2 = new LevelOne(playerTwoFile, playerTwo, seed);
+        playerTwo->setLevel(1, levelP2);
     } else if (difficulty == 2){
-        Level *level = new LevelTwo(playerTwoFile, playerTwo);
-        playerTwo->setLevel(2, level);
+        levelP2 = new LevelTwo(playerTwoFile, playerTwo, seed);
+        playerTwo->setLevel(2, levelP2);
     } else if (difficulty == 3){
-        Level *level = new LevelThree(playerTwoFile, playerTwo);
-        playerTwo->setLevel(3, level);
+        levelP2 = new LevelThree(playerTwoFile, playerTwo, seed);
+        playerTwo->setLevel(3, levelP2);
     } else if (difficulty == 4){
-        Level *level = new LevelFour(playerTwoFile, playerTwo);
-        playerTwo->setLevel(4, level);
+        levelP2 = new LevelFour(playerTwoFile, playerTwo, seed);
+        playerTwo->setLevel(4, levelP2);
     }
     int pTwoDropCount = 0;
 
     cout << endl;
+  
     playerOne->generateNextBlock();
     playerOne->generateNextBlock();
     playerTwo->generateNextBlock();
@@ -144,16 +153,38 @@ int main(int argc, char* argv[]) {
     while (true){
         while (!turnOver){
             if (playerOneTurn){
+				if(window) {
+					window->printPlayer(1);
+				}
                 cout << "Player One's Turn" << endl;
             } else {
+				if(window) {
+					window->printPlayer(2);
+				}
                 cout << "Player Two's Turn" << endl;
             }
 
             cout << *display;
             
-			if (!(cin >> cmd)){
-                return 0;
-            }
+			if (playerOneTurn) {
+				if (playerOneSequence.empty()) {
+					if (!(cin >> cmd)){
+                		return 0;
+            		}
+				} else {
+					cmd = playerOneSequence.front();
+					playerOneSequence.pop();	
+				}
+			} else {
+				if (playerTwoSequence.empty()) {
+					if (!(cin >> cmd)){
+                		return 0;
+            		}
+				} else {
+					cmd = playerTwoSequence.front();
+					playerTwoSequence.pop();
+				}
+			}
             if (cmd == "left") {
                 if (playerOneTurn){
                     playerOne->getCurBlock()->left();
@@ -246,21 +277,60 @@ int main(int argc, char* argv[]) {
                     }
 				}	
 			} else if (cmd == "I"){
-                restartGame(0);
-            } else if (cmd == "J"){
-                restartGame(0);
-            } else if (cmd == "L"){
-                restartGame(0);
-            } else if (cmd == "T"){
-                restartGame(0);
-            } else if (cmd == "O"){
-                restartGame(0);
-            } else if (cmd == "S"){
-                restartGame(0);
-            } else if (cmd == "Z"){
-                restartGame(0);
-            } 
-        }
+          restartGame(0);
+      } else if (cmd == "J"){
+          restartGame(0);
+      } else if (cmd == "L"){
+          restartGame(0);
+      } else if (cmd == "T"){
+          restartGame(0);
+      } else if (cmd == "O"){
+          restartGame(0);
+      } else if (cmd == "S"){
+          restartGame(0);
+      } else if (cmd == "Z"){
+          restartGame(0);
+			} else if (cmd == "levelup") {
+          if (playerOneTurn) {
+              if (playerOne->getLevel() < 4) {
+                  delete levelP1;
+                  playerOne->levelUp(playerOneFile, seed);
+              }
+          } else {
+              if (playerTwo->getLevel() < 4) {
+                  delete levelP2;
+                  playerTwo->levelUp(playerTwoFile, seed);
+              }
+          }
+          continue;
+      } else if (cmd == "leveldown") {
+          if (playerOneTurn) {
+              if (playerOne->getLevel() > 0) {
+                  delete levelP1;
+                  playerOne->levelDown(playerOneFile, seed);
+              }
+          } else {
+              if (playerTwo->getLevel() > 0) {
+                  delete levelP2;
+                  playerTwo->levelDown(playerTwoFile, seed);
+              }
+          }
+          continue;	
+			} else if (cmd == "sequence") {
+					string file;
+					cin >> file;
+					ifstream seq(file);
+					string queuecmd;
+					if (playerOneTurn) {
+						while (seq >> queuecmd) {	
+							playerOneSequence.push(queuecmd);	
+						}			
+					} else {
+						while (seq >>queuecmd) {
+							playerTwoSequence.push(queuecmd);
+						}
+					}
+			}
         int rowsCleared;
         if (playerOneTurn){
             rowsCleared = playerOne->checkFullRows();
@@ -287,15 +357,22 @@ int main(int argc, char* argv[]) {
 			if (rowsCleared >= 2) {
 				string specialcmd;
 				cout << "Choose a special action: blind, heavy, or force" << endl;
+				if (window) {
+					window->printSpecial();
+				}	
 				cin >> cmd;
 				if (cmd == "blind") {
 					playerTwo->setBlind(true);
+					// to update graphics display
 					playerOne->getCurBlock()->getTiles()[0]->notifyObservers();	
 				} else if (cmd == "heavy") {
 					playerTwo->setHeavy(true);
 				} else {
 					playerTwo->setForce(true);
 					cout << "Which block would you like to force. Defaults to Z block for invalid input." << endl;
+					if (window) {
+						window->printSpecialPrompt();
+					}
                     cin >> cmd;
                     gameOver = playerTwo->replaceCurBlock(cmd);
                     if (gameOver){
@@ -329,6 +406,9 @@ int main(int argc, char* argv[]) {
 			if (rowsCleared >= 2) {
 				string specialcmd;
 				cout << "Choose a special action: blind, heavy, or force" << endl;
+				if (window) {
+					window->printSpecial();
+				}
 				cin >> cmd;
 				if (cmd == "blind") {
 					playerOne->setBlind(true);
@@ -336,7 +416,10 @@ int main(int argc, char* argv[]) {
 					playerOne->setHeavy(true);
 				} else {
 					playerOne->setForce(true);
-					cout << "Which block would you like to force. Defaults to Z block for invalid input." << endl;
+					cout << "Which block would you like to force? Defaults to Z block for invalid input." << endl;
+					if (window) {
+						window->printSpecialPrompt();
+					}
                     cin >> cmd;
                     gameOver = playerOne->replaceCurBlock(cmd);
                     if (gameOver){
