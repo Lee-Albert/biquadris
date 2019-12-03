@@ -67,3 +67,15 @@ void TextDisplay::getNextBlocks(Grid *grid1, Grid *grid2){
 	nextBlock1 = grid1->getNextBlock()->getName();
 	nextBlock2 = grid2->getNextBlock()->getName();
 }
+
+void TextDisplay::deleteRow(int row, int player){
+	if (player == 1){
+		player1.erase(player1.begin() + row);
+		vector<string> newRow(width, " ");
+		player1.insert(player1.begin(), newRow);
+	} else {
+		player2.erase(player2.begin() + row);
+		vector<string> newRow(width, " ");
+		player2.insert(player2.begin(), newRow);
+	}
+}

@@ -21,6 +21,7 @@ class Block {
 
     public:
     Tile **getTiles();
+    void removeTile(Tile tile);
     std::string getName();
     virtual void clockWise() = 0;
     virtual void counterClockWise() = 0;

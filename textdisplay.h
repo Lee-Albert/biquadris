@@ -25,6 +25,7 @@ class TextDisplay: public Observer {
 	const int width = 11;
   public:
 	TextDisplay();
+	void deleteRow(int row, int player);
 	void setGrids(Grid *newGrid1, Grid *newGrid2);
 	void getNextBlocks(Grid *grid1, Grid *grid2);
 	void notify(Subject &whoNotified) override;

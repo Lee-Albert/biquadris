@@ -19,13 +19,13 @@ class Tile : public Subject {
     public:
     Tile(int xPos, int yPos, Grid *grid);
     bool isOccupied();
-    void setFilled(bool newFilled);
-    void setCurblock(Block *newCurblock);
     void updateTile(bool newFilled, Block *newCurblock);
   	Info getInfo() override;
     void swapTile(Tile &other);
     int getX();
     int getY();
+    void incrementY();
+    Block *getBlock();
 };
 
 

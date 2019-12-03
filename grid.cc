@@ -111,3 +111,40 @@ std::ostream &operator<<(std::ostream &out, const Grid &g) {
 	return out;
 }
 
+int Grid::rowsFull(){
+    int counter = 0;
+    bool full;
+    vector <int> fullRows;
+    for (int row = 0; row < height; row++){
+        full = true;
+        for (int col = 0; col < width; col++){
+            if (!theGrid[row][col].isOccupied()){
+                full = false;
+                break;
+            }
+        }
+        if (full){
+            counter++;
+            fullRows.emplace_back(row);
+        }
+    }
+    deleteRows(fullRows);
+    return counter;
+}
+
+void Grid::deleteRows(vector <int> rows){
+    for (auto row : rows){
+        vector <Tile> rowToDelete = theGrid.at(row);
+        for (auto tile : rowToDelete){
+            tile.getBlock()->removeTile(tile);
+        }
+        theGrid.erase(theGrid.begin() + row);
+        td->deleteRow(row, player);
+        for (int i=0; i < row; i++){
+            for (int j=0; j < width; j++){
+                theGrid.at(i).at(j)
+            }
+        }
+    }
+    
+}

@@ -173,6 +173,16 @@ void Block::drop() {
     yPos -= downNum;
 }
 
+void Block::removeTile(Tile tile){
+    for (int i = 0; i < 4; i++){
+        if (tiles[i]){
+            if (*tiles[i] == tile){
+                tiles[i] == nullptr;
+            }
+        }
+    }
+}
+
 
 Block::Block(int orientation, Grid &grid, int xPos, int yPos): orientation{orientation}, grid{grid}, xPos{xPos}, yPos{yPos}{};
 
