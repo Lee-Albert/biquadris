@@ -55,8 +55,8 @@ class Grid {
 	void deleteRows(vector <int> rows);
 	int getScore();
 	void setLevel(int nLevel, Level *levelset);
-	void levelUp(string filename);
-	void levelDown(string filename);
+	void levelUp(string filename, int seed);
+	void levelDown(string filename, int seed);
 	int getLevel();
 	int getPlayer();
 	vector<vector<Tile>> &getGrid();

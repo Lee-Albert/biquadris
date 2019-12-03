@@ -3,7 +3,7 @@
 #include <cstdlib>
 using namespace std;
 
-LevelTwo::LevelTwo(string filename, Grid *grid): Level(filename, grid) {
+LevelTwo::LevelTwo(string filename, Grid *grid, int seed): Level(filename, grid, seed) {
     filestream.open(filename);
     random = true;
     points = 2;
@@ -11,7 +11,7 @@ LevelTwo::LevelTwo(string filename, Grid *grid): Level(filename, grid) {
 
 Block *LevelTwo::generateBlock(){
     Block *addBlock;
-    srand(time(NULL));
+    srand(seed);
     int blockChoice = rand() % 7;
     if (blockChoice == 0){
         addBlock = new SBlock(1, *grid, 0, 3);

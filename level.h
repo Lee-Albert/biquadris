@@ -17,6 +17,7 @@ class Grid;
 
 class Level {
     protected:
+    int seed;
     string filename;
     Grid *grid;
     ifstream filestream;
@@ -27,7 +28,7 @@ class Level {
     Block *forceBlock(string blockname);
     virtual Block *generateBlock() = 0;
     virtual Block *makeCentreBlock() = 0;
-    Level(string filename, Grid *grid);
+    Level(string filename, Grid *grid, int seed);
     virtual ~Level() = 0;
 };
 

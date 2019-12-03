@@ -8,7 +8,7 @@ class LevelFour : public Level {
     public:
     Block *generateBlock() override;
     Block *makeCentreBlock();
-    LevelFour(string fileName, Grid *grid);
+    LevelFour(string fileName, Grid *grid, int seed);
     ~LevelFour();
 };
 
