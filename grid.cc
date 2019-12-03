@@ -85,7 +85,6 @@ int Grid::getPlayer() {
 }
 
 void Grid::generateNextBlock() {
-    Block *newBlock = level->generateBlock();
     Block *newBlock= level->generateBlock();
     curBlock = nextBlock;
     nextBlock = newBlock;
