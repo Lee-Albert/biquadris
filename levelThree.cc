@@ -31,4 +31,8 @@ Block *LevelThree::generateBlock(){
     return addBlock;
 }
 
-Block *LevelThree::makeCentreBlock(){}
+Block *LevelThree::makeCentreBlock(){
+    return nullptr;
+}
+
+LevelThree::~LevelThree() {}

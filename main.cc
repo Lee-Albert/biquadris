@@ -71,43 +71,45 @@ int main(int argc, char* argv[]) {
     playerOne->init();
     playerTwo->init();
 
+    Level *levelP1;
+    Level *levelP2;
     // cout << "Player 1, choose your difficulty between 0 and 4: ";
     // cin >> difficulty;
     if (difficulty == 0){
-        Level *level = new LevelZero(playerOneFile, playerOne);
-        playerOne->setLevel(0, level);
+        levelP1 = new LevelZero(playerOneFile, playerOne);
+        playerOne->setLevel(0, levelP1);
     } else if (difficulty == 1){
-        Level *level = new LevelOne(playerOneFile, playerOne);
-        playerOne->setLevel(1, level);
+        levelP1 = new LevelOne(playerOneFile, playerOne);
+        playerOne->setLevel(1, levelP1);
     } else if (difficulty == 2){
-        Level *level = new LevelTwo(playerOneFile, playerOne);
-        playerOne->setLevel(2, level);
+        levelP1 = new LevelTwo(playerOneFile, playerOne);
+        playerOne->setLevel(2, levelP1);
     } else if (difficulty == 3){
-        Level *level = new LevelThree(playerOneFile, playerOne);
-        playerOne->setLevel(3, level);
+        levelP1 = new LevelThree(playerOneFile, playerOne);
+        playerOne->setLevel(3, levelP1);
     } else if (difficulty == 4){
-        Level *level = new LevelFour(playerOneFile, playerOne);
-        playerOne->setLevel(4, level);
+        levelP1 = new LevelFour(playerOneFile, playerOne);
+        playerOne->setLevel(4, levelP1);
     }
     int pOneDropCount = 0;
 
     // cout << "Player 2, choose your difficulty between 0 and 4: ";
     // cin >> difficulty;
     if (difficulty == 0){
-        Level *level = new LevelZero(playerTwoFile, playerTwo);
-        playerTwo->setLevel(0, level);
+        levelP2 = new LevelZero(playerTwoFile, playerTwo);
+        playerTwo->setLevel(0, levelP2);
     } else if (difficulty == 1){
-        Level *level = new LevelOne(playerTwoFile, playerTwo);
-        playerTwo->setLevel(1, level);
+        levelP2 = new LevelOne(playerTwoFile, playerTwo);
+        playerTwo->setLevel(1, levelP2);
     } else if (difficulty == 2){
-        Level *level = new LevelTwo(playerTwoFile, playerTwo);
-        playerTwo->setLevel(2, level);
+        levelP2 = new LevelTwo(playerTwoFile, playerTwo);
+        playerTwo->setLevel(2, levelP2);
     } else if (difficulty == 3){
-        Level *level = new LevelThree(playerTwoFile, playerTwo);
-        playerTwo->setLevel(3, level);
+        levelP2 = new LevelThree(playerTwoFile, playerTwo);
+        playerTwo->setLevel(3, levelP2);
     } else if (difficulty == 4){
-        Level *level = new LevelFour(playerTwoFile, playerTwo);
-        playerTwo->setLevel(4, level);
+        levelP2 = new LevelFour(playerTwoFile, playerTwo);
+        playerTwo->setLevel(4, levelP2);
     }
     cout << endl;
     int pTwoDropCount = 0;
@@ -228,6 +230,34 @@ int main(int argc, char* argv[]) {
                     if (playerTwo->getHeavy()){
                         playerTwo->getCurBlock()->down();
                     }
+				}
+			} else if (cmd == "levelup") {
+              if (playerOneTurn) {
+                if (playerOne->getLevel() < 4) {
+                  delete levelP1;
+                  playerOne->levelUp(playerOneFile);
+                }
+              } else {
+                if (playerTwo->getLevel() < 4) {
+                  delete levelP2;
+                  playerTwo->levelUp(playerTwoFile);
+                }
+              }
+              continue;
+       } else if (cmd == "leveldown") {
+              if (playerOneTurn) {
+                if (playerOne->getLevel() > 0) {
+                  delete levelP1;
+                  playerOne->levelDown(playerOneFile);
+                }
+              } else {
+                if (playerTwo->getLevel() > 0) {
+                        delete levelP2;
+                        playerTwo->levelDown(playerTwoFile);
+                    }
+                }
+                continue;
+            }
 				}	
 			}
         }

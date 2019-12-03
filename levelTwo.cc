@@ -31,4 +31,8 @@ Block *LevelTwo::generateBlock(){
     return addBlock;
 }
 
-Block *LevelTwo::makeCentreBlock(){}
+Block *LevelTwo::makeCentreBlock(){
+    return nullptr;
+}
+
+LevelTwo::~LevelTwo() {}
