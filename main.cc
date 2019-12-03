@@ -14,6 +14,7 @@
 #include "levelFour.h"
 #include <iostream>
 #include <string>
+#include <sstream>
 using namespace std;
 
 int main(int argc, char* argv[]) {
@@ -22,19 +23,53 @@ int main(int argc, char* argv[]) {
     int difficulty;
     bool playerOneTurn = true;
     bool turnOver = false;
-    
-    TextDisplay *display = new TextDisplay();
-	GraphicsDisplay *window = new GraphicsDisplay();
-    Grid *playerOne = new Grid(1, display, window);
-    Grid *playerTwo = new Grid(2, display, window);
-    display->setGrids(playerOne, playerTwo);
-	window->setGrids(playerOne, playerTwo);
-    playerOne->init();
-    playerTwo->init();
+
     string playerOneFile = "sequence1.txt";
     string playerTwoFile = "sequence2.txt";
 
+    bool textOnly = false;
+
+    // NOT IMPLEMENTED
+    int seed;
+    int startLevel;
+
+    string cmdLineArg;
+    for (int i = 1; i < argc; ++i) {
+        cmdLineArg = argv[i];
+        if (cmdLineArg == "-text") {
+            textOnly = true;
+        } else if (cmdLineArg == "-seed") {
+            // IMPLEMENT
+            stringstream ss(argv[i+1]);
+            ss >> seed;
+        } else if (cmdLineArg == "-scriptfile1") {
+            playerOneFile = argv[i+1];
+        } else if (cmdLineArg == "-scriptfile2") {
+            playerTwoFile = argv[i+1];
+        } else if (cmdLineArg == "-startlevel") {
+            // IMPLEMENT
+            stringstream ss(argv[i+1]);
+            ss >> startLevel;
+        }
+    }
+
+    TextDisplay *display = new TextDisplay();
+    Grid *playerOne;
+    Grid *playerTwo;
+    if (!textOnly) {
+	    GraphicsDisplay *window = new GraphicsDisplay();
+        playerOne = new Grid(1, display, window);
+        playerTwo = new Grid(2, display, window);
+        window->setGrids(playerOne, playerTwo);
+    } else {
+        playerOne = new Grid(1, display, nullptr);
+        playerTwo = new Grid(2, display, nullptr);
+    }
     
+    display->setGrids(playerOne, playerTwo);
+    playerOne->init();
+    playerTwo->init();
+
     cout << "Player 1, choose your difficulty between 0 and 4: ";
     cin >> difficulty;
     if (difficulty == 0){

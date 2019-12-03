@@ -22,7 +22,9 @@ void Grid::init() {
         for (int col=0; col < width; col++){
             Tile &t = theGrid.at(row).at(col);
             t.attach(td); // Attach textDisplay to each cell
-			t.attach(gd);
+            if (gd) {
+			    t.attach(gd);
+            }   
             //t.attach(ob); // attach graphicsdisplay to each cell
             /*
             if (row > 0){
