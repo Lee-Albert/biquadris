@@ -12,6 +12,7 @@ void IBlock::clockWise(){
             grid.getGrid()[tiles[i]->getY()][tiles[i]->getX()].swapTile(grid.getGrid()[tiles[i]->getY() - 3 + i][tiles[i]->getX() - i]);
             tiles[i] = &(grid.getGrid()[tiles[i]->getY() - 3 + i][tiles[i]->getX() - i]);
         }
+		orientation = 2;
     } else if (orientation == 2) {
         for (int i = 0; i < 3; i++) {
             if (!validTile(*tiles[i], tiles[i]->getY() + 3 - i, tiles[i]->getX() + 3 - i)) {
@@ -22,6 +23,7 @@ void IBlock::clockWise(){
             grid.getGrid()[tiles[i]->getY()][tiles[i]->getX()].swapTile(grid.getGrid()[tiles[i]->getY() + 3 - i][tiles[i]->getX() + 3 - i]);
             tiles[i] = &(grid.getGrid()[tiles[i]->getY() + 3 - i][tiles[i]->getX() + 3 - i]);
         }
+		orientation = 3;
     } else if (orientation == 3) {
         for (int i = 0; i < 3; i++) {
             if (!validTile(*tiles[i], tiles[i]->getY() - i, tiles[i]->getX() - 3 + i)) {
@@ -32,6 +34,7 @@ void IBlock::clockWise(){
             grid.getGrid()[tiles[i]->getY()][tiles[i]->getX()].swapTile(grid.getGrid()[tiles[i]->getY() - i][tiles[i]->getX() - 3 + i]);
             tiles[i] = &(grid.getGrid()[tiles[i]->getY() - i][tiles[i]->getX() - 3 + i]);
         }
+		orientation = 4;
     } else if (orientation == 4) {
         for (int i = 0; i < 3; i++) {
             if (!validTile(*tiles[i], tiles[i]->getY() + i, tiles[i]->getX() + i)) {
@@ -42,6 +45,7 @@ void IBlock::clockWise(){
             grid.getGrid()[tiles[i]->getY()][tiles[i]->getX()].swapTile(grid.getGrid()[tiles[i]->getY() + i][tiles[i]->getX() + i]);
             tiles[i] = &(grid.getGrid()[tiles[i]->getY() + i][tiles[i]->getX() + i]);
         }
+		orientation = 1;
     }
 }
 
@@ -56,6 +60,7 @@ void IBlock::counterClockWise(){
             grid.getGrid()[tiles[i]->getY()][tiles[i]->getX()].swapTile(grid.getGrid()[tiles[i]->getY() - i][tiles[i]->getX() - i]);
             tiles[i] = &(grid.getGrid()[tiles[i]->getY() - i][tiles[i]->getX() - i]);
         }
+		orientation = 4;
     } else if (orientation == 2) {
         for (int i = 0; i < 3; i++) {
             if (!validTile(*tiles[i], tiles[i]->getY() + 3 - i, tiles[i]->getX() + i)) {
@@ -66,6 +71,7 @@ void IBlock::counterClockWise(){
             grid.getGrid()[tiles[i]->getY()][tiles[i]->getX()].swapTile(grid.getGrid()[tiles[i]->getY() + 3 - i][tiles[i]->getX() + i]);
             tiles[i] = &(grid.getGrid()[tiles[i]->getY() + 3 - i][tiles[i]->getX() + i]);
         }
+		orientation = 1;
     } else if (orientation == 3) {
         for (int i = 0; i < 3; i++) {
             if (!validTile(*tiles[i], tiles[i]->getY() - 3 + i, tiles[i]->getX() - 3 + i)) {
@@ -76,6 +82,7 @@ void IBlock::counterClockWise(){
             grid.getGrid()[tiles[i]->getY()][tiles[i]->getX()].swapTile(grid.getGrid()[tiles[i]->getY() - 3 + i][tiles[i]->getX() - 3 + i]);
             tiles[i] = &(grid.getGrid()[tiles[i]->getY() - 3 + i][tiles[i]->getX() - 3 + i]);
         }
+		orientation = 2;
     } else if (orientation == 4) {
         for (int i = 0; i < 3; i++) {
             if (!validTile(*tiles[i], tiles[i]->getY() + i, tiles[i]->getX() + 3 - i)) {
@@ -86,6 +93,7 @@ void IBlock::counterClockWise(){
             grid.getGrid()[tiles[i]->getY()][tiles[i]->getX()].swapTile(grid.getGrid()[tiles[i]->getY() + i][tiles[i]->getX() + 3 - i]);
             tiles[i] = &(grid.getGrid()[tiles[i]->getY() + i][tiles[i]->getX() + 3 - i]);
         }
+		orientation = 3;
     }
 }
 

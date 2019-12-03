@@ -4,3 +4,4 @@
 .*.sw*
 biquadris
 *.txt
+.vscode

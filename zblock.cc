@@ -18,9 +18,18 @@ void ZBlock::clockWise(){
                     grid.getGrid()[tiles[2]->getY()][tiles[2]->getX()].swapTile(grid.getGrid()[tiles[2]->getY()-1][tiles[2]->getX()-1]);
                     tiles[2] = &(grid.getGrid()[tiles[2]->getY()-1][tiles[2]->getX()-1]);
 
-                    grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()].swapTile(grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()-2]);
-                    tiles[4] = &(grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()-2]);
+                    cout << "preY:" << tiles[3]->getY() << " " << "preX:" << tiles[3]->getX() << endl;
 
+                    grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()].swapTile(grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()-2]);
+                    tiles[3] = &(grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()-2]);
+
+                    // cout << "Y:" << tiles[0]->getY() << " " << "X:" << tiles[0]->getX() << endl;
+                    // cout << "Y:" << tiles[1]->getY() << " " << "X:" << tiles[1]->getX() << endl;
+                    // cout << "Y:" << tiles[2]->getY() << " " << "X:" << tiles[2]->getX() << endl;
+                    cout << "Y:" << tiles[3]->getY() << " " << "X:" << tiles[3]->getX() << endl;
+
+
+					orientation = 2;
                 }
     	} else if (orientation == 2) {		
     	    if (validTile(*tiles[0], tiles[0]->getY()+2, tiles[0]->getX()+1) &&
@@ -38,7 +47,14 @@ void ZBlock::clockWise(){
                     tiles[2] = &(grid.getGrid()[tiles[2]->getY()][tiles[2]->getX()+1]);
 
                     grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()].swapTile(grid.getGrid()[tiles[3]->getY()-1][tiles[3]->getX()]);
-                    tiles[4] = &(grid.getGrid()[tiles[3]->getY()-1][tiles[3]->getX()]);
+                    tiles[3] = &(grid.getGrid()[tiles[3]->getY()-1][tiles[3]->getX()]);
+				
+                    cout << "Y:" << tiles[0]->getY() << " " << "X:" << tiles[0]->getX() << endl;
+                    cout << "Y:" << tiles[1]->getY() << " " << "X:" << tiles[1]->getX() << endl;
+                    cout << "Y:" << tiles[2]->getY() << " " << "X:" << tiles[2]->getX() << endl;
+                    cout << "Y:" << tiles[3]->getY() << " " << "X:" << tiles[3]->getX() << endl;
+
+					orientation = 3;
 
                 }
     	} else if (orientation == 3) {		
@@ -57,7 +73,14 @@ void ZBlock::clockWise(){
                     tiles[2] = &(grid.getGrid()[tiles[2]->getY()][tiles[2]->getX()]);
 
                     grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()].swapTile(grid.getGrid()[tiles[3]->getY()-1][tiles[3]->getX()+1]);
-                    tiles[4] = &(grid.getGrid()[tiles[3]->getY()-1][tiles[3]->getX()+1]);
+                    tiles[3] = &(grid.getGrid()[tiles[3]->getY()-1][tiles[3]->getX()+1]);
+
+                    cout << "Y:" << tiles[0]->getY() << " " << "X:" << tiles[0]->getX() << endl;
+                    cout << "Y:" << tiles[1]->getY() << " " << "X:" << tiles[1]->getX() << endl;
+                    cout << "Y:" << tiles[2]->getY() << " " << "X:" << tiles[2]->getX() << endl;
+                    cout << "Y:" << tiles[3]->getY() << " " << "X:" << tiles[3]->getX() << endl;
+					
+					orientation = 4;
 
                 }
     	} else if (orientation == 4) {		
@@ -76,8 +99,14 @@ void ZBlock::clockWise(){
                     tiles[2] = &(grid.getGrid()[tiles[2]->getY()+1][tiles[2]->getX()]);
 
                     grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()].swapTile(grid.getGrid()[tiles[3]->getY()+2][tiles[3]->getX()+1]);
-                    tiles[4] = &(grid.getGrid()[tiles[3]->getY()+2][tiles[3]->getX()+1]);
+                    tiles[3] = &(grid.getGrid()[tiles[3]->getY()+2][tiles[3]->getX()+1]);
 
+                    cout << "Y:" << tiles[0]->getY() << " " << "X:" << tiles[0]->getX() << endl;
+                    cout << "Y:" << tiles[1]->getY() << " " << "X:" << tiles[1]->getX() << endl;
+                    cout << "Y:" << tiles[2]->getY() << " " << "X:" << tiles[2]->getX() << endl;
+                    cout << "Y:" << tiles[3]->getY() << " " << "X:" << tiles[3]->getX() << endl;
+
+					orientation = 1;
                 }
     	}
 }
@@ -99,7 +128,14 @@ void ZBlock::counterClockWise(){
                     tiles[2] = &(grid.getGrid()[tiles[2]->getY()-1][tiles[2]->getX()]);
 
                     grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()].swapTile(grid.getGrid()[tiles[3]->getY()-2][tiles[3]->getX()-1]);
-                    tiles[4] = &(grid.getGrid()[tiles[3]->getY()-2][tiles[3]->getX()-1]);
+                    tiles[3] = &(grid.getGrid()[tiles[3]->getY()-2][tiles[3]->getX()-1]);
+
+                    cout << "Y:" << tiles[0]->getY() << " " << "X:" << tiles[0]->getX() << endl;
+                    cout << "Y:" << tiles[1]->getY() << " " << "X:" << tiles[1]->getX() << endl;
+                    cout << "Y:" << tiles[2]->getY() << " " << "X:" << tiles[2]->getX() << endl;
+                    cout << "Y:" << tiles[3]->getY() << " " << "X:" << tiles[3]->getX() << endl;
+                    
+                    orientation = 4;
                 }
     	} else if (orientation == 2) {		
     	    if (validTile(*tiles[0], tiles[0]->getY()+1, tiles[0]->getX()-1) &&
@@ -117,7 +153,14 @@ void ZBlock::counterClockWise(){
                     tiles[2] = &(grid.getGrid()[tiles[2]->getY()+1][tiles[2]->getX()+1]);
 
                     grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()].swapTile(grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()+2]);
-                    tiles[4] = &(grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()+2]);
+                    tiles[3] = &(grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()+2]);
+
+                    cout << "Y:" << tiles[0]->getY() << " " << "X:" << tiles[0]->getX() << endl;
+                    cout << "Y:" << tiles[1]->getY() << " " << "X:" << tiles[1]->getX() << endl;
+                    cout << "Y:" << tiles[2]->getY() << " " << "X:" << tiles[2]->getX() << endl;
+                    cout << "Y:" << tiles[3]->getY() << " " << "X:" << tiles[3]->getX() << endl;
+
+                    orientation = 1;
                     
                 }
     	} else if (orientation == 3) {		
@@ -136,7 +179,14 @@ void ZBlock::counterClockWise(){
                     tiles[2] = &(grid.getGrid()[tiles[2]->getY()][tiles[2]->getX()-1]);
 
                     grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()].swapTile(grid.getGrid()[tiles[3]->getY()+1][tiles[3]->getX()]);
-                    tiles[4] = &(grid.getGrid()[tiles[3]->getY()+1][tiles[3]->getX()]);
+                    tiles[3] = &(grid.getGrid()[tiles[3]->getY()+1][tiles[3]->getX()]);
+
+                    cout << "Y:" << tiles[0]->getY() << " " << "X:" << tiles[0]->getX() << endl;
+                    cout << "Y:" << tiles[1]->getY() << " " << "X:" << tiles[1]->getX() << endl;
+                    cout << "Y:" << tiles[2]->getY() << " " << "X:" << tiles[2]->getX() << endl;
+                    cout << "Y:" << tiles[3]->getY() << " " << "X:" << tiles[3]->getX() << endl;
+
+                    orientation = 2;
                     
                 }
     	} else if (orientation == 4) {		
@@ -155,7 +205,14 @@ void ZBlock::counterClockWise(){
                     tiles[2] = &(grid.getGrid()[tiles[2]->getY()-1][tiles[2]->getX()+1]);
 
                     grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()].swapTile(grid.getGrid()[tiles[3]->getY()+1][tiles[3]->getX()-1]);
-                    tiles[4] = &(grid.getGrid()[tiles[3]->getY()+1][tiles[3]->getX()-1]);
+                    tiles[3] = &(grid.getGrid()[tiles[3]->getY()+1][tiles[3]->getX()-1]);
+
+                    cout << "Y:" << tiles[0]->getY() << " " << "X:" << tiles[0]->getX() << endl;
+                    cout << "Y:" << tiles[1]->getY() << " " << "X:" << tiles[1]->getX() << endl;
+                    cout << "Y:" << tiles[2]->getY() << " " << "X:" << tiles[2]->getX() << endl;
+                    cout << "Y:" << tiles[3]->getY() << " " << "X:" << tiles[3]->getX() << endl;
+
+                    orientation = 3;
 
                 }
     	}
