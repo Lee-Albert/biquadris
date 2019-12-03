@@ -62,6 +62,11 @@ void ZBlock::clockWise(){
     	    	validTile(*tiles[1], tiles[1]->getY()-1, tiles[1]->getX()-1) &&
     	    	validTile(*tiles[2], tiles[2]->getY(), tiles[2]->getX()) &&
     	    	validTile(*tiles[3], tiles[3]->getY()-1, tiles[3]->getX()+1)) {
+					
+					cout << "preY:" << tiles[0]->getY() << " " << "X:" << tiles[0]->getX() << endl;
+                    cout << "preY:" << tiles[1]->getY() << " " << "X:" << tiles[1]->getX() << endl;
+                    cout << "preY:" << tiles[2]->getY() << " " << "X:" << tiles[2]->getX() << endl;
+                    cout << "preY:" << tiles[3]->getY() << " " << "X:" << tiles[3]->getX() << endl;
 
                     grid.getGrid()[tiles[0]->getY()][tiles[0]->getX()].swapTile(grid.getGrid()[tiles[0]->getY()][tiles[0]->getX()-2]);
                     tiles[0] = &(grid.getGrid()[tiles[0]->getY()][tiles[0]->getX()-2]);
