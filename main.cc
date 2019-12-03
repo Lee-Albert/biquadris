@@ -62,15 +62,6 @@ int main(int argc, char* argv[]) {
     
     while (true){
         while (!turnOver){
-            // Tile **tiles;
-            // if (playerOneTurn){
-            //     tiles = playerOne->getCurBlock()->getTiles();
-            // } else {
-            //     tiles = playerTwo->getCurBlock()->getTiles();
-            // }
-            // for (int i=0; i < 4; i++){
-            //     cout << tiles[i]->getX() << " ," << tiles[i]->getY() << endl;
-            // }
             if (playerOneTurn){
                 cout << "Player One's Turn" << endl;
             } else {
