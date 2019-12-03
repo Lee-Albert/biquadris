@@ -2,6 +2,7 @@
 #include <string>
 #include "block.h"
 #include "grid.h"
+using namespace std;
 
 Tile **Block::getTiles(){
     return tiles;
@@ -24,6 +25,10 @@ bool Block::validTile(Tile curTile, int y, int x) {
     }
 }
 
+bool sortbysec(const pair<int,int> &a, const pair<int,int> &b) { 
+    return (a.second < b.second); 
+}
+
 void Block::left() {
     // create map of tiles to check
     std::map<int, int> checkPos;
@@ -44,13 +49,12 @@ void Block::left() {
             return;
         }
     }
+    vector<pair<int,int>> vect;
     for (int i = 0; i < 4; i++) {
-        if (checkPos.count(tiles[i]->getY()) && checkPos.find(tiles[i]->getY())->second != tiles[i]->getX()) {
-            checkPos.insert({ tiles[i]->getY(), tiles[i]->getX() });
-        }
+        vect.push_back( make_pair(tiles[i]->getY(), tiles[i]->getX()));
     }
-    for (auto it = checkPos.begin(); it != checkPos.end(); it++) {
-
+    sort(vect.begin(), vect.end(), sortbysec);
+    for (auto it = vect.begin(); it != vect.end(); it++) {
         grid.getGrid()[it->first][it->second].swapTile(grid.getGrid()[it->first][it->second - 1]);
         for (int i = 0; i < 4; i++) {
             if (tiles[i]->getY() == it->first && tiles[i]->getX() == it->second) {
@@ -72,6 +76,7 @@ void Block::right() {
             checkPos.at(tiles[i]->getY()) = tiles[i]->getX();
         }
     }
+    cout << "first step checkpos is " << endl;
     // Check if position is available for moving
     for (auto it = checkPos.begin(); it != checkPos.end(); it++) {
         if (it->second == 10) {
@@ -80,12 +85,12 @@ void Block::right() {
             return;
         }
     }
+    vector<pair<int,int>> vect;
     for (int i = 0; i < 4; i++) {
-        if (checkPos.count(tiles[i]->getY()) && checkPos.find(tiles[i]->getY())->second != tiles[i]->getX()) {
-            checkPos.insert({ tiles[i]->getY(), tiles[i]->getX() });
-        }
+        vect.push_back( make_pair(tiles[i]->getY(), tiles[i]->getX()));
     }
-    for (auto it = checkPos.begin(); it != checkPos.end(); it++) {
+    sort(vect.rbegin(), vect.rend(), sortbysec);
+    for (auto it = vect.begin(); it != vect.end(); it++) {
         grid.getGrid()[it->first][it->second].swapTile(grid.getGrid()[it->first][it->second + 1]);
         for (int i = 0; i < 4; i++) {
             if (tiles[i]->getY() == it->first && tiles[i]->getX() == it->second) {
@@ -100,10 +105,11 @@ void Block::right() {
 void Block::down() {
     // create map of tiles to check
     std::map<int, int> checkPos;
+    
     for (int i = 0; i < 4; i++) {
         if (!checkPos.count(tiles[i]->getX())) {
             checkPos.insert({ tiles[i]->getX(), tiles[i]->getY() });
-        } else if ((checkPos.find(tiles[i]->getX())->second) > tiles[i]->getY() ) {
+        } else if ((checkPos.find(tiles[i]->getX())->second) < tiles[i]->getY() ) {
             checkPos.at(tiles[i]->getX()) = tiles[i]->getY();
         }
     }
@@ -115,12 +121,12 @@ void Block::down() {
             return;
         }
     }
+    vector<pair<int,int>> vect;
     for (int i = 0; i < 4; i++) {
-        if (checkPos.count(tiles[i]->getX()) && checkPos.find(tiles[i]->getX())->second != tiles[i]->getY()) {
-            checkPos.insert({ tiles[i]->getX(), tiles[i]->getY() });
-        }
+        vect.push_back( make_pair(tiles[i]->getX(), tiles[i]->getY()));
     }
-    for (auto it = checkPos.begin(); it != checkPos.end(); it++) {
+    sort(vect.rbegin(), vect.rend(), sortbysec);
+    for (auto it = vect.begin(); it != vect.end(); it++) {
         grid.getGrid()[it->second][it->first].swapTile(grid.getGrid()[it->second + 1][it->first]);
         for (int i = 0; i < 4; i++) {
             if (tiles[i]->getX() == it->first && tiles[i]->getY() == it->second) {
@@ -132,7 +138,7 @@ void Block::down() {
 }
 
 void Block::drop() {
-    int downNum = 0; // Number of tiles to move down by
+    int downNum = 1; // Number of tiles to move down by
     bool doneCount = false;
 
     // create map of tiles to check
@@ -140,17 +146,17 @@ void Block::drop() {
     for (int i = 0; i < 4; i++) {
         if (!checkPos.count(tiles[i]->getX())) {
             checkPos.insert({ tiles[i]->getX(), tiles[i]->getY() });
-        } else if ((checkPos.find(tiles[i]->getX())->second) > tiles[i]->getY() ) {
+        } else if ((checkPos.find(tiles[i]->getX())->second) < tiles[i]->getY() ) {
             checkPos.at(tiles[i]->getX()) = tiles[i]->getY();
         }
     }
     while (!doneCount) {
         // Check if position is available for moving
         for (auto it = checkPos.begin(); it != checkPos.end(); it++) {
-            if (it->second == 17) {
+            if (it->second == 17 || (it->second + downNum == 17)) {
                 doneCount = true;
                 break;
-            } else if (grid.getGrid()[it->second + 1][it->first].isOccupied()) {
+            } else if (grid.getGrid()[it->second + downNum][it->first].isOccupied()) {
                 doneCount = true;
                 break;
             }
@@ -161,12 +167,14 @@ void Block::drop() {
             downNum++;
         }
     }
+    cout << downNum << endl;
+    vector<pair<int,int>> vect;
     for (int i = 0; i < 4; i++) {
-        if (checkPos.count(tiles[i]->getX()) && checkPos.find(tiles[i]->getX())->second != tiles[i]->getY()) {
-            checkPos.insert({ tiles[i]->getX(), tiles[i]->getY() });
-        }
+        vect.push_back( make_pair(tiles[i]->getX(), tiles[i]->getY()));
     }
-    for (auto it = checkPos.begin(); it != checkPos.end(); it++) {
+    sort(vect.rbegin(), vect.rend(), sortbysec);
+    
+    for (auto it = vect.begin(); it != vect.end(); it++) {
         grid.getGrid()[it->second][it->first].swapTile(grid.getGrid()[it->second + downNum][it->first]);
         for (int i = 0; i < 4; i++) {
             if (tiles[i]->getX() == it->first && tiles[i]->getY() == it->second) {
@@ -175,6 +183,16 @@ void Block::drop() {
         }
     }
     yPos -= downNum;
+}
+
+void Block::removeTile(Tile *tile){
+    for (int i = 0; i < 4; i++){
+        if (tiles[i]){
+            if (tiles[i] == tile){
+                tiles[i] = nullptr;
+            }
+        }
+    }
 }
 
 

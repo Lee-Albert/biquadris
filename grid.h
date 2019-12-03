@@ -39,11 +39,13 @@ class Grid {
 	~Grid();
 	void init();
 	void setObserver(Observer *ob);
-	void getNextBlock();
+	void generateNextBlock();
+	Block *getNextBlock();
+	Block *getCurBlock();
 	bool isFull();
 	bool heightReached();
 	int rowsFull();
-	void addRow();
+	void deleteRows(vector <int> rows);
 	int getScore();
 	void setLevel(int nLevel, Level *levelset);
 	int getLevel();

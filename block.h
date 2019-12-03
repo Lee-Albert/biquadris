@@ -21,6 +21,7 @@ class Block {
 
     public:
     Tile **getTiles();
+    void removeTile(Tile *tile);
     std::string getName();
     bool validTile(Tile curTile, int y, int x);
     virtual void clockWise() = 0;

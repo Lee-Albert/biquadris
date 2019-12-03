@@ -11,12 +11,8 @@ bool Tile::isOccupied() {
     return filled;
 }
 
-void Tile::setFilled(bool newFilled){
+void Tile::updateTile(bool newFilled, Block *newCurblock){
     filled = newFilled;
-    this->notifyObservers();
-}
-
-void Tile::setCurblock(Block *newCurblock){
     curBlock = newCurblock;
     this->notifyObservers();
 }
@@ -44,4 +40,12 @@ int Tile::getX() {
 
 int Tile::getY() {
     return y;
+}
+
+Block* Tile::getBlock(){
+    return curBlock;
+}
+
+void Tile::incrementY(){
+    y++;
 }
