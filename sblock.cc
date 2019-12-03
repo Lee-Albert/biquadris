@@ -18,7 +18,7 @@ void SBlock::clockWise(){
                     tiles[2] = &(grid.getGrid()[tiles[2]->getY()][tiles[2]->getX()]);
 
                     grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()].swapTile(grid.getGrid()[tiles[3]->getY()+1][tiles[3]->getX()-1]);
-                    tiles[4] = &(grid.getGrid()[tiles[3]->getY()+1][tiles[3]->getX()-1]);
+                    tiles[3] = &(grid.getGrid()[tiles[3]->getY()+1][tiles[3]->getX()-1]);
 
 					orientation = 2;
                 }
@@ -31,14 +31,14 @@ void SBlock::clockWise(){
                     grid.getGrid()[tiles[0]->getY()][tiles[0]->getX()].swapTile(grid.getGrid()[tiles[0]->getY()+1][tiles[0]->getX()+2]);
                     tiles[0] = &(grid.getGrid()[tiles[0]->getY()+1][tiles[0]->getX()+2]);
 
-                    grid.getGrid()[tiles[1]->getY()][tiles[1]->getX()].swapTile(grid.getGrid()[tiles[1]->getY()][tiles[1]->getX()+1]);
-                    tiles[1] = &(grid.getGrid()[tiles[1]->getY()][tiles[1]->getX()+1]);
+                    grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()].swapTile(grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()-1]);
+                    tiles[3] = &(grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()-1]);
 
                     grid.getGrid()[tiles[2]->getY()][tiles[2]->getX()].swapTile(grid.getGrid()[tiles[2]->getY()+1][tiles[2]->getX()]);
                     tiles[2] = &(grid.getGrid()[tiles[2]->getY()+1][tiles[2]->getX()]);
 
-                    grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()].swapTile(grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()-1]);
-                    tiles[4] = &(grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()-1]);
+                    grid.getGrid()[tiles[1]->getY()][tiles[1]->getX()].swapTile(grid.getGrid()[tiles[1]->getY()][tiles[1]->getX()+1]);
+                    tiles[1] = &(grid.getGrid()[tiles[1]->getY()][tiles[1]->getX()+1]);
 		
 					orientation = 3;
                 }
@@ -48,17 +48,17 @@ void SBlock::clockWise(){
     	    	validTile(*tiles[2], tiles[2]->getY()-1, tiles[2]->getX()-1) &&
     	    	validTile(*tiles[3], tiles[3]->getY()-2, tiles[3]->getX())) {
 
+                    grid.getGrid()[tiles[2]->getY()][tiles[2]->getX()].swapTile(grid.getGrid()[tiles[2]->getY()-1][tiles[2]->getX()-1]);
+                    tiles[2] = &(grid.getGrid()[tiles[2]->getY()-1][tiles[2]->getX()-1]);
+
                     grid.getGrid()[tiles[0]->getY()][tiles[0]->getX()].swapTile(grid.getGrid()[tiles[0]->getY()+1][tiles[0]->getX()-1]);
                     tiles[0] = &(grid.getGrid()[tiles[0]->getY()+1][tiles[0]->getX()-1]);
 
                     grid.getGrid()[tiles[1]->getY()][tiles[1]->getX()].swapTile(grid.getGrid()[tiles[1]->getY()][tiles[1]->getX()]);
                     tiles[1] = &(grid.getGrid()[tiles[1]->getY()][tiles[1]->getX()]);
 
-                    grid.getGrid()[tiles[2]->getY()][tiles[2]->getX()].swapTile(grid.getGrid()[tiles[2]->getY()-1][tiles[2]->getX()-1]);
-                    tiles[2] = &(grid.getGrid()[tiles[2]->getY()-1][tiles[2]->getX()-1]);
-
                     grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()].swapTile(grid.getGrid()[tiles[3]->getY()-2][tiles[3]->getX()]);
-                    tiles[4] = &(grid.getGrid()[tiles[3]->getY()-2][tiles[3]->getX()]);
+                    tiles[3] = &(grid.getGrid()[tiles[3]->getY()-2][tiles[3]->getX()]);
 
 					orientation = 4;
                 }
@@ -78,7 +78,7 @@ void SBlock::clockWise(){
                     tiles[2] = &(grid.getGrid()[tiles[2]->getY()][tiles[2]->getX()+1]);
 
                     grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()].swapTile(grid.getGrid()[tiles[3]->getY()+1][tiles[3]->getX()+2]);
-                    tiles[4] = &(grid.getGrid()[tiles[3]->getY()+1][tiles[3]->getX()+2]);
+                    tiles[3] = &(grid.getGrid()[tiles[3]->getY()+1][tiles[3]->getX()+2]);
 
 					orientation = 1;
                 }
@@ -92,17 +92,18 @@ void SBlock::counterClockWise(){
     	    	validTile(*tiles[2], tiles[2]->getY(), tiles[2]->getX()-1) &&
     	    	validTile(*tiles[3], tiles[3]->getY()-1, tiles[3]->getX()-2)) {
 
-                    grid.getGrid()[tiles[0]->getY()][tiles[0]->getX()].swapTile(grid.getGrid()[tiles[0]->getY()][tiles[0]->getX()+1]);
-                    tiles[0] = &(grid.getGrid()[tiles[0]->getY()][tiles[0]->getX()+1]);
-
-                    grid.getGrid()[tiles[1]->getY()][tiles[1]->getX()].swapTile(grid.getGrid()[tiles[1]->getY()-1][tiles[1]->getX()]);
-                    tiles[1] = &(grid.getGrid()[tiles[1]->getY()-1][tiles[1]->getX()]);
+                    grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()].swapTile(grid.getGrid()[tiles[3]->getY()-1][tiles[3]->getX()-2]);
+                    tiles[3] = &(grid.getGrid()[tiles[3]->getY()-1][tiles[3]->getX()-2]);
 
                     grid.getGrid()[tiles[2]->getY()][tiles[2]->getX()].swapTile(grid.getGrid()[tiles[2]->getY()][tiles[2]->getX()-1]);
                     tiles[2] = &(grid.getGrid()[tiles[2]->getY()][tiles[2]->getX()-1]);
 
-                    grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()].swapTile(grid.getGrid()[tiles[3]->getY()-1][tiles[3]->getX()-2]);
-                    tiles[4] = &(grid.getGrid()[tiles[3]->getY()-1][tiles[3]->getX()-2]);
+
+                    grid.getGrid()[tiles[1]->getY()][tiles[1]->getX()].swapTile(grid.getGrid()[tiles[1]->getY()-1][tiles[1]->getX()]);
+                    tiles[1] = &(grid.getGrid()[tiles[1]->getY()-1][tiles[1]->getX()]);
+
+                    grid.getGrid()[tiles[0]->getY()][tiles[0]->getX()].swapTile(grid.getGrid()[tiles[0]->getY()][tiles[0]->getX()+1]);
+                    tiles[0] = &(grid.getGrid()[tiles[0]->getY()][tiles[0]->getX()+1]);
 					
 					orientation = 4;
                 }
@@ -112,6 +113,9 @@ void SBlock::counterClockWise(){
     	    	validTile(*tiles[2], tiles[2]->getY(), tiles[2]->getX()) &&
     	    	validTile(*tiles[3], tiles[3]->getY()-1, tiles[3]->getX()+1)) {
                     
+                    grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()].swapTile(grid.getGrid()[tiles[3]->getY()-1][tiles[3]->getX()+1]);
+                    tiles[3] = &(grid.getGrid()[tiles[3]->getY()-1][tiles[3]->getX()+1]);
+
                     grid.getGrid()[tiles[0]->getY()][tiles[0]->getX()].swapTile(grid.getGrid()[tiles[0]->getY()+2][tiles[0]->getX()]);
                     tiles[0] = &(grid.getGrid()[tiles[0]->getY()+2][tiles[0]->getX()]);
 
@@ -120,9 +124,6 @@ void SBlock::counterClockWise(){
 
                     grid.getGrid()[tiles[2]->getY()][tiles[2]->getX()].swapTile(grid.getGrid()[tiles[2]->getY()][tiles[2]->getX()]);
                     tiles[2] = &(grid.getGrid()[tiles[2]->getY()][tiles[2]->getX()]);
-
-                    grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()].swapTile(grid.getGrid()[tiles[3]->getY()-1][tiles[3]->getX()+1]);
-                    tiles[4] = &(grid.getGrid()[tiles[3]->getY()-1][tiles[3]->getX()+1]);
                     
 					orientation = 1;
                 }
@@ -142,7 +143,7 @@ void SBlock::counterClockWise(){
                     tiles[2] = &(grid.getGrid()[tiles[2]->getY()-1][tiles[2]->getX()]);
 
                     grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()].swapTile(grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()+1]);
-                    tiles[4] = &(grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()+1]);
+                    tiles[3] = &(grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()+1]);
                     
 					orientation = 2;
                 }
@@ -151,18 +152,18 @@ void SBlock::counterClockWise(){
     	    	validTile(*tiles[1], tiles[1]->getY(), tiles[1]->getX()) &&
     	    	validTile(*tiles[2], tiles[2]->getY()+1, tiles[2]->getX()+1) &&
     	    	validTile(*tiles[3], tiles[3]->getY()+2, tiles[3]->getX())) {
-                    
-                    grid.getGrid()[tiles[0]->getY()][tiles[0]->getX()].swapTile(grid.getGrid()[tiles[0]->getY()+1][tiles[0]->getX()-1]);
-                    tiles[0] = &(grid.getGrid()[tiles[0]->getY()+1][tiles[0]->getX()-1]);
 
-                    grid.getGrid()[tiles[1]->getY()][tiles[1]->getX()].swapTile(grid.getGrid()[tiles[1]->getY()][tiles[1]->getX()]);
-                    tiles[1] = &(grid.getGrid()[tiles[1]->getY()][tiles[1]->getX()]);
+                    grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()].swapTile(grid.getGrid()[tiles[3]->getY()+2][tiles[3]->getX()]);
+                    tiles[3] = &(grid.getGrid()[tiles[3]->getY()+2][tiles[3]->getX()]);
+                    
+                    grid.getGrid()[tiles[0]->getY()][tiles[0]->getX()].swapTile(grid.getGrid()[tiles[0]->getY()-1][tiles[0]->getX()+1]);
+                    tiles[0] = &(grid.getGrid()[tiles[0]->getY()-1][tiles[0]->getX()+1]);
 
                     grid.getGrid()[tiles[2]->getY()][tiles[2]->getX()].swapTile(grid.getGrid()[tiles[2]->getY()+1][tiles[2]->getX()+1]);
                     tiles[2] = &(grid.getGrid()[tiles[2]->getY()+1][tiles[2]->getX()+1]);
 
-                    grid.getGrid()[tiles[3]->getY()][tiles[3]->getX()].swapTile(grid.getGrid()[tiles[3]->getY()+2][tiles[3]->getX()]);
-                    tiles[4] = &(grid.getGrid()[tiles[3]->getY()+2][tiles[3]->getX()]);
+                    grid.getGrid()[tiles[1]->getY()][tiles[1]->getX()].swapTile(grid.getGrid()[tiles[1]->getY()][tiles[1]->getX()]);
+                    tiles[1] = &(grid.getGrid()[tiles[1]->getY()][tiles[1]->getX()]);
 
 					orientation = 3;
                 }
