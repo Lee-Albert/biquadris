@@ -44,7 +44,7 @@ class Grid {
 	Block *getCurBlock();
 	bool isFull();
 	bool heightReached();
-	int rowsFull();
+	void checkFullRows();
 	void deleteRows(vector <int> rows);
 	int getScore();
 	void setLevel(int nLevel, Level *levelset);

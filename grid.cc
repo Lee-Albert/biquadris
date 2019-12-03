@@ -86,6 +86,7 @@ void Grid::generateNextBlock() {
     curBlock = nextBlock;
     nextBlock = newBlock;
     if (curBlock){
+        curBlock->initializeTiles();
         Tile **tiles = curBlock->getTiles();
         // TODO:
         // check if this is possible
@@ -111,7 +112,7 @@ std::ostream &operator<<(std::ostream &out, const Grid &g) {
 	return out;
 }
 
-int Grid::rowsFull(){
+void Grid::checkFullRows(){
     int counter = 0;
     bool full;
     vector <int> fullRows;
@@ -129,7 +130,9 @@ int Grid::rowsFull(){
         }
     }
     deleteRows(fullRows);
-    return counter;
+    int newPoints = counter + level->getPoints();
+    score += newPoints * newPoints;
+    
 }
 
 void Grid::deleteRows(vector <int> rows){

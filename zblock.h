@@ -10,6 +10,7 @@ class ZBlock : public Block {
     public:
     void clockWise() override;
     void counterClockWise() override;
+    void initializeTiles() override;
     ZBlock(int orientation, Grid &grid, int xPos, int yPos);
 };
 

@@ -140,6 +140,7 @@ void Block::down() {
 void Block::drop() {
     int downNum = 1; // Number of tiles to move down by
     bool doneCount = false;
+    bool move = true;
 
     // create map of tiles to check
     std::map<int, int> checkPos;
@@ -153,10 +154,14 @@ void Block::drop() {
     while (!doneCount) {
         // Check if position is available for moving
         for (auto it = checkPos.begin(); it != checkPos.end(); it++) {
-            if (it->second == 17 || (it->second + downNum == 17)) {
+            if (it->second == 17){
+                doneCount = true;
+                move = false;
+            } else if (it->second + downNum == 17 && !(grid.getGrid()[it->second + downNum][it->first].isOccupied())) {
                 doneCount = true;
                 break;
             } else if (grid.getGrid()[it->second + downNum][it->first].isOccupied()) {
+                downNum--;
                 doneCount = true;
                 break;
             }
@@ -167,7 +172,9 @@ void Block::drop() {
             downNum++;
         }
     }
-    cout << downNum << endl;
+    if (!move) {
+        return;
+    }
     vector<pair<int,int>> vect;
     for (int i = 0; i < 4; i++) {
         vect.push_back( make_pair(tiles[i]->getX(), tiles[i]->getY()));

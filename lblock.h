@@ -10,6 +10,7 @@ class LBlock : public Block {
     public:
     void clockWise() override;
     void counterClockWise() override;
+    void initializeTiles() override;
     LBlock(int orientation, Grid &grid, int xPos, int yPos);
 };
 
