@@ -70,7 +70,43 @@ std::ostream &operator<<(std::ostream &out, TextDisplay &td) {
 	}
 	out << "-----------" << spacing << "-----------" << std::endl;
 	out << "Next:      " << spacing << "Next:      " << std::endl;
-	out << td.nextBlock1 << "          " << spacing << td.nextBlock2 << std::endl;
+	BlockPrint bp;
+	vector<string> blockPlayer1;
+	vector<string> blockPlayer2;
+
+	if (td.nextBlock1 == "I") {
+		blockPlayer1 = bp.IBlock;
+	} else if (td.nextBlock1 == "J") {
+		blockPlayer1 = bp.JBlock;
+	} else if (td.nextBlock1 == "L") {
+		blockPlayer1 = bp.LBlock;
+	} else if (td.nextBlock1 == "T") {
+		blockPlayer1 = bp.TBlock;
+	} else if (td.nextBlock1 == "O") {
+		blockPlayer1 = bp.OBlock;
+	} else if (td.nextBlock1 == "S") {
+		blockPlayer1 = bp.SBlock;
+	} else if (td.nextBlock1 == "Z") {
+		blockPlayer1 = bp.ZBlock;
+	}
+
+	if (td.nextBlock2 == "I") {
+		blockPlayer2 = bp.IBlock;
+	} else if (td.nextBlock2 == "J") {
+		blockPlayer2 = bp.JBlock;
+	} else if (td.nextBlock2 == "L") {
+		blockPlayer2 = bp.LBlock;
+	} else if (td.nextBlock2 == "T") {
+		blockPlayer2 = bp.TBlock;
+	} else if (td.nextBlock2 == "O") {
+		blockPlayer2 = bp.OBlock;
+	} else if (td.nextBlock2 == "S") {
+		blockPlayer2 = bp.SBlock;
+	} else if (td.nextBlock2 == "Z") {
+		blockPlayer2 = bp.ZBlock;
+	}
+	out << left << setw(11) << blockPlayer1[0] << spacing << left << setw(11) << blockPlayer2[0] << endl;
+	out << left << setw(11) << blockPlayer1[1] << spacing << left << setw(11) << blockPlayer2[1] << endl;
 	return out;
 }
 

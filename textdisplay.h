@@ -10,6 +10,7 @@
 #include "tile.h"
 #include "info.h"
 #include "block.h"
+#include "blockPrint.h"
 // other #includes
 
 // class Tile;
