@@ -41,6 +41,7 @@ std::ostream &operator<<(std::ostream &out, TextDisplay &td) {
 	// uncomment when getscore is fixed
 	out << "Level:" << std::setw(5) << (td.grid1)->getLevel() << spacing << "Level:" << std::setw(5) << (td.grid2)->getLevel() << std::endl;
 	out << "Score:" << std::setw(5) << (td.grid1)->getScore() << spacing << "Score:" << std::setw(5) << (td.grid2)->getScore() << std::endl;
+	out << "Hi:" << std::setw(8) << (td.grid1)->getHighscore() << spacing << "Hi:" << std::setw(8) << (td.grid2)->getHighscore() << std::endl;
 	out << "-----------" << spacing << "-----------" << std::endl;
 	for (int i = 0; i < td.height; ++i) {
 		for (int j = 0; j < td.width; ++j) {

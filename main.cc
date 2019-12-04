@@ -144,7 +144,9 @@ int main(int argc, char* argv[]) {
         playerOne->generateNextBlock();
         playerTwo->generateNextBlock();
         playerTwo->generateNextBlock();
-		window->coverWinner();
+        if(!textOnly){
+            window->coverWinner();
+        }
     };
 
     while (true){
@@ -160,7 +162,7 @@ int main(int argc, char* argv[]) {
 				}
                 cout << "Player Two's Turn" << endl;
             }
-
+            cout << endl;
             cout << *display;
             
 			if (playerOneTurn) {
@@ -345,7 +347,6 @@ int main(int argc, char* argv[]) {
 						}
                     }
                 }
-                continue;
             } else if (cmd.substr(0,6) == "leveld") {
                 if (playerOneTurn) {
 					for (int i = 0; i < repeats; ++i) {
@@ -362,7 +363,6 @@ int main(int argc, char* argv[]) {
 						}
                     }
                 }
-                continue;
 			} else if (cmd.substr(0,1) == "n") {
                 string file;
                 cin >> file;
@@ -499,6 +499,7 @@ int main(int argc, char* argv[]) {
 			}
             playerOneTurn = true;
         }
+        cout << endl;
         turnOver = false;
     }
 }
