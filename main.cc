@@ -128,10 +128,14 @@ int main(int argc, char* argv[]) {
 
     auto restartGame = [&](int winner){
         if (winner == 1){
-			window->printWinner(1);
+            if(!textOnly){
+			    window->printWinner(1);
+            }
             cout << "Player 1 wins!" << endl;
         } else if (winner == 2){
-			window->printWinner(2);
+            if(!textOnly){
+			    window->printWinner(2);
+            }
             cout << "Player 2 wins!" << endl;
         }
         playerOne->reset();
