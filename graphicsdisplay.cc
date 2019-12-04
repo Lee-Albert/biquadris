@@ -60,14 +60,12 @@ void GraphicsDisplay::notify(Subject &whoFrom) {
 
 	// draw highscore strings
 	window.drawString(65, 100, "Highscore:");
-	// currently same as score
 	window.fillRectangle(200, 85, 150, 20, 0);
-	// window.drawString(200, 85, to_string(grid1->getHighscore()));	
+	window.drawString(200, 100, to_string(grid1->getHighscore()));	
 
 	window.drawString(550 + 65, 100, "Highscore:");
-	// currently same as score
 	window.fillRectangle(550 + 200, 85, 150, 20, 0);
-	// window.drawString(550 + 200, 85, to_string(grid2->getHighscore()));
+	window.drawString(550 + 200, 100, to_string(grid2->getHighscore()));
 
 	for (int i = 0; i < height; ++i) {
 		for (int j = 0; j < width; ++j) {
@@ -182,4 +180,16 @@ void GraphicsDisplay::printPlayer(int player) {
 		window.drawBigString(400, 150, "Player Two's Turn");
 		window.fillCircle(600, 180, 20, 10);
 	}
+}
+
+void GraphicsDisplay::printWinner(int player) {
+	if (player == 1) {
+		window.drawBigString(410,100, "Player One wins!");
+	} else {
+		window.drawBigString(410,100,"Player Two wins!");
+	}
+}
+
+void GraphicsDisplay::coverWinner() {
+	window.fillRectangle(400,90,110,100, 0);
 }

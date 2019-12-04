@@ -140,6 +140,7 @@ int main(int argc, char* argv[]) {
         playerOneTurn = true;
         pOneDropCount = 0;
         pTwoDropCount = 0;
+        bool x;
         playerOne->generateNextBlock();
         playerOne->generateNextBlock();
         playerTwo->generateNextBlock();
@@ -362,29 +363,7 @@ int main(int argc, char* argv[]) {
 						}
                     }
                 }
-                continue;
-			} else if (cmd.substr(0,1) == "n") {
-                string file;
-                cin >> file;
-                if (playerOneTurn) {
-                    if (playerOne->getLevel() >= 3) {
-                        playerOne->noRand(file);
-                    }
-                } else {
-                    if (playerTwo->getLevel() >= 3) {
-                        playerTwo->noRand(file);
-                    }
-                }
-            } else if (cmd.substr(0,2) == "ra") {
-                if (playerOneTurn) {
-                    if (playerOne->getLevel() >= 3) {
-                        playerOne->random();
-                    }
-                } else {
-                    if (playerTwo->getLevel() >= 3) {
-                        playerTwo->random();
-                    }
-                }
+                continue;	
 			} else if (cmd.substr(0,1) == "s") {
                 string file;
                 cin >> file;

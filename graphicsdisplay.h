@@ -30,5 +30,7 @@ class GraphicsDisplay: public Observer {
 	void printSpecial();
 	void printSpecialPrompt();
 	void printPlayer(int player);
+	void printWinner(int player);
+	void coverWinner();
 }; 
 #endif
