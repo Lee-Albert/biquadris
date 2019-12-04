@@ -5,8 +5,8 @@ void CentreBlock::clockWise(){}
 
 void CentreBlock::counterClockWise(){}
 
-CentreBlock::CentreBlock(int orientation, Grid &grid, int xPos, int yPos): 
-Block(orientation, grid, xPos, yPos){
+CentreBlock::CentreBlock(int orientation, Grid &grid, int xPos, int yPos, int levelCreated): 
+Block(orientation, grid, xPos, yPos, levelCreated){
     name = "*";
 	colour = 9;
 }

@@ -10,7 +10,7 @@ class JBlock : public Block {
     void clockWise() override;
     void counterClockWise() override;
     void initializeTiles() override;
-    JBlock(int orientation, Grid &grid, int xPos, int yPos);
+    JBlock(int orientation, Grid &grid, int xPos, int yPos, int levelCreated);
     ~JBlock();
 };
 

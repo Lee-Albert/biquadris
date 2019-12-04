@@ -171,8 +171,8 @@ void IBlock::counterClockWise(){
     }
 }
 
-IBlock::IBlock(int orientation, Grid &grid, int xPos, int yPos): 
-Block(orientation, grid, xPos, yPos){
+IBlock::IBlock(int orientation, Grid &grid, int xPos, int yPos, int levelCreated): 
+Block(orientation, grid, xPos, yPos, levelCreated){
     name = "I";
 	colour = 5;
 }

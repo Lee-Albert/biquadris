@@ -215,7 +215,11 @@ void Grid::deleteRows(vector <int> rows){
     for (auto row : rows){
         vector <Tile> rowToDelete = theGrid.at(row);
         for (auto tile : rowToDelete){
-            tile.getBlock()->removeTile(&tile);
+            tile.getBlock()->removeTile(tile);
+            if (tile.getBlock()->checkCleared()){
+                int points = tile.getBlock()->getLevelCreated() + 1;
+                score += points * points;
+            }
         }
         theGrid.erase(theGrid.begin() + row);
         td->deleteRow(row, player);

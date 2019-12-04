@@ -16,6 +16,10 @@ int Block::getColour() {
 	return colour;
 }
 
+int Block::getLevelCreated(){
+    return levelCreated;
+}
+
 bool Block::validTile(Tile curTile, int y, int x) {
     // check if space is in bounds
     if (y < 0 || x < 0) {
@@ -222,17 +226,27 @@ void Block::centreDrop() {
     yPos -= downNum;
 }
 
-void Block::removeTile(Tile *tile){
+void Block::removeTile(Tile tile){
     for (int i = 0; i < 4; i++){
         if (tiles[i]){
-            if (tiles[i] == tile){
+            if (tiles[i]->getX() == tile.getX() && tiles[i]->getY() == tile.getY()){
                 tiles[i] = nullptr;
+                return;
             }
         }
     }
 }
 
+bool Block::checkCleared(){
+    for (int i=0; i < 4; i++){
+        if (tiles[i]){
+            return false;
+        }
+    }
+    return true;
+}
 
-Block::Block(int orientation, Grid &grid, int xPos, int yPos): orientation{orientation}, grid{grid}, xPos{xPos}, yPos{yPos}{};
+Block::Block(int orientation, Grid &grid, int xPos, int yPos, int levelCreated): 
+orientation{orientation}, grid{grid}, xPos{xPos}, yPos{yPos}, levelCreated{levelCreated}{};
 
 Block::~Block() {}

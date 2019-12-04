@@ -8,6 +8,7 @@ class LevelTwo : public Level {
     public:
     Block *generateBlock() override;
     Block *makeCentreBlock() override;
+    Block *forceBlock(string blockname) override;
     LevelTwo(string fileName, Grid *grid, int seed);
     ~LevelTwo();
 };

@@ -11,7 +11,7 @@ class IBlock : public Block {
     void clockWise() override;
     void counterClockWise() override;
     void initializeTiles() override;
-    IBlock(int orientation, Grid &grid, int xPos, int yPos);
+    IBlock(int orientation, Grid &grid, int xPos, int yPos, int levelCreated);
     ~IBlock();
 };
 

@@ -6,7 +6,7 @@ class CentreBlock : public Block {
     public:
     void clockWise() override;
     void counterClockWise() override;
-    CentreBlock(int orientation, Grid &grid, int xPos, int yPos);
+    CentreBlock(int orientation, Grid &grid, int xPos, int yPos, int levelCreated);
     void initializeTiles();
 };
 

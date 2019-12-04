@@ -11,7 +11,7 @@ class TBlock : public Block {
     void clockWise() override;
     void counterClockWise() override;
     void initializeTiles() override;
-    TBlock(int orientation, Grid &grid, int xPos, int yPos);
+    TBlock(int orientation, Grid &grid, int xPos, int yPos, int levelCreated);
     ~TBlock();
 };
 

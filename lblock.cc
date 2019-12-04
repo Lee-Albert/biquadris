@@ -164,8 +164,8 @@ void LBlock::counterClockWise(){
     	}
 }
 
-LBlock::LBlock(int orientation, Grid &grid, int xPos, int yPos): 
-Block(orientation, grid, xPos, yPos){
+LBlock::LBlock(int orientation, Grid &grid, int xPos, int yPos, int levelCreated): 
+Block(orientation, grid, xPos, yPos, levelCreated){
     name = "L";
 	colour = 8;
 }

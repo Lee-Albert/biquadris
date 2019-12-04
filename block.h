@@ -19,10 +19,11 @@ class Block {
     Tile *tiles[4];
     int xPos;
     int yPos;
+    int levelCreated;
 
     public:
     Tile **getTiles();
-    void removeTile(Tile *tile);
+    void removeTile(Tile tile);
     std::string getName();
 	int getColour();
     bool validTile(Tile curTile, int y, int x);
@@ -34,7 +35,9 @@ class Block {
     void down();
     void drop();
     void centreDrop();
-    Block(int orientation, Grid &grid, int xPos, int yPos);
+    bool checkCleared();
+    int getLevelCreated();
+    Block(int orientation, Grid &grid, int xPos, int yPos, int levelCreated);
     virtual ~Block();
 };
 

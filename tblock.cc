@@ -170,8 +170,8 @@ void TBlock::counterClockWise(){
     	}
 }
 
-TBlock::TBlock(int orientation, Grid &grid, int xPos, int yPos): 
-Block(orientation, grid, xPos, yPos){
+TBlock::TBlock(int orientation, Grid &grid, int xPos, int yPos, int levelCreated): 
+Block(orientation, grid, xPos, yPos, levelCreated){
     name = "T";
 	colour = 7;
 }

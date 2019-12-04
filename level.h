@@ -25,7 +25,7 @@ class Level {
     int points;
     public:
     int getPoints();
-    Block *forceBlock(string blockname);
+    virtual Block *forceBlock(string blockname) = 0;
     virtual Block *generateBlock() = 0;
     virtual Block *makeCentreBlock() = 0;
     Level(string filename, Grid *grid, int seed);

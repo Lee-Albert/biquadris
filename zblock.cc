@@ -174,8 +174,8 @@ void ZBlock::counterClockWise(){
     	}
 }
 
-ZBlock::ZBlock(int orientation, Grid &grid, int xPos, int yPos): 
-Block(orientation, grid, xPos, yPos) {
+ZBlock::ZBlock(int orientation, Grid &grid, int xPos, int yPos, int levelCreated): 
+Block(orientation, grid, xPos, yPos, levelCreated) {
     name = "Z";
 	colour = 2;
 }
