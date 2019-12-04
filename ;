@@ -140,6 +140,7 @@ int main(int argc, char* argv[]) {
         playerOneTurn = true;
         pOneDropCount = 0;
         pTwoDropCount = 0;
+        bool x;
         playerOne->generateNextBlock();
         playerOne->generateNextBlock();
         playerTwo->generateNextBlock();

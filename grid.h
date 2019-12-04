@@ -38,7 +38,7 @@ class Grid {
 	Block *curBlock = nullptr;
 	Block *nextBlock = nullptr;
 	int score;
-	int highScore;
+	int highScore = 0;
 	int curLevel;
 	bool isBlind;
 	bool isHeavy;
@@ -70,6 +70,7 @@ class Grid {
 	bool getHeavy();
 	void setForce(bool toSet);
 	bool getForce();
+	int getHighscore();
 	friend std::ostream &operator<<(std::ostream &out, const Grid &g);
 };
 

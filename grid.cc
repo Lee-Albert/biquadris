@@ -38,9 +38,10 @@ void Grid::reset(){
     isBlind = false;
     isHeavy = false;
     isForce = false;
+    deleteBlocks();
     curBlock = nullptr;
     nextBlock = nullptr;
-    deleteBlocks();
+    // deleteBlocks();
     for (int row=0; row < height; row++){
         for (int col=0; col < width; col++){
             theGrid.at(row).at(col).updateTile(false, nullptr);
@@ -256,4 +257,8 @@ bool Grid::getHeavy() {
 
 bool Grid::getForce() {
 	return isForce;
+}
+
+int Grid::getHighscore() {
+	return highScore;
 }
