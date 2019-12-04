@@ -317,7 +317,29 @@ int main(int argc, char* argv[]) {
                     }
                 }
                 continue;	
-			} else if (cmd == "sequence") {
+			} else if (cmd == "norandom") {
+                string file;
+                cin >> file;
+                if (playerOneTurn) {
+                    if (playerOne->getLevel() >= 3) {
+                        playerOne->noRand(file);
+                    }
+                } else {
+                    if (playerTwo->getLevel() >= 3) {
+                        playerTwo->noRand(file);
+                    }
+                }
+            } else if (cmd == "random") {
+                if (playerOneTurn) {
+                    if (playerOne->getLevel() >= 3) {
+                        playerOne->random();
+                    }
+                } else {
+                    if (playerTwo->getLevel() >= 3) {
+                        playerTwo->random();
+                    }
+                }
+            } else if (cmd == "sequence") {
                 string file;
                 cin >> file;
                 ifstream seq(file);
