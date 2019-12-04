@@ -121,7 +121,6 @@ int main(int argc, char* argv[]) {
     int pTwoDropCount = 0;
 
     cout << endl;
-  
     playerOne->generateNextBlock();
     playerOne->generateNextBlock();
     playerTwo->generateNextBlock();
