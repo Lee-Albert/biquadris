@@ -15,7 +15,7 @@
 #include <iostream>
 #include <string>
 #include <sstream>
-#include <queue>
+#include <deque>
 #include <fstream>
 using namespace std;
 
@@ -31,9 +31,9 @@ int main(int argc, char* argv[]) {
     string playerOneFile = "sequence1.txt";
     string playerTwoFile = "sequence2.txt";
 	
-	queue<string> playerOneSequence;
-	queue<string> playerTwoSequence;
-
+	deque<string> playerOneSequence;
+	deque<string> playerTwoSequence;
+	
     bool textOnly = false;
 
     // NOT IMPLEMENTED
@@ -172,7 +172,7 @@ int main(int argc, char* argv[]) {
             		}
 				} else {
 					cmd = playerOneSequence.front();
-					playerOneSequence.pop();	
+					playerOneSequence.pop_front();	
 				}
 			} else {
 				if (playerTwoSequence.empty()) {
@@ -181,13 +181,29 @@ int main(int argc, char* argv[]) {
             		}
 				} else {
 					cmd = playerTwoSequence.front();
-					playerTwoSequence.pop();
+					playerTwoSequence.pop_front();
 				}
 			}
 
-            if (cmd == "left") {
+			int repeats = 1;
+			int endIndex = 0;
+			for (int i = cmd.length() - 1; i >= 0; --i) {
+				if (cmd[i] - '0' < 10) {
+					endIndex = i + 1;
+					break;
+				}
+			}
+
+			if (endIndex > 0) {
+				repeats = stoi(cmd.substr(0,endIndex));
+			}
+			cmd = cmd.substr(endIndex);
+
+            if (cmd.substr(0,3) == "lef") {
                 if (playerOneTurn){
-                    playerOne->getCurBlock()->left();
+					for (int i = 0; i < repeats; ++i) {
+                    	playerOne->getCurBlock()->left();
+					}
                     if (playerOne->getLevel() >= 3){
                         playerOne->getCurBlock()->down();
                     }
@@ -195,7 +211,9 @@ int main(int argc, char* argv[]) {
                         playerOne->getCurBlock()->down();
                     }
                 } else {
-                    playerTwo->getCurBlock()->left();
+					for (int i = 0; i < repeats; ++i) {
+                    	playerTwo->getCurBlock()->left();
+					} 
                     if (playerTwo->getLevel() >= 3){
                         playerTwo->getCurBlock()->down();
                     }
@@ -203,9 +221,11 @@ int main(int argc, char* argv[]) {
                         playerTwo->getCurBlock()->down();
                     }
                 }
-            } else if (cmd == "right"){
+            } else if (cmd.substr(0,2) == "ri"){
                 if (playerOneTurn){
-                    playerOne->getCurBlock()->right();
+					for (int i = 0; i < repeats; ++i) {
+                   		playerOne->getCurBlock()->right();
+					}
                     if (playerOne->getLevel() >= 3){
                         playerOne->getCurBlock()->down();
                     } 
@@ -213,7 +233,9 @@ int main(int argc, char* argv[]) {
                         playerOne->getCurBlock()->down();
                     }
                 } else {
-                    playerTwo->getCurBlock()->right();
+					for (int i = 0; i < repeats; ++i) {
+                   		playerTwo->getCurBlock()->right();
+					}
                     if (playerTwo->getLevel() >= 3){
                         playerTwo->getCurBlock()->down();
                     }
@@ -221,28 +243,41 @@ int main(int argc, char* argv[]) {
                         playerTwo->getCurBlock()->down();
                     }
                 }
-            } else if (cmd == "down"){
+            } else if (cmd.substr(0,2) == "do"){
                 if (playerOneTurn){
-                    playerOne->getCurBlock()->down();
+					for (int i = 0; i < repeats; ++i) {
+                   		playerOne->getCurBlock()->down();
+					}
                 } else {
-                    playerTwo->getCurBlock()->down();
+					for (int i = 0; i < repeats; ++i) {
+                   		playerTwo->getCurBlock()->down();
+					}
                 }
-            } else if (cmd == "drop"){
+            } else if (cmd.substr(0,2) == "dr"){
                 if (playerOneTurn){
-                    playerOne->getCurBlock()->drop();
+					for (int i = 0; i < repeats - 1; ++i) {
+						cout << "hi"<<endl;
+						playerOneSequence.push_front("drop");
+					}
+                   	playerOne->getCurBlock()->drop();
 					playerOne->setBlind(false);
                     playerOne->setHeavy(false);
                     playerOne->setForce(false);
                 } else {
-                    playerTwo->getCurBlock()->drop();
+					for (int i = 0; i < repeats - 1; ++i) {
+						playerOneSequence.push_front("drop");
+					}
+                   	playerTwo->getCurBlock()->drop();
 					playerTwo->setBlind(false);
                     playerTwo->setHeavy(false);
                     playerTwo->setForce(false);
                 }
                 turnOver = true;
-            } else if (cmd == "clockwise") {
+            } else if (cmd.substr(0,2) == "cl") {
 				if (playerOneTurn) {
-					playerOne->getCurBlock()->clockWise();
+					for (int i = 0; i < repeats; ++i) {
+						playerOne->getCurBlock()->clockWise();
+					}
                     if (playerOne->getLevel() >= 3){
                         playerOne->getCurBlock()->down();
                     }
@@ -250,7 +285,9 @@ int main(int argc, char* argv[]) {
                         playerOne->getCurBlock()->down();
                     }
 				} else {
-					playerTwo->getCurBlock()->clockWise();
+					for (int i = 0; i < repeats; ++i) {
+						playerTwo->getCurBlock()->clockWise();
+					}
                     if (playerTwo->getLevel() >= 3){
                         playerTwo->getCurBlock()->down();
                     }
@@ -258,9 +295,11 @@ int main(int argc, char* argv[]) {
                         playerTwo->getCurBlock()->down();
                     }
 				}
-			} else if (cmd == "counterclockwise") {
+			} else if (cmd.substr(0,2) == "co") {
 				if (playerOneTurn) {
-					playerOne->getCurBlock()->counterClockWise();
+					for (int i = 0; i < repeats; ++i) {
+						playerOne->getCurBlock()->counterClockWise();
+					}
                     if (playerOne->getLevel() >= 3){
                         playerOne->getCurBlock()->down();
                     }
@@ -268,7 +307,9 @@ int main(int argc, char* argv[]) {
                         playerOne->getCurBlock()->down();
                     }
 				} else {
-					playerTwo->getCurBlock()->counterClockWise();
+					for (int i = 0; i < repeats; ++i) {
+						playerTwo->getCurBlock()->counterClockWise();
+					}
                     if (playerTwo->getLevel() >= 3){
                         playerTwo->getCurBlock()->down();
                     }
@@ -276,7 +317,7 @@ int main(int argc, char* argv[]) {
                         playerTwo->getCurBlock()->down();
                     }
 				}	
-			} else if (cmd == "restart"){
+			} else if (cmd.substr(0,2) == "re"){
                 restartGame(0);
             } else if (cmd == "I" || cmd == "J" || cmd == "L" || cmd == "T" || 
                         cmd == "O" || cmd == "S" || cmd == "Z"){
@@ -291,44 +332,52 @@ int main(int argc, char* argv[]) {
                         restartGame(1);
                     }
                 }
-			} else if (cmd == "levelup") {
+			} else if (cmd.substr(0,6) == "levelu") {
                 if (playerOneTurn) {
-                    if (playerOne->getLevel() < 4) {
-                        delete levelP1;
-                        playerOne->levelUp(playerOneFile, seed);
+					for (int i = 0; i < repeats; ++i) {
+                   		if (playerOne->getLevel() < 4) {
+                        	delete levelP1;
+                        	playerOne->levelUp(playerOneFile, seed);
+						}
                     }
                 } else {
-                    if (playerTwo->getLevel() < 4) {
-                        delete levelP2;
-                        playerTwo->levelUp(playerTwoFile, seed);
+					for (int i = 0; i < repeats; ++i) {
+                   		if (playerTwo->getLevel() < 4) {
+                        	delete levelP2;
+                        	playerTwo->levelUp(playerTwoFile, seed);
+						}
                     }
                 }
                 continue;
-            } else if (cmd == "leveldown") {
+            } else if (cmd.substr(0,6) == "leveld") {
                 if (playerOneTurn) {
-                    if (playerOne->getLevel() > 0) {
-                        delete levelP1;
-                        playerOne->levelDown(playerOneFile, seed);
+					for (int i = 0; i < repeats; ++i) {
+                   		if (playerOne->getLevel() > 0) {
+                        	delete levelP1;
+                        	playerOne->levelDown(playerOneFile, seed);
+						}
                     }
                 } else {
-                    if (playerTwo->getLevel() > 0) {
-                        delete levelP2;
-                        playerTwo->levelDown(playerTwoFile, seed);
+					for (int i = 0; i < repeats; ++i) {
+                   		if (playerTwo->getLevel() > 0) {
+                        	delete levelP2;
+                        	playerTwo->levelDown(playerTwoFile, seed);
+						}
                     }
                 }
                 continue;	
-			} else if (cmd == "sequence") {
+			} else if (cmd.substr(0,1) == "s") {
                 string file;
                 cin >> file;
                 ifstream seq(file);
                 string queuecmd;
                 if (playerOneTurn) {
                     while (seq >> queuecmd) {	
-                        playerOneSequence.push(queuecmd);	
+                        playerOneSequence.push_back(queuecmd);	
                     }			
                 } else {
                     while (seq >>queuecmd) {
-                        playerTwoSequence.push(queuecmd);
+                        playerTwoSequence.push_back(queuecmd);
                     }
                 }   
             }
