@@ -366,7 +366,7 @@ int main(int argc, char* argv[]) {
                     }
                 }
                 continue;
-			} else if (cmd == "norandom") {
+			} else if (cmd.substr(0,1) == "n") {
                 string file;
                 cin >> file;
                 if (playerOneTurn) {
@@ -378,7 +378,7 @@ int main(int argc, char* argv[]) {
                         playerTwo->noRand(file);
                     }
                 }
-            } else if (cmd == "random") {
+            } else if (cmd.substr(0,2) == "ra") {
                 if (playerOneTurn) {
                     if (playerOne->getLevel() >= 3) {
                         playerOne->random();
