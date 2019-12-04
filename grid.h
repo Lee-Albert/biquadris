@@ -34,9 +34,9 @@ class Grid {
 	// Observer *ob;
 	int height;
 	int width;
-	Level *level;
-	Block *curBlock;
-	Block *nextBlock;
+	Level *level = nullptr;
+	Block *curBlock = nullptr;
+	Block *nextBlock = nullptr;
 	int score;
 	int highScore;
 	int curLevel;
