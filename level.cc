@@ -8,4 +8,13 @@ int Level::getPoints(){
     return points;
 }
 
+void Level::setRandom(bool isRandom){
+    random = isRandom;
+}
+
+void Level::setFile(string newFile){
+    filename = newFile;
+    filestream.open(filename);
+}
+
 Level::~Level(){}

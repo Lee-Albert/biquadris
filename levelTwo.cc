@@ -7,11 +7,11 @@ LevelTwo::LevelTwo(string filename, Grid *grid, int seed): Level(filename, grid,
     filestream.open(filename);
     random = true;
     points = 2;
+    srand(seed);
 }
 
 Block *LevelTwo::generateBlock(){
     Block *addBlock;
-    srand(seed);
     int blockChoice = rand() % 7;
     if (blockChoice == 0){
         addBlock = new SBlock(1, *grid, 0, 3, 2);

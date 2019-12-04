@@ -34,9 +34,9 @@ class Grid {
 	// Observer *ob;
 	int height;
 	int width;
-	Level *level;
-	Block *curBlock;
-	Block *nextBlock;
+	Level *level = nullptr;
+	Block *curBlock = nullptr;
+	Block *nextBlock = nullptr;
 	int score;
 	int highScore;
 	int curLevel;
@@ -56,6 +56,8 @@ class Grid {
 	Block *getCurBlock();
 	int checkFullRows();
 	void deleteRows(vector <int> rows);
+	void noRand(string file);
+	void random();
 	int getScore();
 	void setLevel(int nLevel, Level *levelset);
 	void levelUp(string filename, int seed);

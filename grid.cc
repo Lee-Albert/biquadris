@@ -59,6 +59,14 @@ void Grid::setObserver(Observer *ob) {
 	// this->ob = ob;
 }
 
+void Grid::noRand(string filename) {
+    level->setRandom(false);
+    level->setFile(filename);
+}
+
+void Grid::random() {
+    level->setRandom(true);
+}
 
 void Grid::setLevel(int nLevel, Level *levelset) {
 	curLevel = nLevel;

@@ -26,6 +26,8 @@ class Level {
     public:
     int getPoints();
     virtual Block *forceBlock(string blockname) = 0;
+    void setRandom(bool isRandom);
+    void setFile(string newFile);
     virtual Block *generateBlock() = 0;
     virtual Block *makeCentreBlock() = 0;
     Level(string filename, Grid *grid, int seed);
