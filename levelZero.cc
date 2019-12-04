@@ -9,6 +9,7 @@ LevelZero::LevelZero(string filename, Grid *grid, int seed): Level(filename, gri
     filestream.open(filename);
     random = false;
     points = 0;
+    srand(seed);
 }
 
 // (int orientation, Grid *grid, int xPos, int yPos)

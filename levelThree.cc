@@ -7,11 +7,11 @@ LevelThree::LevelThree(string filename, Grid *grid, int seed): Level(filename, g
     filestream.open(filename);
     random = true;
     points = 3;
+    srand(seed);
 }
 
 Block *LevelThree::generateBlock(){
     Block *addBlock;
-    srand(seed);
     int blockChoice = rand() % 9;
     if (blockChoice == 0 || blockChoice == 1){
         addBlock = new SBlock(1, *grid, 0, 3);
