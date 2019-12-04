@@ -82,4 +82,3 @@ Block *LevelFour::makeCentreBlock() {
 }
 
 LevelFour::~LevelFour() {}
-
