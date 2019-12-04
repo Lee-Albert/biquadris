@@ -18,3 +18,4 @@ class Subject {
 	virtual Info getInfo() = 0;
 };
 #endif
+

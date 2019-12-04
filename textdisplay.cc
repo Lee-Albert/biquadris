@@ -132,3 +132,4 @@ void TextDisplay::deleteRow(int row, int player){
 		player2.insert(player2.begin(), newRow);
 	}
 }
+

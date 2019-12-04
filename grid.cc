@@ -274,3 +274,5 @@ bool Grid::getForce() {
 int Grid::getHighscore() {
 	return highScore;
 }
+
+

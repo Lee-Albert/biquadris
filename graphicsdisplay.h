@@ -34,3 +34,4 @@ class GraphicsDisplay: public Observer {
 	void coverWinner();
 }; 
 #endif
+

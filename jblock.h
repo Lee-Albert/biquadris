@@ -15,3 +15,4 @@ class JBlock : public Block {
 };
 
 #endif
+

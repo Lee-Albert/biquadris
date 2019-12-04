@@ -193,3 +193,5 @@ void GraphicsDisplay::printWinner(int player) {
 void GraphicsDisplay::coverWinner() {
 	window.fillRectangle(400,90,110,100, 0);
 }
+
+

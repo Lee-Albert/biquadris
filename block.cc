@@ -250,3 +250,4 @@ Block::Block(int orientation, Grid &grid, int xPos, int yPos, int levelCreated):
 orientation{orientation}, grid{grid}, xPos{xPos}, yPos{yPos}, levelCreated{levelCreated}{};
 
 Block::~Block() {}
+

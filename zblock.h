@@ -16,3 +16,4 @@ class ZBlock : public Block {
 };
 
 #endif
+
