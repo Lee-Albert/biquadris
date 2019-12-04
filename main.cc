@@ -277,20 +277,21 @@ int main(int argc, char* argv[]) {
                         playerTwo->getCurBlock()->down();
                     }
 				}	
-			} else if (cmd == "I"){
+			} else if (cmd == "restart"){
                 restartGame(0);
-            } else if (cmd == "J"){
-                restartGame(0);
-            } else if (cmd == "L"){
-                restartGame(0);
-            } else if (cmd == "T"){
-                restartGame(0);
-            } else if (cmd == "O"){
-                restartGame(0);
-            } else if (cmd == "S"){
-                restartGame(0);
-            } else if (cmd == "Z"){
-                restartGame(0);
+            } else if (cmd == "I" || cmd == "J" || cmd == "L" || cmd == "T" || 
+                        cmd == "O" || cmd == "S" || cmd == "Z"){
+                if (playerOneTurn){
+                    gameOver = playerOne->replaceCurBlock(cmd);
+                    if (gameOver){
+                        restartGame(2);
+                    }
+                } else {
+                    gameOver = playerTwo->replaceCurBlock(cmd);
+                    if (gameOver){
+                        restartGame(1);
+                    }
+                }
 			} else if (cmd == "levelup") {
                 if (playerOneTurn) {
                     if (playerOne->getLevel() < 4) {
