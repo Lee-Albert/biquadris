@@ -8,6 +8,15 @@ int Level::getPoints(){
     return points;
 }
 
+void Level::setRandom(bool isRandom){
+    random = isRandom;
+}
+
+void Level::setFile(string newFile){
+    filename = newFile;
+    filestream.open(filename);
+}
+
 Block *Level::forceBlock(string blockname){
     Block *addBlock;
     if (blockname == "I"){

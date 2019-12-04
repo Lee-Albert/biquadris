@@ -7,11 +7,36 @@ LevelFour::LevelFour(string filename, Grid *grid, int seed): Level(filename, gri
     filestream.open(filename);
     random = true;
     points = 4;
+    srand(seed);
 }
 
 Block *LevelFour::generateBlock(){
     Block *addBlock;
-    srand(seed);
+    if (!random) {
+        string blockname;
+        if (!(filestream >> blockname)){
+            filestream.close();
+            filestream.open(filename);
+            filestream >> blockname;
+        }
+        if (blockname == "I"){
+            addBlock = new IBlock(1, *grid, 0, 3);
+        } else if (blockname == "L"){
+            addBlock = new LBlock(1, *grid, 0, 3);
+        } else if (blockname == "J"){
+            addBlock = new JBlock(1, *grid, 0, 3);
+        } else if (blockname == "T"){
+            addBlock = new TBlock(1, *grid, 0, 3);
+        } else if (blockname == "O"){
+            addBlock = new OBlock(1, *grid, 0, 3);
+        } else if (blockname == "S"){
+            addBlock = new SBlock(1, *grid, 0, 3);
+        } else {
+            addBlock = new ZBlock(1, *grid, 0, 3);
+        }
+        return addBlock;
+    }
+    
     int blockChoice = rand() % 9;
     if (blockChoice == 0 || blockChoice == 1){
         addBlock = new SBlock(1, *grid, 0, 3);

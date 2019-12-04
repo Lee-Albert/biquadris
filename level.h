@@ -25,6 +25,8 @@ class Level {
     int points;
     public:
     int getPoints();
+    void setRandom(bool isRandom);
+    void setFile(string newFile);
     Block *forceBlock(string blockname);
     virtual Block *generateBlock() = 0;
     virtual Block *makeCentreBlock() = 0;

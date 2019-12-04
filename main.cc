@@ -365,7 +365,29 @@ int main(int argc, char* argv[]) {
 						}
                     }
                 }
-                continue;	
+                continue;
+			} else if (cmd == "norandom") {
+                string file;
+                cin >> file;
+                if (playerOneTurn) {
+                    if (playerOne->getLevel() >= 3) {
+                        playerOne->noRand(file);
+                    }
+                } else {
+                    if (playerTwo->getLevel() >= 3) {
+                        playerTwo->noRand(file);
+                    }
+                }
+            } else if (cmd == "random") {
+                if (playerOneTurn) {
+                    if (playerOne->getLevel() >= 3) {
+                        playerOne->random();
+                    }
+                } else {
+                    if (playerTwo->getLevel() >= 3) {
+                        playerTwo->random();
+                    }
+                }
 			} else if (cmd.substr(0,1) == "s") {
                 string file;
                 cin >> file;

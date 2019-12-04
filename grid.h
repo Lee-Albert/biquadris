@@ -56,6 +56,8 @@ class Grid {
 	Block *getCurBlock();
 	int checkFullRows();
 	void deleteRows(vector <int> rows);
+	void noRand(string file);
+	void random();
 	int getScore();
 	void setLevel(int nLevel, Level *levelset);
 	void levelUp(string filename, int seed);
