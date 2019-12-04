@@ -199,7 +199,11 @@ int main(int argc, char* argv[]) {
 			}
 
 			if (endIndex > 0) {
-				repeats = stoi(cmd.substr(0,endIndex));
+                try{
+				    repeats = stoi(cmd.substr(0,endIndex));
+                } catch (...){
+                    repeats = 1;
+                }
 			}
 			cmd = cmd.substr(endIndex);
 
