@@ -128,10 +128,14 @@ int main(int argc, char* argv[]) {
 
     auto restartGame = [&](int winner){
         if (winner == 1){
-			window->printWinner(1);
+            if(!textOnly){
+			    window->printWinner(1);
+            }
             cout << "Player 1 wins!" << endl;
         } else if (winner == 2){
-			window->printWinner(2);
+            if(!textOnly){
+			    window->printWinner(2);
+            }
             cout << "Player 2 wins!" << endl;
         }
         playerOne->reset();
@@ -195,7 +199,11 @@ int main(int argc, char* argv[]) {
 			}
 
 			if (endIndex > 0) {
-				repeats = stoi(cmd.substr(0,endIndex));
+                try{
+				    repeats = stoi(cmd.substr(0,endIndex));
+                } catch (...){
+                    repeats = 1;
+                }
 			}
 			cmd = cmd.substr(endIndex);
 
