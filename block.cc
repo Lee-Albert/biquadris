@@ -22,7 +22,7 @@ int Block::getLevelCreated(){
 
 bool Block::validTile(Tile curTile, int y, int x) {
     // check if space is in bounds
-    if (y < 0 || x < 0 || y > 17 || x > 11) {
+    if (y < 0 || x < 0 || y > 17 || x > 10) {
         return false;
     } else if (!(grid.getGrid()[y][x].isOccupied())) {
         return true;
