@@ -39,8 +39,8 @@ void GraphicsDisplay::notify(Subject &whoFrom) {
 	window.drawLine(64+550, 510, 285+550, 510);
 
 	// draw player name plates
-	window.drawBigString(65+75, 135, "Player One");
-	window.drawBigString(550+65+75, 135, "Player Two"); 
+	window.drawString(65+75, 135, "Player One");
+	window.drawString(550+65+75, 135, "Player Two"); 
 
 	// draw Level strings
 	window.drawString(65, 50, "Level:");
@@ -177,16 +177,16 @@ void GraphicsDisplay::printPlayer(int player) {
 		window.fillCircle(300, 180, 20, 10);
 		
 	} else {
-		window.drawBigString(400, 150, "Player Two's Turn");
+		window.drawString(400, 150, "Player Two's Turn");
 		window.fillCircle(600, 180, 20, 10);
 	}
 }
 
 void GraphicsDisplay::printWinner(int player) {
 	if (player == 1) {
-		window.drawBigString(410,100, "Player One wins!");
+		window.drawString(410,100, "Player One wins!");
 	} else {
-		window.drawBigString(410,100,"Player Two wins!");
+		window.drawString(410,100,"Player Two wins!");
 	}
 }
 
